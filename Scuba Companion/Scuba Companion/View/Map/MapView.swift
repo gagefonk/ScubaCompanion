@@ -1,0 +1,92 @@
+//
+//  MapView.swift
+//  Scuba Companion
+//
+//  Created by Gage Fonk on 8/10/21.
+//
+
+import UIKit
+import MapKit
+import Firebase
+
+class MapView: UIViewController, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
+    let mapSearchView = MapSearchView()
+    let mapVM = MapViewModel()
+    let surfAPI = SurfAPI()
+    
+    let mapView: MKMapView = {
+        let map = MKMapView()
+        
+        
+        return map
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        locationManager.delegate = self
+        mapSearchView.delegate = self
+        setupLocationServices()
+        goToCurrentLocation()
+                
+        view.addSubview(mapView)
+        
+        title = "Forecast"
+        
+        tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map"), tag: 0)
+        
+        //add search functionality
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "location"), style: .done, target: self, action: #selector(goToCurrentLocation))
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupLayout()
+    }
+    
+    func setupLayout() {
+        
+        //map view
+        mapView.frame = view.frame
+    }
+    
+    private func setupLocationServices() {
+        if locationManager.authorizationStatus != .authorizedWhenInUse || locationManager.authorizationStatus != .authorizedAlways {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        locationManager.startUpdatingLocation()
+        
+    }
+    
+    @objc private func goToCurrentLocation() {
+        guard let region = mapVM.getUserLocation(locationManager: locationManager) else { return }
+        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        let newRegion = MKCoordinateRegion(center: region.center, span: span)
+        let fitRegion = mapView.regionThatFits(newRegion)
+        mapView.setRegion(fitRegion, animated: true)
+        mapView.showsUserLocation = true
+    }
+    
+    @objc func didTapSearch() {
+        present(UINavigationController(rootViewController: mapSearchView), animated: true, completion: nil)
+        
+    }
+    
+    @objc func apiCall() {
+        surfAPI.getData()
+    }
+
+}
+
+extension MapView: LocationFromSearchDelegate {
+    func goToSearchedLocation(center: CLLocationCoordinate2D) {
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: center, span: span)
+        let newRegion = mapView.regionThatFits(region)
+        mapView.setRegion(newRegion, animated: true)
+    }
+    
+    
+}

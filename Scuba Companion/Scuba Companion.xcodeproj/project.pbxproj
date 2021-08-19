@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1CBAFF1F26C3590100C97334 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF1E26C3590100C97334 /* MapView.swift */; };
+		1CBAFF2126C35FEA00C97334 /* DiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF2026C35FEA00C97334 /* DiveView.swift */; };
+		1CBAFF2326C3600600C97334 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF2226C3600600C97334 /* AccountView.swift */; };
+		1CBAFF2526C36FC800C97334 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF2426C36FC800C97334 /* MapViewModel.swift */; };
+		1CBAFF2726C4445800C97334 /* MapSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF2626C4445800C97334 /* MapSearchView.swift */; };
+		1CBAFF2926C457B900C97334 /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF2826C457B900C97334 /* MapSearchViewModel.swift */; };
+		1CBAFF2D26C4A27800C97334 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF2C26C4A27800C97334 /* TestData.swift */; };
+		1CBAFF3126C5EA1F00C97334 /* MapSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF3026C5EA1F00C97334 /* MapSearchCell.swift */; };
+		1CBAFF3326C820A500C97334 /* SurfAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF3226C820A500C97334 /* SurfAPI.swift */; };
+		1CBAFF3726C8275C00C97334 /* DataCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF3626C8275C00C97334 /* DataCategories.swift */; };
+		1CBAFF3926CE19F200C97334 /* api.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CBAFF3826CE19F200C97334 /* api.plist */; };
+		1CECCADB26BC7AA400831FA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCADA26BC7AA400831FA3 /* AppDelegate.swift */; };
+		1CECCADD26BC7AA400831FA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCADC26BC7AA400831FA3 /* SceneDelegate.swift */; };
+		1CECCAE426BC7AA700831FA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CECCAE326BC7AA700831FA3 /* Assets.xcassets */; };
+		1CECCAF226BC7BFC00831FA3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCAF126BC7BFC00831FA3 /* LoginViewModel.swift */; };
+		1CECCAF426BC7C1800831FA3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCAF326BC7C1800831FA3 /* LoginView.swift */; };
+		1CECCAFB26BCB5A600831FA3 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCAFA26BCB5A600831FA3 /* CustomColors.swift */; };
+		1CECCB0226BCD61B00831FA3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCB0126BCD61B00831FA3 /* RegisterView.swift */; };
+		1CECCB0426BCD62800831FA3 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCB0326BCD62800831FA3 /* RegisterViewModel.swift */; };
+		1CECCB0626BCEAF600831FA3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCB0526BCEAF600831FA3 /* MenuView.swift */; };
+		1CECCB0F26C0D37E00831FA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */; };
+		1CECCB1926C2271D00831FA3 /* CustomGoogleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCB1826C2271D00831FA3 /* CustomGoogleConfig.swift */; };
+		ABCA835C312F9BE1E43F9FC2 /* Pods_Scuba_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1CBAFF1E26C3590100C97334 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		1CBAFF2026C35FEA00C97334 /* DiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveView.swift; sourceTree = "<group>"; };
+		1CBAFF2226C3600600C97334 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		1CBAFF2426C36FC800C97334 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		1CBAFF2626C4445800C97334 /* MapSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchView.swift; sourceTree = "<group>"; };
+		1CBAFF2826C457B900C97334 /* MapSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewModel.swift; sourceTree = "<group>"; };
+		1CBAFF2C26C4A27800C97334 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		1CBAFF3026C5EA1F00C97334 /* MapSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchCell.swift; sourceTree = "<group>"; };
+		1CBAFF3226C820A500C97334 /* SurfAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfAPI.swift; sourceTree = "<group>"; };
+		1CBAFF3626C8275C00C97334 /* DataCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCategories.swift; sourceTree = "<group>"; };
+		1CBAFF3826CE19F200C97334 /* api.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = api.plist; sourceTree = "<group>"; };
+		1CECCAD726BC7AA400831FA3 /* Scuba Companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scuba Companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CECCADA26BC7AA400831FA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1CECCADC26BC7AA400831FA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1CECCAE326BC7AA700831FA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1CECCAE826BC7AA700831FA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CECCAF126BC7BFC00831FA3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1CECCAF326BC7C1800831FA3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1CECCAFA26BCB5A600831FA3 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		1CECCB0126BCD61B00831FA3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		1CECCB0326BCD62800831FA3 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		1CECCB0526BCEAF600831FA3 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1CECCB1826C2271D00831FA3 /* CustomGoogleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomGoogleConfig.swift; path = ../../../../../../Documents/CustomGoogleConfig.swift; sourceTree = "<group>"; };
+		6D052D10AD47CE926D5F3A1E /* Pods-Scuba Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.release.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.release.xcconfig"; sourceTree = "<group>"; };
+		8DB4920BA6FF95944A6C2EDD /* Pods-Scuba Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.debug.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.debug.xcconfig"; sourceTree = "<group>"; };
+		CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scuba_Companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1CECCAD426BC7AA400831FA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABCA835C312F9BE1E43F9FC2 /* Pods_Scuba_Companion.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1CBAFF1B26C3582500C97334 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				1CBAFF1E26C3590100C97334 /* MapView.swift */,
+				1CBAFF2426C36FC800C97334 /* MapViewModel.swift */,
+				1CBAFF2626C4445800C97334 /* MapSearchView.swift */,
+				1CBAFF2826C457B900C97334 /* MapSearchViewModel.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		1CBAFF1C26C3582A00C97334 /* Dives */ = {
+			isa = PBXGroup;
+			children = (
+				1CBAFF2026C35FEA00C97334 /* DiveView.swift */,
+			);
+			path = Dives;
+			sourceTree = "<group>";
+		};
+		1CBAFF1D26C3583300C97334 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				1CBAFF2226C3600600C97334 /* AccountView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		1CECCACE26BC7AA400831FA3 = {
+			isa = PBXGroup;
+			children = (
+				1CECCAD926BC7AA400831FA3 /* Scuba Companion */,
+				1CECCAD826BC7AA400831FA3 /* Products */,
+				4803486EF84B87A6B7F49AF6 /* Pods */,
+				6BE762D99E7C436D2A96E289 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1CECCAD826BC7AA400831FA3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1CECCAD726BC7AA400831FA3 /* Scuba Companion.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1CECCAD926BC7AA400831FA3 /* Scuba Companion */ = {
+			isa = PBXGroup;
+			children = (
+				1CECCAF826BCB59100831FA3 /* Utilities */,
+				1CECCAEF26BC7B1900831FA3 /* Model */,
+				1CECCAEE26BC7B1000831FA3 /* View */,
+				1CECCADA26BC7AA400831FA3 /* AppDelegate.swift */,
+				1CECCADC26BC7AA400831FA3 /* SceneDelegate.swift */,
+				1CECCAE326BC7AA700831FA3 /* Assets.xcassets */,
+				1CECCAE826BC7AA700831FA3 /* Info.plist */,
+				1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */,
+				1CBAFF3826CE19F200C97334 /* api.plist */,
+			);
+			path = "Scuba Companion";
+			sourceTree = "<group>";
+		};
+		1CECCAEE26BC7B1000831FA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1CBAFF1D26C3583300C97334 /* Account */,
+				1CBAFF1C26C3582A00C97334 /* Dives */,
+				1CBAFF1B26C3582500C97334 /* Map */,
+				1CECCB0026BCC9DD00831FA3 /* Register */,
+				1CECCAFF26BCC9D300831FA3 /* Login */,
+				1CECCB0726BCEAFA00831FA3 /* MainMenu */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1CECCAEF26BC7B1900831FA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1CBAFF2C26C4A27800C97334 /* TestData.swift */,
+				1CBAFF3626C8275C00C97334 /* DataCategories.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1CECCAF826BCB59100831FA3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1CECCB1726C2270800831FA3 /* GoogleConfig */,
+				1CECCAFE26BCC30300831FA3 /* API */,
+				1CECCAF926BCB59800831FA3 /* Design */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1CECCAF926BCB59800831FA3 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				1CECCAFA26BCB5A600831FA3 /* CustomColors.swift */,
+				1CBAFF3026C5EA1F00C97334 /* MapSearchCell.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		1CECCAFE26BCC30300831FA3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1CBAFF3226C820A500C97334 /* SurfAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		1CECCAFF26BCC9D300831FA3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1CECCAF326BC7C1800831FA3 /* LoginView.swift */,
+				1CECCAF126BC7BFC00831FA3 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1CECCB0026BCC9DD00831FA3 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				1CECCB0126BCD61B00831FA3 /* RegisterView.swift */,
+				1CECCB0326BCD62800831FA3 /* RegisterViewModel.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		1CECCB0726BCEAFA00831FA3 /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1CECCB0526BCEAF600831FA3 /* MenuView.swift */,
+			);
+			path = MainMenu;
+			sourceTree = "<group>";
+		};
+		1CECCB1726C2270800831FA3 /* GoogleConfig */ = {
+			isa = PBXGroup;
+			children = (
+				1CECCB1826C2271D00831FA3 /* CustomGoogleConfig.swift */,
+			);
+			path = GoogleConfig;
+			sourceTree = "<group>";
+		};
+		4803486EF84B87A6B7F49AF6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8DB4920BA6FF95944A6C2EDD /* Pods-Scuba Companion.debug.xcconfig */,
+				6D052D10AD47CE926D5F3A1E /* Pods-Scuba Companion.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6BE762D99E7C436D2A96E289 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1CECCAD626BC7AA400831FA3 /* Scuba Companion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1CECCAEB26BC7AA700831FA3 /* Build configuration list for PBXNativeTarget "Scuba Companion" */;
+			buildPhases = (
+				E986D81DF1D52809CC4D192E /* [CP] Check Pods Manifest.lock */,
+				1CECCAD326BC7AA400831FA3 /* Sources */,
+				1CECCAD426BC7AA400831FA3 /* Frameworks */,
+				1CECCAD526BC7AA400831FA3 /* Resources */,
+				73B657B131C09047B9A472C2 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Scuba Companion";
+			productName = "Scuba Companion";
+			productReference = 1CECCAD726BC7AA400831FA3 /* Scuba Companion.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1CECCACF26BC7AA400831FA3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					1CECCAD626BC7AA400831FA3 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = 1CECCAD226BC7AA400831FA3 /* Build configuration list for PBXProject "Scuba Companion" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1CECCACE26BC7AA400831FA3;
+			productRefGroup = 1CECCAD826BC7AA400831FA3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1CECCAD626BC7AA400831FA3 /* Scuba Companion */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1CECCAD526BC7AA400831FA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CECCAE426BC7AA700831FA3 /* Assets.xcassets in Resources */,
+				1CBAFF3926CE19F200C97334 /* api.plist in Resources */,
+				1CECCB0F26C0D37E00831FA3 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		73B657B131C09047B9A472C2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E986D81DF1D52809CC4D192E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Scuba Companion-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1CECCAD326BC7AA400831FA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CBAFF2126C35FEA00C97334 /* DiveView.swift in Sources */,
+				1CECCADB26BC7AA400831FA3 /* AppDelegate.swift in Sources */,
+				1CECCB0626BCEAF600831FA3 /* MenuView.swift in Sources */,
+				1CBAFF2D26C4A27800C97334 /* TestData.swift in Sources */,
+				1CECCAFB26BCB5A600831FA3 /* CustomColors.swift in Sources */,
+				1CBAFF2526C36FC800C97334 /* MapViewModel.swift in Sources */,
+				1CBAFF3726C8275C00C97334 /* DataCategories.swift in Sources */,
+				1CBAFF1F26C3590100C97334 /* MapView.swift in Sources */,
+				1CECCB0426BCD62800831FA3 /* RegisterViewModel.swift in Sources */,
+				1CECCADD26BC7AA400831FA3 /* SceneDelegate.swift in Sources */,
+				1CECCB0226BCD61B00831FA3 /* RegisterView.swift in Sources */,
+				1CBAFF2926C457B900C97334 /* MapSearchViewModel.swift in Sources */,
+				1CECCB1926C2271D00831FA3 /* CustomGoogleConfig.swift in Sources */,
+				1CBAFF3326C820A500C97334 /* SurfAPI.swift in Sources */,
+				1CECCAF426BC7C1800831FA3 /* LoginView.swift in Sources */,
+				1CBAFF2326C3600600C97334 /* AccountView.swift in Sources */,
+				1CBAFF3126C5EA1F00C97334 /* MapSearchCell.swift in Sources */,
+				1CECCAF226BC7BFC00831FA3 /* LoginViewModel.swift in Sources */,
+				1CBAFF2726C4445800C97334 /* MapSearchView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1CECCAE926BC7AA700831FA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1CECCAEA26BC7AA700831FA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1CECCAEC26BC7AA700831FA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DB4920BA6FF95944A6C2EDD /* Pods-Scuba Companion.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BC94AD2R5Q;
+				INFOPLIST_FILE = "Scuba Companion/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gagefonk.Scuba-Companion";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1CECCAED26BC7AA700831FA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D052D10AD47CE926D5F3A1E /* Pods-Scuba Companion.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BC94AD2R5Q;
+				INFOPLIST_FILE = "Scuba Companion/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gagefonk.Scuba-Companion";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1CECCAD226BC7AA400831FA3 /* Build configuration list for PBXProject "Scuba Companion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CECCAE926BC7AA700831FA3 /* Debug */,
+				1CECCAEA26BC7AA700831FA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1CECCAEB26BC7AA700831FA3 /* Build configuration list for PBXNativeTarget "Scuba Companion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1CECCAEC26BC7AA700831FA3 /* Debug */,
+				1CECCAED26BC7AA700831FA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1CECCACF26BC7AA400831FA3 /* Project object */;
+}

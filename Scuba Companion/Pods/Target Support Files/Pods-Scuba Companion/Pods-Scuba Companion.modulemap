@@ -1,0 +1,6 @@
+framework module Pods_Scuba_Companion {
+  umbrella header "Pods-Scuba Companion-umbrella.h"
+
+  export *
+  module * { export * }
+}

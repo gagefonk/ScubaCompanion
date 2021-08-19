@@ -1,0 +1,47 @@
+//
+//  MenuView.swift
+//  Scuba Companion
+//
+//  Created by Gage Fonk on 8/5/21.
+//
+
+import UIKit
+import Firebase
+
+class MenuView: UITabBarController {
+    
+    let tabs: [UIViewController] = [
+        UINavigationController(rootViewController: MapView()),
+        UINavigationController(rootViewController: DiveView()),
+        UINavigationController(rootViewController: AccountView())
+    ]
+    
+    let titles: [String] = [
+        "Map",
+        "Dives",
+        "Account"
+    ]
+    
+    let tabImages: [String] = [
+        "map",
+        "flag",
+        "person.circle"
+    ]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setViewControllers(tabs, animated: false)
+        self.tabBar.barStyle = .black
+        
+        guard let items = tabBar.items else { return }
+        
+        for i in 0..<items.count {
+            items[i].title = titles[i]
+            items[i].image = UIImage(systemName: tabImages[i])
+        }
+        
+        
+    }
+    
+}
