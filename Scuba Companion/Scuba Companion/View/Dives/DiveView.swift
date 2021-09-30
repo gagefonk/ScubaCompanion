@@ -13,17 +13,8 @@ class DiveView: UIViewController {
         super.viewDidLoad()
 
         tabBarItem = UITabBarItem(title: "Dives", image: UIImage(systemName: "flag"), tag: 1)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
     
     }
 
-}
-
-enum CustomColor {
-    case blueberry
-}
-
-class test {
-    var bgColor: CustomColor?
-    
-    
 }

@@ -39,7 +39,6 @@ class MapSearchView: UIViewController, UISearchControllerDelegate {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        searchController.obscuresBackgroundDuringPresentation = false
         searchController.delegate = self
         searchController.searchResultsUpdater = self
         searchController.searchBar.backgroundColor = UIColor(named: "darkBackground")
