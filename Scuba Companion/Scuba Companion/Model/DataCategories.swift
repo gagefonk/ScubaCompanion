@@ -8,11 +8,7 @@
 import Foundation
 
 
-struct DataCategories: Decodable {
-    let results: [Results]
+struct DataCategories: Codable {
     
 }
 
-struct Results: Decodable {
-    let name: String
-}

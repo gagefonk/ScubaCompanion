@@ -12,40 +12,27 @@ import MapKit
 class MapSearchViewModel {
     
     var filteredData: [MKMapItem] = []
+    var searchData: [MKLocalSearchCompletion] = []
+    let interestCategory: MKPointOfInterestCategory = .beach
     
-    func performSearch(searchTerm: String, completion: @escaping ()->Void) {
-        
-        if searchTerm != "" {
-            let searchRequest = MKLocalSearch.Request()
-            let interestCategory = MKPointOfInterestCategory.beach
-            searchRequest.pointOfInterestFilter = MKPointOfInterestFilter(including: [interestCategory])
-            searchRequest.naturalLanguageQuery = searchTerm
-            
-            let search = MKLocalSearch(request: searchRequest)
-            
-            search.start { result, err in
-                guard let result = result else {
-                    print(err!)
-                    return
-                }
-                //clear data for each search
-                self.clearFilteredData()
-                
-                result.mapItems.forEach { item in
-                    self.filteredData.append(item)
-                }
-                completion()
+    func performSearch(searchTerm: MKLocalSearchCompletion, completion: @escaping (_ foundItem: MKMapItem)->Void) {
+        let searchRequest = MKLocalSearch.Request(completion: searchTerm)
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { res, err in
+            guard let res = res else {
+                print(err?.localizedDescription)
+                return
+            }
+            if let item = res.mapItems.first {
+                completion(item)
             }
         }
-        else {
-            completion()
-        }
-        
         
     }
     
     func clearFilteredData() {
         filteredData.removeAll()
+        searchData.removeAll()
     }
     
 }

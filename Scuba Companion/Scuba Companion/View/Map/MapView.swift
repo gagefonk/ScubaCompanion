@@ -63,17 +63,10 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         locationManager.delegate = self
         mapSearchView.delegate = self
-        setupLocationServices {
-            goToCurrentLocation()
-        }
+        requestLocationServicesAuthorization()
         
-                
         view.addSubview(mapView)
         view.addSubview(addButton)
-        
-        title = "Dive Pins"
-        
-        tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map"), tag: 0)
         
         //add search functionality
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
@@ -106,13 +99,21 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    private func setupLocationServices(completionHandler: ()->()) {
-        if locationManager.authorizationStatus != .authorizedWhenInUse || locationManager.authorizationStatus != .authorizedAlways {
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-        }
-        completionHandler()
+    private func requestLocationServicesAuthorization() {
         
+        if !isLocationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        locationManager.startUpdatingLocation()
+    }
+    
+    private func isLocationServicesEnabled() -> Bool {
+        
+        if locationManager.authorizationStatus != .authorizedWhenInUse || locationManager.authorizationStatus != .authorizedAlways {
+            return false
+        } else {
+            return true
+        }
     }
     
     private func updatePins() {
@@ -203,13 +204,15 @@ class MapView: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc private func goToCurrentLocation() {
-        setupLocationServices {
+        if isLocationServicesEnabled() {
             guard let region = mapVM.getUserLocation(locationManager: locationManager) else { return }
             let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
             let newRegion = MKCoordinateRegion(center: region.center, span: span)
             let fitRegion = mapView.regionThatFits(newRegion)
             mapView.setRegion(fitRegion, animated: true)
             mapView.showsUserLocation = true
+        } else {
+            requestLocationServicesAuthorization()
         }
         
     }
@@ -222,7 +225,7 @@ class MapView: UIViewController, CLLocationManagerDelegate {
     
     @objc func apiCall() {
         
-        surfAPI.getData()
+//        surfAPI.getData()
     }
 
 }

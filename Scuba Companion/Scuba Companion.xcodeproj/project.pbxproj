@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C9540872734DA95005F3EFF /* StationsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9540862734DA95005F3EFF /* StationsAPI.swift */; };
+		1C95408A2734DADC005F3EFF /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9540892734DADC005F3EFF /* APIModels.swift */; };
 		1CBAFF1F26C3590100C97334 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF1E26C3590100C97334 /* MapView.swift */; };
 		1CBAFF2126C35FEA00C97334 /* DiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF2026C35FEA00C97334 /* DiveView.swift */; };
 		1CBAFF2326C3600600C97334 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF2226C3600600C97334 /* AccountView.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C9540862734DA95005F3EFF /* StationsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsAPI.swift; sourceTree = "<group>"; };
+		1C9540892734DADC005F3EFF /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
 		1CBAFF1E26C3590100C97334 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		1CBAFF2026C35FEA00C97334 /* DiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveView.swift; sourceTree = "<group>"; };
 		1CBAFF2226C3600600C97334 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -74,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C9540882734DA9F005F3EFF /* APIModels */ = {
+			isa = PBXGroup;
+			children = (
+				1C9540892734DADC005F3EFF /* APIModels.swift */,
+			);
+			path = APIModels;
+			sourceTree = "<group>";
+		};
 		1CBAFF1B26C3582500C97334 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +163,7 @@
 		1CECCAEF26BC7B1900831FA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1C9540882734DA9F005F3EFF /* APIModels */,
 				1CBAFF2C26C4A27800C97334 /* TestData.swift */,
 				1CBAFF3626C8275C00C97334 /* DataCategories.swift */,
 			);
@@ -180,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				1CBAFF3226C820A500C97334 /* SurfAPI.swift */,
+				1C9540862734DA95005F3EFF /* StationsAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -352,9 +366,11 @@
 				1CBAFF2126C35FEA00C97334 /* DiveView.swift in Sources */,
 				1CECCADB26BC7AA400831FA3 /* AppDelegate.swift in Sources */,
 				1CECCB0626BCEAF600831FA3 /* MenuView.swift in Sources */,
+				1C95408A2734DADC005F3EFF /* APIModels.swift in Sources */,
 				1CBAFF2D26C4A27800C97334 /* TestData.swift in Sources */,
 				1CECCAFB26BCB5A600831FA3 /* CustomColors.swift in Sources */,
 				1CBAFF2526C36FC800C97334 /* MapViewModel.swift in Sources */,
+				1C9540872734DA95005F3EFF /* StationsAPI.swift in Sources */,
 				1CBAFF3726C8275C00C97334 /* DataCategories.swift in Sources */,
 				1CBAFF1F26C3590100C97334 /* MapView.swift in Sources */,
 				1CECCB0426BCD62800831FA3 /* RegisterViewModel.swift in Sources */,

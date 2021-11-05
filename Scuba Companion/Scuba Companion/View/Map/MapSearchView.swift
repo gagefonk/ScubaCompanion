@@ -16,6 +16,7 @@ class MapSearchView: UIViewController, UISearchControllerDelegate {
     
     let searchController = UISearchController(searchResultsController: nil)
     let mapSearchVM = MapSearchViewModel()
+    let searchCompleter = MKLocalSearchCompleter()
     
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -47,6 +48,8 @@ class MapSearchView: UIViewController, UISearchControllerDelegate {
         tableView.dataSource = self
         tableView.frame = view.bounds
         
+        searchCompleter.delegate = self
+        
     }
     
     
@@ -55,9 +58,9 @@ class MapSearchView: UIViewController, UISearchControllerDelegate {
 extension MapSearchView: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.searchTextField.text else { return }
-        mapSearchVM.performSearch(searchTerm: searchText) {
-            self.tableView.reloadData()
-        }
+        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter(including: [MKPointOfInterestCategory.beach])
+        searchCompleter.queryFragment = searchText
+        
     }
     
     func didDismissSearchController(_ searchController: UISearchController) {
@@ -67,16 +70,15 @@ extension MapSearchView: UISearchResultsUpdating {
     
 }
 
-extension MapSearchView: UITableViewDelegate, UITableViewDataSource {
+extension MapSearchView: UITableViewDelegate, UITableViewDataSource, MKLocalSearchCompleterDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mapSearchVM.filteredData.count
+        return mapSearchVM.searchData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subCell", for: indexPath)
-        
-        let name = mapSearchVM.filteredData[indexPath.row].name ?? ""
-        let detailed = mapSearchVM.filteredData[indexPath.row].placemark.title ?? ""
+        let name = mapSearchVM.searchData[indexPath.row].title
+        let detailed = mapSearchVM.searchData[indexPath.row].subtitle
         cell.textLabel?.text = name
         cell.textLabel?.textColor = .white
         cell.detailTextLabel?.text = detailed
@@ -87,13 +89,24 @@ extension MapSearchView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let center = mapSearchVM.filteredData[indexPath.row].placemark.coordinate
-        searchController.dismiss(animated: false) {
-            self.dismiss(animated: true) {
-                self.delegate?.goToSearchedLocation(center: center)
+        mapSearchVM.performSearch(searchTerm: mapSearchVM.searchData[indexPath.row]) { foundItem in
+            let center = foundItem.placemark.coordinate
+            self.searchController.dismiss(animated: false) {
+                self.dismiss(animated: true) {
+                    self.delegate?.goToSearchedLocation(center: center)
+                }
             }
         }
+    }
+    
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        mapSearchVM.searchData = completer.results
+        tableView.reloadData()
         
+    }
+    
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
     
     
