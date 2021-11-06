@@ -17,6 +17,7 @@ class MapSearchView: UIViewController, UISearchControllerDelegate {
     let searchController = UISearchController(searchResultsController: nil)
     let mapSearchVM = MapSearchViewModel()
     let searchCompleter = MKLocalSearchCompleter()
+    weak var delegate: LocationFromSearchDelegate?
     
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -25,31 +26,40 @@ class MapSearchView: UIViewController, UISearchControllerDelegate {
         return tableView
     }()
     
-    weak var delegate: LocationFromSearchDelegate?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
         
         title = "Search"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         
-        navigationController?.navigationBar.titleTextAttributes = [
-            .font: UIFont.systemFont(ofSize: 30, weight: .bold)
-        ]
-        
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+        tableView.tableHeaderView = searchController.searchBar
         
         searchController.delegate = self
         searchController.searchResultsUpdater = self
         searchController.searchBar.backgroundColor = UIColor(named: "darkBackground")
         
+        searchController.searchBar.delegate = self
+        
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = view.bounds
         
         searchCompleter.delegate = self
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        tableView.frame = view.frame
+    }
+    
+    private func clearSearch() {
+        
+        searchController.searchBar.searchTextField.text = ""
+        mapSearchVM.clearFilteredData()
+        tableView.reloadData()
     }
     
     
@@ -60,14 +70,14 @@ extension MapSearchView: UISearchResultsUpdating {
         guard let searchText = searchController.searchBar.searchTextField.text else { return }
         searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter(including: [MKPointOfInterestCategory.beach])
         searchCompleter.queryFragment = searchText
-        
     }
     
-    func didDismissSearchController(_ searchController: UISearchController) {
-        mapSearchVM.clearFilteredData()
-        tableView.reloadData()
+}
+
+extension MapSearchView: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 extension MapSearchView: UITableViewDelegate, UITableViewDataSource, MKLocalSearchCompleterDelegate {
@@ -91,6 +101,8 @@ extension MapSearchView: UITableViewDelegate, UITableViewDataSource, MKLocalSear
         tableView.deselectRow(at: indexPath, animated: true)
         mapSearchVM.performSearch(searchTerm: mapSearchVM.searchData[indexPath.row]) { foundItem in
             let center = foundItem.placemark.coordinate
+            //clear search
+            self.clearSearch()
             self.searchController.dismiss(animated: false) {
                 self.dismiss(animated: true) {
                     self.delegate?.goToSearchedLocation(center: center)
