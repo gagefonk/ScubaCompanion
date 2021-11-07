@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 //get list of stations from URL
 
@@ -19,4 +20,10 @@ struct Stations: Codable {
     let state: String?
     let lat: String?
     let lng: String?
+}
+
+struct StationLocation {
+    let name: String
+    let id: String
+    let location: CLLocation
 }

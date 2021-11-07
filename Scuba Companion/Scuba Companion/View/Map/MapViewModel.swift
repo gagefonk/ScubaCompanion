@@ -10,11 +10,13 @@ import MapKit
 
 class MapViewModel {
     
-    var data: [DivePin] = []
+    let stationsAPI = StationsAPI()
+    var stationList: [StationLocation] = []
     
     init() {
-        let tempData = DivePin(pinLocation: CLLocationCoordinate2D(latitude: 34.010090, longitude: -118.496948), title: "Santa Monica")
-        data.append(tempData)
+        stationsAPI.getListOfStations { stations in
+            self.stationList = stations
+        }
     }
     
     func getUserLocation(locationManager: CLLocationManager) -> MKCoordinateRegion? {
@@ -25,9 +27,17 @@ class MapViewModel {
         return region
     }
     
-    func addPin(center: CLLocationCoordinate2D) {
-        let newPin = DivePin(pinLocation: center, title: "Test Title")
-        data.append(newPin)
-        print(data)
+    func getClosestStation(chosenLocation: CLLocationCoordinate2D) {
+
+        var closestLocation = stationList[0].location
+        stationList.forEach { station in
+            let location = CLLocation(latitude: chosenLocation.latitude, longitude: chosenLocation.longitude)
+            let distanceFromStations = location.distance(from: station.location)
+            let distanceFromCurrent = location.distance(from: closestLocation)
+            if distanceFromStations < distanceFromCurrent {
+                closestLocation = station.location
+            }
+        }
+        print("The closest station to chosen location is: \(closestLocation.coordinate.latitude), \(closestLocation.coordinate.longitude)")
     }
 }

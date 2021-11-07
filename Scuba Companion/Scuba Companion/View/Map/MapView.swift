@@ -15,6 +15,7 @@ class MapView: UIViewController, CLLocationManagerDelegate {
     let mapSearchView = MapSearchView()
     let mapVM = MapViewModel()
     let surfAPI = SurfAPI()
+    let stationAPI = StationsAPI()
     
     
     let mapView: MKMapView = {
@@ -83,7 +84,6 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         } else {
             requestLocationServicesAuthorization()
         }
-        
     }
     
     @objc func didTapSearch() {
@@ -95,13 +95,15 @@ class MapView: UIViewController, CLLocationManagerDelegate {
 }
 
 extension MapView: LocationFromSearchDelegate {
-    
+
     func goToSearchedLocation(center: CLLocationCoordinate2D) {
         
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         let region = MKCoordinateRegion(center: center, span: span)
         let newRegion = mapView.regionThatFits(region)
         mapView.setRegion(newRegion, animated: true)
+        
+        mapVM.getClosestStation(chosenLocation: center)
     }
     
     
