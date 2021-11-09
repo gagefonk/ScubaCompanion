@@ -28,16 +28,17 @@ class MapViewModel {
     }
     
     func getClosestStation(chosenLocation: CLLocationCoordinate2D) {
-
-        var closestLocation = stationList[0].location
-        stationList.forEach { station in
-            let location = CLLocation(latitude: chosenLocation.latitude, longitude: chosenLocation.longitude)
-            let distanceFromStations = location.distance(from: station.location)
-            let distanceFromCurrent = location.distance(from: closestLocation)
-            if distanceFromStations < distanceFromCurrent {
-                closestLocation = station.location
+        stationsAPI.getListOfStations { stations in
+            var closestLocation = stations[0]
+            let chosenLocation = CLLocation(latitude: chosenLocation.latitude, longitude: chosenLocation.longitude)
+            stations.forEach { station in
+                let distanceFromStations = chosenLocation.distance(from: station.location)
+                let distanceFromCurrent = chosenLocation.distance(from: closestLocation.location)
+                if distanceFromStations < distanceFromCurrent {
+                    closestLocation = station
+                }
             }
+            print("The closest station to chosen location is: Name: \(closestLocation.name)\nID: \(closestLocation.id)\nLat: \(closestLocation.location.coordinate.latitude)\nLon:\(closestLocation.location.coordinate.longitude)")
         }
-        print("The closest station to chosen location is: \(closestLocation.coordinate.latitude), \(closestLocation.coordinate.longitude)")
     }
 }

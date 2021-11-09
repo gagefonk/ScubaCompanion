@@ -94,7 +94,7 @@ class RegisterView: UIViewController {
         
         registerViewModel.registerViewModelDelegate = self
         
-        view.backgroundColor = UIColor(named: "darkBackground")
+        view.backgroundColor = .darkBackground
         
         view.addSubview(registerLabel)
         view.addSubview(nameTextField)

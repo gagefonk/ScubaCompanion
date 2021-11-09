@@ -102,7 +102,7 @@ class LoginView: UIViewController, LoginViewModelDelegate {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
         
-        view.backgroundColor = UIColor(named: "darkBackground")
+        view.backgroundColor = .darkBackground
         
         //add subviews
         view.addSubview(menuLogo)

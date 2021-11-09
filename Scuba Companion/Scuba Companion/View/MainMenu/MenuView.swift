@@ -12,7 +12,7 @@ class MenuView: UITabBarController {
     
     let tabs: [UIViewController] = [
         UINavigationController(rootViewController: MapView()),
-        UINavigationController(rootViewController: DiveView()),
+        UINavigationController(rootViewController: DiveLogView(style: .insetGrouped)),
         UINavigationController(rootViewController: AccountView())
     ]
     

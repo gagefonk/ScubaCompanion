@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1C9540872734DA95005F3EFF /* StationsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9540862734DA95005F3EFF /* StationsAPI.swift */; };
 		1C95408A2734DADC005F3EFF /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9540892734DADC005F3EFF /* APIModels.swift */; };
+		1CA78825273A245A002FF62F /* Dive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA78824273A245A002FF62F /* Dive.swift */; };
+		1CA78827273A37C1002FF62F /* DiveLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA78826273A37C1002FF62F /* DiveLogView.swift */; };
+		1CA78829273A4419002FF62F /* DiveLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA78828273A4419002FF62F /* DiveLogCell.swift */; };
 		1CBAFF1F26C3590100C97334 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF1E26C3590100C97334 /* MapView.swift */; };
 		1CBAFF2126C35FEA00C97334 /* DiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF2026C35FEA00C97334 /* DiveView.swift */; };
 		1CBAFF2326C3600600C97334 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF2226C3600600C97334 /* AccountView.swift */; };
@@ -37,6 +40,9 @@
 /* Begin PBXFileReference section */
 		1C9540862734DA95005F3EFF /* StationsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsAPI.swift; sourceTree = "<group>"; };
 		1C9540892734DADC005F3EFF /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
+		1CA78824273A245A002FF62F /* Dive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dive.swift; sourceTree = "<group>"; };
+		1CA78826273A37C1002FF62F /* DiveLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogView.swift; sourceTree = "<group>"; };
+		1CA78828273A4419002FF62F /* DiveLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogCell.swift; sourceTree = "<group>"; };
 		1CBAFF1E26C3590100C97334 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		1CBAFF2026C35FEA00C97334 /* DiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveView.swift; sourceTree = "<group>"; };
 		1CBAFF2226C3600600C97334 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -86,6 +92,14 @@
 			path = APIModels;
 			sourceTree = "<group>";
 		};
+		1CA78823273A243C002FF62F /* Dive */ = {
+			isa = PBXGroup;
+			children = (
+				1CA78824273A245A002FF62F /* Dive.swift */,
+			);
+			path = Dive;
+			sourceTree = "<group>";
+		};
 		1CBAFF1B26C3582500C97334 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				1CBAFF2026C35FEA00C97334 /* DiveView.swift */,
+				1CA78826273A37C1002FF62F /* DiveLogView.swift */,
 			);
 			path = Dives;
 			sourceTree = "<group>";
@@ -163,6 +178,7 @@
 		1CECCAEF26BC7B1900831FA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1CA78823273A243C002FF62F /* Dive */,
 				1C9540882734DA9F005F3EFF /* APIModels */,
 				1CBAFF2C26C4A27800C97334 /* TestData.swift */,
 				1CBAFF3626C8275C00C97334 /* DataCategories.swift */,
@@ -185,6 +201,7 @@
 			children = (
 				1CECCAFA26BCB5A600831FA3 /* CustomColors.swift */,
 				1CBAFF3026C5EA1F00C97334 /* MapSearchCell.swift */,
+				1CA78828273A4419002FF62F /* DiveLogCell.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -367,7 +384,9 @@
 				1CECCADB26BC7AA400831FA3 /* AppDelegate.swift in Sources */,
 				1CECCB0626BCEAF600831FA3 /* MenuView.swift in Sources */,
 				1C95408A2734DADC005F3EFF /* APIModels.swift in Sources */,
+				1CA78827273A37C1002FF62F /* DiveLogView.swift in Sources */,
 				1CBAFF2D26C4A27800C97334 /* TestData.swift in Sources */,
+				1CA78829273A4419002FF62F /* DiveLogCell.swift in Sources */,
 				1CECCAFB26BCB5A600831FA3 /* CustomColors.swift in Sources */,
 				1CBAFF2526C36FC800C97334 /* MapViewModel.swift in Sources */,
 				1C9540872734DA95005F3EFF /* StationsAPI.swift in Sources */,
@@ -380,6 +399,7 @@
 				1CECCB1926C2271D00831FA3 /* CustomGoogleConfig.swift in Sources */,
 				1CBAFF3326C820A500C97334 /* SurfAPI.swift in Sources */,
 				1CECCAF426BC7C1800831FA3 /* LoginView.swift in Sources */,
+				1CA78825273A245A002FF62F /* Dive.swift in Sources */,
 				1CBAFF2326C3600600C97334 /* AccountView.swift in Sources */,
 				1CBAFF3126C5EA1F00C97334 /* MapSearchCell.swift in Sources */,
 				1CECCAF226BC7BFC00831FA3 /* LoginViewModel.swift in Sources */,
@@ -515,6 +535,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BC94AD2R5Q;
 				INFOPLIST_FILE = "Scuba Companion/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -535,6 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BC94AD2R5Q;
 				INFOPLIST_FILE = "Scuba Companion/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
