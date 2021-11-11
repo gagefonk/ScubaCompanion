@@ -41,6 +41,9 @@ class MenuView: UITabBarController {
             items[i].image = UIImage(systemName: tabImages[i])
         }
         
+        //set selected index for now
+        self.selectedIndex = 1
+        
         
     }
     

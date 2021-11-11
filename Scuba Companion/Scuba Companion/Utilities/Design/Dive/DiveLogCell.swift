@@ -16,4 +16,3 @@ final class DiveLogCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
