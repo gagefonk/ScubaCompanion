@@ -24,6 +24,8 @@ class DiveLogView: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDiveButtonClicked))
         
         tableView.register(DiveLogCell.self, forCellReuseIdentifier: "cell")
+        
+        diveLogVM.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -45,15 +47,24 @@ class DiveLogView: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        print(diveLogVM.dives[indexPath.row].title)
+        let index = indexPath.row
+        let diveView = DiveView(diveLogViewModel: diveLogVM, dive: diveLogVM.dives[index], edit: true, index: index)
+        diveView.modalPresentationStyle = .popover
+        self.present(UINavigationController(rootViewController: diveView), animated: true, completion: nil)
     }
     
     @objc func addDiveButtonClicked() {
-        let diveView = DiveView()
+        let diveView = DiveView(diveLogViewModel: diveLogVM, dive: nil, edit: false, index: 0)
         diveView.modalPresentationStyle = .popover
         self.present(UINavigationController(rootViewController: diveView), animated: true, completion: nil)
         
     }
     
+}
+
+extension DiveLogView: DiveLogViewModelDelegate {
     
+    func reloadTableData() {
+        tableView.reloadData()
+    }
 }

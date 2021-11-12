@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LogInputTypes {
+enum LogInputTypes: CaseIterable {
     case diveType
     case waterType
     case waterBody
@@ -73,35 +73,33 @@ struct Dive {
     
     let title: String
     let site: String
-//    let date: Date
+    let date: Date
     let diveType: DiveType
-    let maxDepth: Int
-    let diveLength: Int
+    let maxDepth: String
+    let diveLength: String
     let waterType: WaterType
     let waterBody: WaterBody
     let diveWeather: DiveWeather
-    let airTemp: Int
-    let surfaceTemp: Int
-    let bottomTemp: Int
+    let airTemp: String
+    let surfaceTemp: String
+    let bottomTemp: String
     let visibility: DiveVisibility
-    let visibilityInMeters: Int
+    let visibilityInMeters: String
     let waves: Waves
     let current: Current
     let surge: Surge
     let suitType: SuitType
-    let weight: Int
+    let weight: String
     let tankType: TankType
-    let tankSize: Int
+    let tankSize: String
     let gasMixture: GasMixture
-    let oxygen: Int
-    let nitrogen: Int
-    let helium: Int
-    let startPressure: Int
-    let endPressure: Int
-    lazy var amountUsed: Int = {
-        return startPressure - endPressure
-    }()
+    let oxygen: String
+    let nitrogen: String
+    let helium: String
+    let startPressure: String
+    let endPressure: String
+    let amountUsed: String
     let note: String
-    let diveBuddy: [String]
+    let diveBuddy: String
     let diveCenter: String
 }

@@ -9,7 +9,10 @@ import UIKit
 
 class DiveView: UIViewController {
     
-    let diveVM = DiveViewModel()
+    let diveVM: DiveViewModel
+    let diveLogVM: DiveLogViewModel
+    var isEditingDive: Bool = false
+    var editingIndex: Int = 0
     
      let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -22,7 +25,19 @@ class DiveView: UIViewController {
     }()
     
     let contentView = UIView()
-
+    
+    init(diveLogViewModel: DiveLogViewModel, dive: Dive?, edit: Bool, index: Int) {
+        self.diveLogVM = diveLogViewModel
+        self.diveVM = DiveViewModel(diveLogViewModel: diveLogVM, dive: dive)
+        self.isEditingDive = edit
+        self.editingIndex = index
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,8 +45,14 @@ class DiveView: UIViewController {
         
         //navigation items
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonClicked))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(addButtonClicked))
-        title = "New Dive"
+        if isEditingDive {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonClicked))
+            title = "Edit Dive"
+        }else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonClicked))
+            title = "New Dive"
+        }
+        
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -51,11 +72,17 @@ class DiveView: UIViewController {
     }
     
     @objc private func addButtonClicked() {
+        createDive()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func saveButtonClicked() {
+        createDive()
         self.dismiss(animated: true, completion: nil)
     }
     
     private func layoutCards(index: Int, card: UIView){
-//        scrollView.frame = view.frame
+//      scrollView.frame = view.frame
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -92,5 +119,37 @@ class DiveView: UIViewController {
         card.layer.shadowOffset = .zero
         card.layer.shadowRadius = 10
         
+    }
+    
+    private func createDive() {
+        var textInputs: [String] = []
+        var date = Date()
+        var selections: [String] = []
+        
+        for card in contentView.subviews {
+            for view in card.subviews {
+                if view is UITextField {
+                    let input = view as! UITextField
+                    let inputString = input.text ?? ""
+                    textInputs.append(inputString)
+                }
+                if view is UIDatePicker {
+                    let input = view as! UIDatePicker
+                    let newDate = input.date
+                    date = newDate
+                }
+                if view is UISegmentedControl {
+                    let input = view as! UISegmentedControl
+                    let selection = input.titleForSegment(at: input.selectedSegmentIndex)
+                    selections.append(selection!)
+                }
+                
+            }
+        }
+        if isEditingDive {
+            diveVM.saveDiveLog(inputs: textInputs, date: date, segments: selections, index: editingIndex)
+        }else {
+            diveVM.createDiveLog(inputs: textInputs, date: date, segments: selections)
+        }
     }
 }

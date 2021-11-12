@@ -21,9 +21,10 @@ struct DiveLogCard {
     let subtitle: String
     let placeholder: String
     let units: String
+    let id: String
     
     //input init
-    init(group: DiveLogGroup, textType: CharType, title: String, subtitle: String, placeholder: String, units: String) {
+    init(group: DiveLogGroup, textType: CharType, title: String, subtitle: String, placeholder: String, units: String, id: String) {
         self.group = group
         self.textType = textType
         self.title = title
@@ -31,10 +32,11 @@ struct DiveLogCard {
         self.placeholder = placeholder
         self.units = units
         self.inputType = .none
+        self.id = id
     }
     
     //date init
-    init(group: DiveLogGroup, title: String, subtitle: String) {
+    init(group: DiveLogGroup, title: String, subtitle: String, id: String) {
         self.group = group
         self.textType = .none
         self.title = title
@@ -42,10 +44,11 @@ struct DiveLogCard {
         self.placeholder = ""
         self.units = ""
         self.inputType = .none
+        self.id = id
     }
     
     //date init
-    init(group: DiveLogGroup, inputType: LogInputTypes, title: String, subtitle: String) {
+    init(group: DiveLogGroup, inputType: LogInputTypes, title: String, subtitle: String, id: String) {
         self.group = group
         self.textType = .none
         self.title = title
@@ -53,5 +56,6 @@ struct DiveLogCard {
         self.placeholder = ""
         self.units = ""
         self.inputType = inputType
+        self.id = id
     }
 }

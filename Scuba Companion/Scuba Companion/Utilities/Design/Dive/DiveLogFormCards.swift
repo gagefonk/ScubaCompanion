@@ -9,10 +9,6 @@ import UIKit
 
 class DiveLogInputCard: UIView, UITextFieldDelegate {
     
-    let title: String = ""
-    let subtitle: String = ""
-    let placeholder: String = ""
-    let units: String = ""
     var charType: CharType = .all
     var stringInput = true
     var numberInput = false
@@ -130,9 +126,6 @@ class DiveLogInputCard: UIView, UITextFieldDelegate {
 
 class DiveLogDateCard: UIView {
     
-    let title: String = ""
-    let subtitle: String = ""
-    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -207,12 +200,6 @@ class DiveLogDateCard: UIView {
 
 class DiveLogTypeCard: UIView {
     
-    let title: String = ""
-    let subtitle: String = ""
-    let placeholder: String = ""
-    let units: String = ""
-    var items: [NSEnumerator] = []
-    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
@@ -285,6 +272,9 @@ class DiveLogTypeCard: UIView {
     }
     
     private func setPickerOptions(type: LogInputTypes) {
+        for type in LogInputTypes.allCases.enumerated() {
+            
+        }
         switch type {
         case .diveType:
             for (index, type) in DiveType.allCases.enumerated() {
