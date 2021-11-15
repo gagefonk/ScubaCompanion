@@ -96,7 +96,7 @@ class DiveViewModel {
         }
     }
     
-    func createDiveLog(with addOrSave: AddSave, index: Int?, completion: (Error?)->Void) {
+    func createDiveLog(with addOrSave: AddSave, index: Int?, completion: (NotificationErrorType?)->Void) {
         let title: String = getUserInputValues(id: "title")
         let site: String = getUserInputValues(id: "site")
         let date: Date = getDateValue(id: "date")
@@ -128,6 +128,12 @@ class DiveViewModel {
         let note: String = getUserInputValues(id: "note")
         let diveBuddy: String = getUserInputValues(id: "diveBuddy")
         let diveCenter: String = getUserInputValues(id: "diveCenter")
+        
+        if isTitleBlank(title: title) {
+            let err: NotificationErrorType = .missingTitle
+            completion(err)
+            return
+        }
         
         let dive = Dive(title: title, site: site, date: date, diveType: diveType, maxDepth: maxDepth, diveLength: diveLength, waterType: waterType, waterBody: waterBody, diveWeather: diveWeather, airTemp: airTemp, surfaceTemp: surfaceTemp, bottomTemp: bottomTemp, visibility: visibility, visibilityInMeters: visibilityInMeters, waves: waves, current: current, surge: surge, suitType: suitType, weight: weight, tankType: tankType, tankSize: tankSize, gasMixture: gasMixture, oxygen: oxygen, nitrogen: nitrogen, helium: helium, startPressure: startPressure, endPressure: endPressure, amountUsed: amountUsed, note: note, diveBuddy: diveBuddy, diveCenter: diveCenter)
         
@@ -249,5 +255,9 @@ class DiveViewModel {
             }
         }
         return indexInt
+    }
+    
+    private func isTitleBlank(title: String) -> Bool {
+        return title == ""
     }
 }

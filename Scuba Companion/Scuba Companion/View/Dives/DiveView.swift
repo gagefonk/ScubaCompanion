@@ -11,6 +11,7 @@ class DiveView: UIViewController {
     
     let diveVM: DiveViewModel
     let diveLogVM: DiveLogViewModel
+    let notificationUtility = NotificationUtility()
     var isEditingDive: Bool = false
     var editingIndex: Int = 0
     
@@ -78,18 +79,21 @@ class DiveView: UIViewController {
     
     @objc private func addButtonClicked() {
         diveVM.createDiveLog(with: .add, index: nil) { err in
-            if err != nil {
-                print(err)
+            if let err = err {
+                let alert = notificationUtility.getAlert(messageType: err)
+                self.present(alert, animated: true, completion: nil)
             } else {
                 self.dismiss(animated: true, completion: nil)
             }
         }
+        
     }
     
     @objc private func saveButtonClicked() {
         diveVM.createDiveLog(with: .save, index: editingIndex) { err in
-            if err != nil {
-                print(err)
+            if let err = err {
+                let alert = notificationUtility.getAlert(messageType: err)
+                self.present(alert, animated: true, completion: nil)
             } else {
                 self.dismiss(animated: true, completion: nil)
             }

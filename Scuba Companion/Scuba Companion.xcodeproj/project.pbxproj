@@ -31,6 +31,7 @@
 		1CECCAFB26BCB5A600831FA3 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCAFA26BCB5A600831FA3 /* CustomColors.swift */; };
 		1CECCB0626BCEAF600831FA3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCB0526BCEAF600831FA3 /* MenuView.swift */; };
 		1CECCB0F26C0D37E00831FA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */; };
+		1CEEC7D92742DA6E00B5F885 /* NotificationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC7D82742DA6E00B5F885 /* NotificationUtility.swift */; };
 		ABCA835C312F9BE1E43F9FC2 /* Pods_Scuba_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		1CECCAFA26BCB5A600831FA3 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		1CECCB0526BCEAF600831FA3 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1CEEC7D82742DA6E00B5F885 /* NotificationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtility.swift; sourceTree = "<group>"; };
 		6D052D10AD47CE926D5F3A1E /* Pods-Scuba Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.release.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.release.xcconfig"; sourceTree = "<group>"; };
 		8DB4920BA6FF95944A6C2EDD /* Pods-Scuba Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.debug.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.debug.xcconfig"; sourceTree = "<group>"; };
 		CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scuba_Companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +209,7 @@
 		1CECCAF826BCB59100831FA3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				1CEEC7D72742DA5100B5F885 /* Notifications */,
 				1CECCAFE26BCC30300831FA3 /* API */,
 				1CECCAF926BCB59800831FA3 /* Design */,
 			);
@@ -238,6 +241,14 @@
 				1CECCB0526BCEAF600831FA3 /* MenuView.swift */,
 			);
 			path = MainMenu;
+			sourceTree = "<group>";
+		};
+		1CEEC7D72742DA5100B5F885 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				1CEEC7D82742DA6E00B5F885 /* NotificationUtility.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		4803486EF84B87A6B7F49AF6 /* Pods */ = {
@@ -374,6 +385,7 @@
 				1CA78832273BB382002FF62F /* DiveLogFormCards.swift in Sources */,
 				1CBAFF3126C5EA1F00C97334 /* MapSearchCell.swift in Sources */,
 				1CBAFF2726C4445800C97334 /* MapSearchView.swift in Sources */,
+				1CEEC7D92742DA6E00B5F885 /* NotificationUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
