@@ -53,6 +53,11 @@ class DiveView: UIViewController {
             title = "New Dive"
         }
         
+        //gesture for end editing
+        let tapToEndEditing = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardWhenTapped))
+        tapToEndEditing.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapToEndEditing)
+        
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -72,29 +77,42 @@ class DiveView: UIViewController {
     }
     
     @objc private func addButtonClicked() {
-        createDive()
-        self.dismiss(animated: true, completion: nil)
+        diveVM.createDiveLog(with: .add, index: nil) { err in
+            if err != nil {
+                print(err)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     @objc private func saveButtonClicked() {
-        createDive()
-        self.dismiss(animated: true, completion: nil)
+        diveVM.createDiveLog(with: .save, index: editingIndex) { err in
+            if err != nil {
+                print(err)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @objc private func hideKeyboardWhenTapped() {
+        self.view.endEditing(true)
     }
     
     private func layoutCards(index: Int, card: UIView){
-//      scrollView.frame = view.frame
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
+
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         contentView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        
+
         card.translatesAutoresizingMaskIntoConstraints = false
         if index == 0 {
             card.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
@@ -106,7 +124,7 @@ class DiveView: UIViewController {
         }
         card.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
         card.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
-        
+
         //bg design
         //other view design stuff
         card.backgroundColor = .systemGray5
@@ -118,38 +136,6 @@ class DiveView: UIViewController {
         card.layer.shadowOpacity = 1
         card.layer.shadowOffset = .zero
         card.layer.shadowRadius = 10
-        
-    }
-    
-    private func createDive() {
-        var textInputs: [String] = []
-        var date = Date()
-        var selections: [String] = []
-        
-        for card in contentView.subviews {
-            for view in card.subviews {
-                if view is UITextField {
-                    let input = view as! UITextField
-                    let inputString = input.text ?? ""
-                    textInputs.append(inputString)
-                }
-                if view is UIDatePicker {
-                    let input = view as! UIDatePicker
-                    let newDate = input.date
-                    date = newDate
-                }
-                if view is UISegmentedControl {
-                    let input = view as! UISegmentedControl
-                    let selection = input.titleForSegment(at: input.selectedSegmentIndex)
-                    selections.append(selection!)
-                }
-                
-            }
-        }
-        if isEditingDive {
-            diveVM.saveDiveLog(inputs: textInputs, date: date, segments: selections, index: editingIndex)
-        }else {
-            diveVM.createDiveLog(inputs: textInputs, date: date, segments: selections)
-        }
+
     }
 }

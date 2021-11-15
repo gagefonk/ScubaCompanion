@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LogInputTypes: CaseIterable {
+enum DiveLogInputType: CaseIterable {
     case diveType
     case waterType
     case waterBody
@@ -19,11 +19,10 @@ enum LogInputTypes: CaseIterable {
     case suitType
     case tankType
     case gasMixture
-    case none
 }
 
 enum DiveType: String, CaseIterable {
-    case boat = "Boat", shore = "Shore", other = "Other"
+    case shore = "Shore", boat = "Boat", other = "Other"
 }
 
 enum WaterType: String, CaseIterable {
@@ -66,7 +65,7 @@ enum GasMixture: String, CaseIterable {
 }
 
 enum CharType {
-    case intType, floatType, all, none
+    case intType, floatType, all
 }
 
 struct Dive {
