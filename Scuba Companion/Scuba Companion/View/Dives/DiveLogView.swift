@@ -40,7 +40,8 @@ class DiveLogView: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = diveLogVM.dives[indexPath.row].title
         cell.detailTextLabel?.text = diveLogVM.dives[indexPath.row].site
-        cell.accessoryType = .detailButton
+        
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
@@ -51,6 +52,17 @@ class DiveLogView: UITableViewController {
         let diveView = DiveView(diveLogViewModel: diveLogVM, dive: diveLogVM.dives[index], edit: true, index: index)
         diveView.modalPresentationStyle = .popover
         self.present(UINavigationController(rootViewController: diveView), animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            diveLogVM.dives.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
     }
     
     @objc func addDiveButtonClicked() {

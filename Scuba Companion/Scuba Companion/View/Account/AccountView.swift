@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 class AccountView: UIViewController {
 
@@ -24,16 +23,7 @@ class AccountView: UIViewController {
     func setupLayout() {
         
         //naviagation bar
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(logout))
-    }
-    
-    @objc private func logout() {
-        if Auth.auth().currentUser != nil {
-            try? Auth.auth().signOut()
-        }
-        let loginView = LoginView()
-        loginView.modalPresentationStyle = .fullScreen
-        self.present(loginView, animated: true, completion: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: nil)
     }
 
 }

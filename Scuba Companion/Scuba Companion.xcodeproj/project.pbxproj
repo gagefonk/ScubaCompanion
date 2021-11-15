@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,14 +28,9 @@
 		1CECCADB26BC7AA400831FA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCADA26BC7AA400831FA3 /* AppDelegate.swift */; };
 		1CECCADD26BC7AA400831FA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCADC26BC7AA400831FA3 /* SceneDelegate.swift */; };
 		1CECCAE426BC7AA700831FA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CECCAE326BC7AA700831FA3 /* Assets.xcassets */; };
-		1CECCAF226BC7BFC00831FA3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCAF126BC7BFC00831FA3 /* LoginViewModel.swift */; };
-		1CECCAF426BC7C1800831FA3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCAF326BC7C1800831FA3 /* LoginView.swift */; };
 		1CECCAFB26BCB5A600831FA3 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCAFA26BCB5A600831FA3 /* CustomColors.swift */; };
-		1CECCB0226BCD61B00831FA3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCB0126BCD61B00831FA3 /* RegisterView.swift */; };
-		1CECCB0426BCD62800831FA3 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCB0326BCD62800831FA3 /* RegisterViewModel.swift */; };
 		1CECCB0626BCEAF600831FA3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCB0526BCEAF600831FA3 /* MenuView.swift */; };
 		1CECCB0F26C0D37E00831FA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */; };
-		1CECCB1926C2271D00831FA3 /* CustomGoogleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCB1826C2271D00831FA3 /* CustomGoogleConfig.swift */; };
 		ABCA835C312F9BE1E43F9FC2 /* Pods_Scuba_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,14 +58,9 @@
 		1CECCADC26BC7AA400831FA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1CECCAE326BC7AA700831FA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CECCAE826BC7AA700831FA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1CECCAF126BC7BFC00831FA3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		1CECCAF326BC7C1800831FA3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1CECCAFA26BCB5A600831FA3 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
-		1CECCB0126BCD61B00831FA3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		1CECCB0326BCD62800831FA3 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		1CECCB0526BCEAF600831FA3 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1CECCB1826C2271D00831FA3 /* CustomGoogleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomGoogleConfig.swift; path = ../../../../../../Documents/CustomGoogleConfig.swift; sourceTree = "<group>"; };
 		6D052D10AD47CE926D5F3A1E /* Pods-Scuba Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.release.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.release.xcconfig"; sourceTree = "<group>"; };
 		8DB4920BA6FF95944A6C2EDD /* Pods-Scuba Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.debug.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.debug.xcconfig"; sourceTree = "<group>"; };
 		CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scuba_Companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,8 +190,6 @@
 				1CBAFF1D26C3583300C97334 /* Account */,
 				1CBAFF1C26C3582A00C97334 /* Dives */,
 				1CBAFF1B26C3582500C97334 /* Map */,
-				1CECCB0026BCC9DD00831FA3 /* Register */,
-				1CECCAFF26BCC9D300831FA3 /* Login */,
 				1CECCB0726BCEAFA00831FA3 /* MainMenu */,
 			);
 			path = View;
@@ -219,7 +207,6 @@
 		1CECCAF826BCB59100831FA3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				1CECCB1726C2270800831FA3 /* GoogleConfig */,
 				1CECCAFE26BCC30300831FA3 /* API */,
 				1CECCAF926BCB59800831FA3 /* Design */,
 			);
@@ -245,38 +232,12 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		1CECCAFF26BCC9D300831FA3 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				1CECCAF326BC7C1800831FA3 /* LoginView.swift */,
-				1CECCAF126BC7BFC00831FA3 /* LoginViewModel.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		1CECCB0026BCC9DD00831FA3 /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				1CECCB0126BCD61B00831FA3 /* RegisterView.swift */,
-				1CECCB0326BCD62800831FA3 /* RegisterViewModel.swift */,
-			);
-			path = Register;
-			sourceTree = "<group>";
-		};
 		1CECCB0726BCEAFA00831FA3 /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
 				1CECCB0526BCEAF600831FA3 /* MenuView.swift */,
 			);
 			path = MainMenu;
-			sourceTree = "<group>";
-		};
-		1CECCB1726C2270800831FA3 /* GoogleConfig */ = {
-			isa = PBXGroup;
-			children = (
-				1CECCB1826C2271D00831FA3 /* CustomGoogleConfig.swift */,
-			);
-			path = GoogleConfig;
 			sourceTree = "<group>";
 		};
 		4803486EF84B87A6B7F49AF6 /* Pods */ = {
@@ -307,7 +268,6 @@
 				1CECCAD326BC7AA400831FA3 /* Sources */,
 				1CECCAD426BC7AA400831FA3 /* Frameworks */,
 				1CECCAD526BC7AA400831FA3 /* Resources */,
-				73B657B131C09047B9A472C2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -364,23 +324,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		73B657B131C09047B9A472C2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E986D81DF1D52809CC4D192E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -422,19 +365,14 @@
 				1CBAFF2526C36FC800C97334 /* MapViewModel.swift in Sources */,
 				1C9540872734DA95005F3EFF /* StationsAPI.swift in Sources */,
 				1CBAFF1F26C3590100C97334 /* MapView.swift in Sources */,
-				1CECCB0426BCD62800831FA3 /* RegisterViewModel.swift in Sources */,
 				1CECCADD26BC7AA400831FA3 /* SceneDelegate.swift in Sources */,
-				1CECCB0226BCD61B00831FA3 /* RegisterView.swift in Sources */,
 				1CBAFF2926C457B900C97334 /* MapSearchViewModel.swift in Sources */,
-				1CECCB1926C2271D00831FA3 /* CustomGoogleConfig.swift in Sources */,
 				1CBAFF3326C820A500C97334 /* SurfAPI.swift in Sources */,
-				1CECCAF426BC7C1800831FA3 /* LoginView.swift in Sources */,
 				1CA78825273A245A002FF62F /* Dive.swift in Sources */,
 				1CA78836273CB8D6002FF62F /* DiveLogForms.swift in Sources */,
 				1CBAFF2326C3600600C97334 /* AccountView.swift in Sources */,
 				1CA78832273BB382002FF62F /* DiveLogFormCards.swift in Sources */,
 				1CBAFF3126C5EA1F00C97334 /* MapSearchCell.swift in Sources */,
-				1CECCAF226BC7BFC00831FA3 /* LoginViewModel.swift in Sources */,
 				1CBAFF2726C4445800C97334 /* MapSearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

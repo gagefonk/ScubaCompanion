@@ -7,8 +7,4 @@ target 'Scuba Companion' do
 
   # Pods for Scuba Companion
 
-pod 'GoogleSignIn'
-pod 'Firebase/Auth'
-pod 'Firebase/Firestore'
-
 end

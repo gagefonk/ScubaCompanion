@@ -7,7 +7,6 @@
 
 import UIKit
 import MapKit
-import Firebase
 
 class MapView: UIViewController, CLLocationManagerDelegate {
     
