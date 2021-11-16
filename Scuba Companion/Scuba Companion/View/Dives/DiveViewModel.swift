@@ -18,15 +18,18 @@ class DiveViewModel {
     let diveForms = DiveLogForms()
     let diveCards: [DiveLogFormCard]
     let diveLogVM: DiveLogViewModel
+    let index: Int?
     
-    init(diveLogViewModel: DiveLogViewModel, dive: Dive?) {
+    init(diveLogViewModel: DiveLogViewModel, index: Int?) {
         self.diveLogVM = diveLogViewModel
         diveCards = diveForms.formCards
-        loadDiveInfo(dive: dive)
+        self.index = index
+        loadDiveInfo(index: index)
     }
     
-    private func loadDiveInfo(dive: Dive?) {
-        guard let dive = dive else { return }
+    private func loadDiveInfo(index: Int?) {
+        guard let index = index else { return }
+        let dive = diveLogVM.dives[index]
         //load dive info
         for card in diveCards {
             switch card.id {
@@ -260,4 +263,5 @@ class DiveViewModel {
     private func isTitleBlank(title: String) -> Bool {
         return title == ""
     }
+
 }

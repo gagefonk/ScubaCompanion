@@ -42,7 +42,7 @@ struct DiveLogForms {
         let heliumCard = DiveLogFormCard(diveLogType: .input, charType: .intType, title: "Helium", subtitle: "", units: "%", placeholder: "0", id: "helium")
         let startPressureCard = DiveLogFormCard(diveLogType: .input, charType: .floatType, title: "Start Pressure", subtitle: "What was the starting pressure?", units: "PSI", placeholder: "0.000", id: "startPressure")
         let endPressureCard = DiveLogFormCard(diveLogType: .input, charType: .floatType, title: "End Pressure", subtitle: "What was the ending pressure?", units: "PSI", placeholder: "0.000", id: "endPressure")
-        let diveBuddyCard = DiveLogFormCard(diveLogType: .input, charType: .all, title: "Divy Buddy", subtitle: "Who did you dive with?", units: "", placeholder: "Add dive buddy", id: "diveBuddy")
+        let diveBuddyCard = DiveLogFormCard(diveLogType: .input, charType: .all, title: "Dive Buddy", subtitle: "Who did you dive with?", units: "", placeholder: "Add dive buddy", id: "diveBuddy")
         let diveCenterCard = DiveLogFormCard(diveLogType: .input, charType: .all, title: "Dive Center", subtitle: "Did you go with a dive center?", units: "", placeholder: "Add dive center", id: "diveCenter")
         let noteCard = DiveLogFormCard(diveLogType: .input, charType: .all, title: "Notes", subtitle: "Any notes you'd like to add?", units: "", placeholder: "Add note", id: "note")
 

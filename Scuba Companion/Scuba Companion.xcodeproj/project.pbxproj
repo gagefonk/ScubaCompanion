@@ -32,6 +32,9 @@
 		1CECCB0626BCEAF600831FA3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCB0526BCEAF600831FA3 /* MenuView.swift */; };
 		1CECCB0F26C0D37E00831FA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */; };
 		1CEEC7D92742DA6E00B5F885 /* NotificationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC7D82742DA6E00B5F885 /* NotificationUtility.swift */; };
+		1CEEC7DB2742FE6B00B5F885 /* DivePresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC7DA2742FE6B00B5F885 /* DivePresentationView.swift */; };
+		1CEEC80B2743698900B5F885 /* DivePresentationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC80A2743698900B5F885 /* DivePresentationCard.swift */; };
+		1CEEC80D27438BCD00B5F885 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC80C27438BCD00B5F885 /* DummyData.swift */; };
 		ABCA835C312F9BE1E43F9FC2 /* Pods_Scuba_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +66,9 @@
 		1CECCB0526BCEAF600831FA3 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1CEEC7D82742DA6E00B5F885 /* NotificationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtility.swift; sourceTree = "<group>"; };
+		1CEEC7DA2742FE6B00B5F885 /* DivePresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivePresentationView.swift; sourceTree = "<group>"; };
+		1CEEC80A2743698900B5F885 /* DivePresentationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivePresentationCard.swift; sourceTree = "<group>"; };
+		1CEEC80C27438BCD00B5F885 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		6D052D10AD47CE926D5F3A1E /* Pods-Scuba Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.release.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.release.xcconfig"; sourceTree = "<group>"; };
 		8DB4920BA6FF95944A6C2EDD /* Pods-Scuba Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.debug.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.debug.xcconfig"; sourceTree = "<group>"; };
 		CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scuba_Companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +108,7 @@
 			children = (
 				1CA78828273A4419002FF62F /* DiveLogCell.swift */,
 				1CA78831273BB382002FF62F /* DiveLogFormCards.swift */,
+				1CEEC80A2743698900B5F885 /* DivePresentationCard.swift */,
 			);
 			path = Dive;
 			sourceTree = "<group>";
@@ -140,6 +147,7 @@
 				1CA7882A273B1104002FF62F /* DiveLogViewModel.swift */,
 				1CBAFF2026C35FEA00C97334 /* DiveView.swift */,
 				1CA7882C273B117D002FF62F /* DiveViewModel.swift */,
+				1CEEC7DA2742FE6B00B5F885 /* DivePresentationView.swift */,
 			);
 			path = Dives;
 			sourceTree = "<group>";
@@ -202,6 +210,7 @@
 			children = (
 				1CA78823273A243C002FF62F /* Dive */,
 				1C9540882734DA9F005F3EFF /* APIModels */,
+				1CEEC80C27438BCD00B5F885 /* DummyData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -372,6 +381,7 @@
 				1CA7882B273B1104002FF62F /* DiveLogViewModel.swift in Sources */,
 				1CA78829273A4419002FF62F /* DiveLogCell.swift in Sources */,
 				1CA7882D273B117D002FF62F /* DiveViewModel.swift in Sources */,
+				1CEEC80B2743698900B5F885 /* DivePresentationCard.swift in Sources */,
 				1CECCAFB26BCB5A600831FA3 /* CustomColors.swift in Sources */,
 				1CBAFF2526C36FC800C97334 /* MapViewModel.swift in Sources */,
 				1C9540872734DA95005F3EFF /* StationsAPI.swift in Sources */,
@@ -386,6 +396,8 @@
 				1CBAFF3126C5EA1F00C97334 /* MapSearchCell.swift in Sources */,
 				1CBAFF2726C4445800C97334 /* MapSearchView.swift in Sources */,
 				1CEEC7D92742DA6E00B5F885 /* NotificationUtility.swift in Sources */,
+				1CEEC80D27438BCD00B5F885 /* DummyData.swift in Sources */,
+				1CEEC7DB2742FE6B00B5F885 /* DivePresentationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

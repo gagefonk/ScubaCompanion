@@ -31,7 +31,7 @@ class MenuView: UITabBarController {
         super.viewDidLoad()
         
         setViewControllers(tabs, animated: false)
-        self.tabBar.barStyle = .black
+        self.tabBar.unselectedItemTintColor = .systemSecondary
         
         guard let items = tabBar.items else { return }
         

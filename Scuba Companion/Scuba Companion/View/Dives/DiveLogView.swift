@@ -16,7 +16,8 @@ class DiveLogView: UITableViewController {
         
         tableView.frame = view.bounds
         
-        title = "Dives"
+        self.navigationItem.title = "Dives"
+        self.view.backgroundColor = .darkBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         
@@ -32,26 +33,36 @@ class DiveLogView: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .darkBackground
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return diveLogVM.dives.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = diveLogVM.dives[indexPath.row].title
-        cell.detailTextLabel?.text = diveLogVM.dives[indexPath.row].site
-        
-        cell.accessoryType = .disclosureIndicator
+        let dive = diveLogVM.dives[indexPath.row]
+        cell.tintColor = .systemSecondary
+        cell.textLabel?.text = dive.title
+        cell.detailTextLabel?.text = diveLogVM.getFormattedDate(date: dive.date)
+        cell.textLabel?.textColor = .white
+        cell.detailTextLabel?.textColor = .white
+        cell.backgroundColor = .surfaceBackground
+        let chevron = UIImage(systemName: "chevron.right")
+        cell.accessoryView = UIImageView(image: chevron)
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        
         let index = indexPath.row
-        let diveView = DiveView(diveLogViewModel: diveLogVM, dive: diveLogVM.dives[index], edit: true, index: index)
-        diveView.modalPresentationStyle = .popover
-        self.present(UINavigationController(rootViewController: diveView), animated: true, completion: nil)
+        let divePresentation = DivePresentationView(diveLogVM: diveLogVM, diveIndex: index)
+        navigationController?.pushViewController(divePresentation, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -66,9 +77,8 @@ class DiveLogView: UITableViewController {
     }
     
     @objc func addDiveButtonClicked() {
-        let diveView = DiveView(diveLogViewModel: diveLogVM, dive: nil, edit: false, index: 0)
-        diveView.modalPresentationStyle = .popover
-        self.present(UINavigationController(rootViewController: diveView), animated: true, completion: nil)
+        let diveView = DiveView(diveLogViewModel: diveLogVM, edit: false, index: nil)
+        navigationController?.pushViewController(diveView, animated: true)
         
     }
     

@@ -30,28 +30,31 @@ class MapView: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map"), tag: 0)
+        self.tabBarController?.tabBar.barTintColor = .darkBackground
+        
         locationManager.delegate = self
         mapSearchView.delegate = self
         requestLocationServicesAuthorization()
-        
+    
         view.addSubview(mapView)
         
         //add search functionality
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
+        navigationItem.rightBarButtonItem?.tintColor = .systemPrimary
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "location"), style: .done, target: self, action: #selector(goToCurrentLocation))
+        navigationItem.leftBarButtonItem?.tintColor = .systemPrimary
     }
     
     override func viewDidLayoutSubviews() {
         
         super.viewDidLayoutSubviews()
-        setupLayout()
         
-    }
-    
-    func setupLayout() {
-        
-        //map view
-        mapView.frame = view.frame
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        mapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        mapView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
     }
     
@@ -64,12 +67,7 @@ class MapView: UIViewController, CLLocationManagerDelegate {
     }
     
     private func isLocationServicesEnabled() -> Bool {
-        
-        if locationManager.authorizationStatus != .authorizedWhenInUse || locationManager.authorizationStatus != .authorizedAlways {
-            return false
-        } else {
-            return true
-        }
+        return locationManager.authorizationStatus == .authorizedWhenInUse || locationManager.authorizationStatus == .authorizedAlways
     }
     
     @objc private func goToCurrentLocation() {

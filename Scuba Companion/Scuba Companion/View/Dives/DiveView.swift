@@ -13,7 +13,7 @@ class DiveView: UIViewController {
     let diveLogVM: DiveLogViewModel
     let notificationUtility = NotificationUtility()
     var isEditingDive: Bool = false
-    var editingIndex: Int = 0
+    var editingIndex: Int?
     
      let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -27,9 +27,9 @@ class DiveView: UIViewController {
     
     let contentView = UIView()
     
-    init(diveLogViewModel: DiveLogViewModel, dive: Dive?, edit: Bool, index: Int) {
+    init(diveLogViewModel: DiveLogViewModel, edit: Bool, index: Int?) {
         self.diveLogVM = diveLogViewModel
-        self.diveVM = DiveViewModel(diveLogViewModel: diveLogVM, dive: dive)
+        self.diveVM = DiveViewModel(diveLogViewModel: diveLogVM, index: index ?? nil)
         self.isEditingDive = edit
         self.editingIndex = index
         super.init(nibName: nil, bundle: nil)
@@ -41,8 +41,6 @@ class DiveView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .darkBackground
         
         //navigation items
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonClicked))
@@ -59,6 +57,7 @@ class DiveView: UIViewController {
         tapToEndEditing.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapToEndEditing)
         
+        self.view.backgroundColor = .darkBackground
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -74,7 +73,7 @@ class DiveView: UIViewController {
     }
     
     @objc private func cancelButtonClicked() {
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func addButtonClicked() {
@@ -83,7 +82,7 @@ class DiveView: UIViewController {
                 let alert = notificationUtility.getAlert(messageType: err)
                 self.present(alert, animated: true, completion: nil)
             } else {
-                self.dismiss(animated: true, completion: nil)
+                navigationController?.popViewController(animated: true)
             }
         }
         
@@ -95,7 +94,7 @@ class DiveView: UIViewController {
                 let alert = notificationUtility.getAlert(messageType: err)
                 self.present(alert, animated: true, completion: nil)
             } else {
-                self.dismiss(animated: true, completion: nil)
+                navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -128,18 +127,6 @@ class DiveView: UIViewController {
         }
         card.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
         card.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
-
-        //bg design
-        //other view design stuff
-        card.backgroundColor = .systemGray5
-        card.layer.cornerRadius = 15
-        card.layer.borderWidth = 0.5
-        card.layer.borderColor = UIColor.black.cgColor
-        //shadow
-        card.layer.shadowColor = UIColor.black.cgColor
-        card.layer.shadowOpacity = 1
-        card.layer.shadowOffset = .zero
-        card.layer.shadowRadius = 10
 
     }
 }

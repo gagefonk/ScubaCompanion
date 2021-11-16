@@ -16,24 +16,22 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = .systemPrimary
+        label.font = UIFont.preferredFont(forTextStyle: .title2)
         
         return label
     }()
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
         
         return label
     }()
     
     let unitLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
         
         return label
     }()
@@ -41,7 +39,6 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
     let inputField: UITextField = {
         let field = UITextField()
         field.backgroundColor = .clear
-        field.layer.borderColor = UIColor.systemGreen.cgColor
         field.borderStyle = .roundedRect
         field.textColor = .white
         field.leftViewMode = .always
@@ -55,13 +52,15 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
         let datePicker = UIDatePicker()
         datePicker.preferredDatePickerStyle = .inline
         datePicker.datePickerMode = .date
+        datePicker.tintColor = .systemSecondary
         
         return datePicker
     }()
     
     let segmentControl: UISegmentedControl = {
         let segment = UISegmentedControl()
-        segment.selectedSegmentTintColor = .systemBlue
+        segment.selectedSegmentTintColor = .systemSecondary
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
         
         return segment
     }()
@@ -81,6 +80,7 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
         self.unitLabel.text = units
         inputField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.white])
         inputField.keyboardType = getKeyboardType(charType: charType)
+        inputField.returnKeyType = .done
         self.id = id
         
     }
@@ -166,6 +166,12 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
             segmentControl.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
             segmentControl.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
         }
+        
+        //bg design
+        self.backgroundColor = .surfaceBackground
+        self.layer.cornerRadius = 15
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor.black.cgColor
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -181,6 +187,11 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
         case .all:
             return true
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     private func getKeyboardType(charType: CharType) -> UIKeyboardType {

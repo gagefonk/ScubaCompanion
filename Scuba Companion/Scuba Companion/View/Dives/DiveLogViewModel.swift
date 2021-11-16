@@ -15,6 +15,10 @@ class DiveLogViewModel {
     var dives: [Dive] = []
     weak var delegate: DiveLogViewModelDelegate?
     
+    init() {
+        dives = DummyData().dives
+    }
+    
     func addDive(dive: Dive) {
         dives.append(dive)
         delegate?.reloadTableData()
@@ -24,6 +28,13 @@ class DiveLogViewModel {
         dives.remove(at: index)
         dives.insert(dive, at: index)
         delegate?.reloadTableData()
+    }
+    
+    func getFormattedDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        
+        return dateFormatter.string(from: date)
     }
     
 }
