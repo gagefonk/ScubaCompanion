@@ -143,7 +143,6 @@ class DiveView: UIViewController {
         var contentInset:UIEdgeInsets = self.scrollView.contentInset
         contentInset.bottom = keyboardFrame.size.height + 20
         scrollView.contentInset = contentInset
-        scrollView.contentOffset = keyboardFrame.origin
     }
 
     @objc func keyboardWillHide(notification:NSNotification) {
