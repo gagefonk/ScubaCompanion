@@ -17,13 +17,5 @@ class AccountView: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setupLayout()
     }
-    
-    func setupLayout() {
-        
-        //naviagation bar
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: nil)
-    }
-
 }

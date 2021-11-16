@@ -59,6 +59,10 @@ class DiveView: UIViewController {
         
         self.view.backgroundColor = .darkBackground
         
+        //keyboard observers
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
@@ -128,5 +132,23 @@ class DiveView: UIViewController {
         card.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
         card.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
 
+    }
+    
+    @objc func keyboardWillShow(notification:NSNotification) {
+
+        guard let userInfo = notification.userInfo else { return }
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 20
+        scrollView.contentInset = contentInset
+        scrollView.contentOffset = keyboardFrame.origin
+    }
+
+    @objc func keyboardWillHide(notification:NSNotification) {
+
+        let contentInset:UIEdgeInsets = .zero
+        scrollView.contentInset = contentInset
     }
 }

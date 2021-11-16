@@ -111,51 +111,50 @@ class DivePresentationView: UIViewController {
     func updateView() {
         let dive = diveLogVM.dives[diveIndex]
         let date = diveLogVM.getFormattedDate(date: dive.date)
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [self] in
             //set title
-            self.title = dive.title
+            title = dive.title
             //main card
-            self.mainCard.siteLabel.text = "Site: \(dive.site)"
-            self.mainCard.dateLabel.text = "\(date)"
+            mainCard.siteLabel.text = "Site: \(dive.site)"
+            mainCard.dateLabel.text = "\(date)"
             //water card
-            self.waterCard.diveTypeLabel.text = "Type: \(dive.diveType.rawValue)"
-            self.waterCard.waterTypeLabel.text = "Water: \(dive.waterType.rawValue)"
-            self.waterCard.maxDepthLabel.text = "Max Depth: \(dive.maxDepth) m"
-            self.waterCard.waterBodyLabel.text = "Body: \(dive.waterBody.rawValue)"
-            self.waterCard.bottomTimeLabel.text = "Length: \(dive.diveLength) min"
-            self.waterCard.visLabel.text = "Vis Type: \(dive.visibility.rawValue)"
-            self.waterCard.visInMLabel.text = "Vis: \(dive.visibilityInMeters) m"
-            self.waterCard.waveLabel.text = "Waves: \(dive.waves.rawValue)"
-            self.waterCard.currentLabel.text = "Current: \(dive.current.rawValue)"
-            self.waterCard.surgeLabel.text = "Surge: \(dive.surge.rawValue)"
+            waterCard.diveTypeLabel.text = "Type: \(dive.diveType.rawValue)"
+            waterCard.waterTypeLabel.text = "Water: \(dive.waterType.rawValue)"
+            waterCard.maxDepthLabel.text = "Max Depth: \(dive.maxDepth) m"
+            waterCard.waterBodyLabel.text = "Body: \(dive.waterBody.rawValue)"
+            waterCard.bottomTimeLabel.text = "Length: \(dive.diveLength) min"
+            waterCard.visLabel.text = "Vis Type: \(dive.visibility.rawValue)"
+            waterCard.visInMLabel.text = "Vis: \(dive.visibilityInMeters) m"
+            waterCard.waveLabel.text = "Waves: \(dive.waves.rawValue)"
+            waterCard.currentLabel.text = "Current: \(dive.current.rawValue)"
+            waterCard.surgeLabel.text = "Surge: \(dive.surge.rawValue)"
             
             //weather card
-            self.weatherCard.weatherLabel.text = "Weather: \(dive.diveWeather.rawValue)"
-            self.weatherCard.airTempLabel.text = "Air: \(dive.airTemp) F"
-            self.weatherCard.surfaceTempLabel.text = "Surface: \(dive.surfaceTemp) F"
-            self.weatherCard.bottomTempLabel.text = "Bottom: \(dive.bottomTemp) F"
+            weatherCard.weatherLabel.text = "Weather: \(dive.diveWeather.rawValue)"
+            weatherCard.airTempLabel.text = "Air: \(dive.airTemp) F"
+            weatherCard.surfaceTempLabel.text = "Surface: \(dive.surfaceTemp) F"
+            weatherCard.bottomTempLabel.text = "Bottom: \(dive.bottomTemp) F"
             
             //gear card
-            self.gearCard.suitLabel.text = "Suit Type: \(dive.suitType.rawValue)"
-            self.gearCard.weightLabel.text = "Weight: \(dive.weight) lbs"
-            self.gearCard.tankTypeLabel.text = "Tank: \(dive.tankType.rawValue)"
-            self.gearCard.tankSizeLabel.text = "Tank Size: \(dive.tankSize) L"
+            gearCard.suitLabel.text = "Suit Type: \(dive.suitType.rawValue)"
+            gearCard.weightLabel.text = "Weight: \(dive.weight) lbs"
+            gearCard.tankTypeLabel.text = "Tank: \(dive.tankType.rawValue)"
+            gearCard.tankSizeLabel.text = "Tank Size: \(dive.tankSize) L"
             
             //gas card
-            self.gasCard.gasLabel.text = "Gas: \(dive.gasMixture.rawValue)"
-            self.gasCard.oxygenLabel.text = "Oxygen: \(dive.oxygen) %"
-            self.gasCard.nitrogenLabel.text = "Nitrogen: \(dive.nitrogen) %"
-            self.gasCard.heliumLabel.text = "Helium: \(dive.helium) %"
-            self.gasCard.startPressureLabel.text = "Start: \(dive.startPressure) PSI"
-            self.gasCard.endPressureLabel.text = "End: \(dive.endPressure) PSI"
-            self.gasCard.amountUsedLabel.text = "Amount Used: \(dive.amountUsed) PSI"
+            gasCard.gasLabel.text = "Gas: \(dive.gasMixture.rawValue)"
+            gasCard.oxygenLabel.text = "Oxygen: \(dive.oxygen) %"
+            gasCard.nitrogenLabel.text = "Nitrogen: \(dive.nitrogen) %"
+            gasCard.heliumLabel.text = "Helium: \(dive.helium) %"
+            gasCard.startPressureLabel.text = "Start: \(dive.startPressure) PSI"
+            gasCard.endPressureLabel.text = "End: \(dive.endPressure) PSI"
+            gasCard.amountUsedLabel.text = "Amount Used: \(dive.amountUsed) PSI"
             
             //other card
-            self.otherCard.buddyLabel.text = "Buddies: \(dive.diveBuddy)"
-            self.otherCard.centerLabel.text = "Dive Center: \(dive.diveCenter)"
-            self.otherCard.noteLabel.text = "Notes: \(dive.note)"
+           otherCard.buddyLabel.text = "Buddies: \(dive.diveBuddy)"
+           otherCard.centerLabel.text = "Dive Center: \(dive.diveCenter)"
+           otherCard.noteLabel.text = "Notes: \(dive.note)"
         }
-        
     }
     
 }
