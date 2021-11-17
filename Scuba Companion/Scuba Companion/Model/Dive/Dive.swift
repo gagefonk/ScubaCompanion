@@ -8,17 +8,15 @@
 import Foundation
 
 enum DiveLogInputType: CaseIterable {
-    case diveType
-    case waterType
-    case waterBody
-    case diveWeather
-    case diveVisibility
-    case waves
-    case current
-    case surge
-    case suitType
-    case tankType
-    case gasMixture
+    case diveType, waterType, waterBody, diveWeather, diveVisibility, waves, current, surge, suitType, tankType, gasMixture
+}
+
+enum DiveSliderType {
+    case maxDepth, time, temp, vis, weight, tank, gas, pressure
+}
+
+enum DivePickerType {
+    case suit, gas
 }
 
 enum DiveType: String, CaseIterable {

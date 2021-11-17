@@ -7,143 +7,91 @@
 
 import UIKit
 
-class DiveLogFormCard: UIView, UITextFieldDelegate {
+class DiveLogFormCard: UIView {
     
     //declare variables
-    var isDecimal: Bool = true
-    var id: String = ""
-    var diveLogType: DiveLogType = .input
+    let id: String
+    let diveLogType: DiveLogType
+    let titleLabel: DiveLogLabel
+    let subtitleLabel: DiveLogLabel
+    var unitLabel: DiveLogLabel?
+    var inputField: DiveLogInputField?
+    var datePicker: DiveLogDatePicker?
+    var slider: DiveLogSlider?
+    var sliderLabel: DiveLogLabel?
+    var optionPicker: DiveLogPicker?
+    var segmentControl: DiveLogSegment?
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .systemPrimary
-        label.font = UIFont.preferredFont(forTextStyle: .title2)
-        
-        return label
-    }()
-    
-    let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        
-        return label
-    }()
-    
-    let unitLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        
-        return label
-    }()
-    
-    let inputField: UITextField = {
-        let field = UITextField()
-        field.backgroundColor = .clear
-        field.borderStyle = .roundedRect
-        field.textColor = .white
-        field.leftViewMode = .always
-        field.rightViewMode = .always
-        field.isUserInteractionEnabled = true
-        
-        return field
-    }()
-    
-    let slider: UISlider = {
-        let slider = UISlider()
-        slider.maximumTrackTintColor = .systemSecondary
-        slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
-        
-        return slider
-    }()
-    
-    let sliderLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        
-        return label
-    }()
-    
-    let datePicker: UIDatePicker = {
-        let datePicker = UIDatePicker()
-        datePicker.preferredDatePickerStyle = .inline
-        datePicker.datePickerMode = .date
-        datePicker.tintColor = .systemSecondary
-        
-        return datePicker
-    }()
-    
-    let segmentControl: UISegmentedControl = {
-        let segment = UISegmentedControl()
-        segment.selectedSegmentTintColor = .systemSecondary
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
-        
-        return segment
-    }()
+    init(diveLogType: DiveLogType, title: String, subtitle: String, id: String) {
+        self.id = id
+        self.diveLogType = diveLogType
+        self.titleLabel = DiveLogLabel(text: title, style: .title2)
+        self.titleLabel.textColor = .systemPrimary
+        self.subtitleLabel = DiveLogLabel(text: subtitle, style: .headline)
+        super.init(frame: .zero)
+    }
     
     convenience init(diveLogType: DiveLogType, title: String, subtitle: String, units: String, placeholder: String, id: String) {
-        self.init(frame: .zero)
+        self.init(diveLogType: diveLogType, title: title, subtitle: subtitle, id: id)
+        self.unitLabel = DiveLogLabel(text: units, style: .headline)
+        self.inputField = DiveLogInputField(placeholder: placeholder)
         
-        self.addSubview(unitLabel)
-        self.addSubview(inputField)
-        
-        inputField.delegate = self
-        
-        self.diveLogType = diveLogType
-        self.titleLabel.text = title
-        self.subtitleLabel.text = subtitle
-        self.unitLabel.text = units
-        inputField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.white])
-        inputField.returnKeyType = .done
-        self.id = id
-        
-    }
-    
-    convenience init(diveLogType: DiveLogType, title: String, subtitle: String, units: String, isDecimal: Bool, minValue: Float, maxValue: Float, id: String){
-        self.init(frame: .zero)
-        
-        self.addSubview(slider)
-        self.addSubview(sliderLabel)
-        self.addSubview(unitLabel)
-        
-        self.diveLogType = diveLogType
-        self.titleLabel.text = title
-        self.subtitleLabel.text = subtitle
-        self.unitLabel.text = units
-        self.isDecimal = isDecimal
-        setSliderOptions(minValue: minValue, maxValue: maxValue)
-        self.id = id
-    }
-    
-    convenience init(diveLogType: DiveLogType, title: String, subtitle: String, id: String) {
-        self.init(frame: .zero)
-        
-        self.addSubview(datePicker)
-        
-        self.diveLogType = diveLogType
-        titleLabel.text = title
-        subtitleLabel.text = subtitle
-        self.id = id
-    }
-    
-    convenience init(diveLogType: DiveLogType, title: String, subtitle: String, segmentType: DiveLogInputType, id: String) {
-        self.init(frame: .zero)
-        
-        self.addSubview(segmentControl)
-        
-        self.diveLogType = diveLogType
-        titleLabel.text = title
-        subtitleLabel.text = subtitle
-        setPickerOptions(segmentType: segmentType)
-        self.id = id
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.isOpaque = false
+        guard let unitLabel = unitLabel, let inputField = inputField else { return }
         
         self.addSubview(titleLabel)
         self.addSubview(subtitleLabel)
+        self.addSubview(unitLabel)
+        self.addSubview(inputField)
+    }
+    
+    convenience init(diveLogType: DiveLogType, isDate: Bool, title: String, subtitle: String, id: String) {
+        self.init(diveLogType: diveLogType, title: title, subtitle: subtitle, id: id)
+        datePicker = DiveLogDatePicker()
+        
+        guard let datePicker = datePicker else { return }
+        
+        self.addSubview(titleLabel)
+        self.addSubview(subtitleLabel)
+        self.addSubview(datePicker)
+    }
+    
+    convenience init(diveLogType: DiveLogType, title: String, subtitle: String, segmentType: DiveLogInputType, id: String) {
+        self.init(diveLogType: diveLogType, title: title, subtitle: subtitle, id: id)
+        segmentControl = DiveLogSegment(type: segmentType)
+        
+        guard let segmentControl = segmentControl else { return }
+        
+        self.addSubview(titleLabel)
+        self.addSubview(subtitleLabel)
+        self.addSubview(segmentControl)
+    }
+    
+    convenience init(diveLogType: DiveLogType, title: String, subtitle: String, units: String, sliderType: DiveSliderType, id: String) {
+        self.init(diveLogType: diveLogType, title: title, subtitle: subtitle, id: id)
+        unitLabel = DiveLogLabel(text: units, style: .headline)
+        slider = DiveLogSlider(type: sliderType)
+        sliderLabel = DiveLogLabel(text: String(slider?.value ?? 0), style: .headline)
+        
+        guard let unitLabel = unitLabel, let slider = slider, let sliderLabel = sliderLabel else { return }
+        
+        slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
+        
+        self.addSubview(titleLabel)
+        self.addSubview(subtitleLabel)
+        self.addSubview(unitLabel)
+        self.addSubview(slider)
+        self.addSubview(sliderLabel)
+    }
+    
+    convenience init(diveLogType: DiveLogType, title: String, subtitle: String, pickerType: DivePickerType, id: String) {
+        self.init(diveLogType: diveLogType, title: title, subtitle: subtitle, id: id)
+        optionPicker = DiveLogPicker(type: pickerType)
+        
+        guard let optionPicker = optionPicker else { return }
+        
+        self.addSubview(titleLabel)
+        self.addSubview(subtitleLabel)
+        self.addSubview(optionPicker)
     }
     
     required init?(coder: NSCoder) {
@@ -171,6 +119,7 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
         
         switch diveLogType {
         case .input:
+            guard let unitLabel = unitLabel, let inputField = inputField else { return }
             unitLabel.translatesAutoresizingMaskIntoConstraints = false
             unitLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: topPadding).isActive = true
             unitLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
@@ -183,9 +132,9 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
             inputField.rightAnchor.constraint(equalTo: unitLabel.leftAnchor, constant: rightPadding).isActive = true
             inputField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
         case .slider:
+            guard let sliderLabel = sliderLabel, let unitLabel = unitLabel, let slider = slider else { return }
             sliderLabel.translatesAutoresizingMaskIntoConstraints = false
             sliderLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: topPadding).isActive = true
-//            sliderLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
             sliderLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftPadding).isActive = true
             
             unitLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -199,17 +148,32 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
             slider.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
             slider.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
         case .date:
+            guard let datePicker = datePicker else { return }
             datePicker.translatesAutoresizingMaskIntoConstraints = false
             datePicker.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: topPadding).isActive = true
             datePicker.leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftPadding).isActive = true
             datePicker.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
             datePicker.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
         case .segment:
+            guard let segmentControl = segmentControl else { return }
             segmentControl.translatesAutoresizingMaskIntoConstraints = false
             segmentControl.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: topPadding).isActive = true
             segmentControl.leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftPadding).isActive = true
             segmentControl.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
             segmentControl.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
+        case .picker:
+            guard let optionPicker = optionPicker else { return }
+//            unitLabel.translatesAutoresizingMaskIntoConstraints = false
+//            unitLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: topPadding).isActive = true
+//            unitLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
+//            unitLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
+//            unitLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            
+            optionPicker.translatesAutoresizingMaskIntoConstraints = false
+            optionPicker.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: topPadding).isActive = true
+            optionPicker.leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftPadding).isActive = true
+            optionPicker.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
+            optionPicker.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
         }
         
         //bg design
@@ -219,80 +183,19 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
         self.layer.borderColor = UIColor.black.cgColor
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    private func setSliderOptions(minValue: Float, maxValue: Float) {
-        let setValue = ((maxValue + minValue) / 2).rounded()
-        self.slider.minimumValue = minValue
-        self.slider.maximumValue = maxValue
-        self.slider.setValue(setValue, animated: true)
-        self.sliderLabel.text = String(setValue)
-    }
-    
     @objc private func sliderValueChanged() {
+        guard let slider = slider, let sliderLabel = sliderLabel else { return }
         let value: Float
-        if id == "startPressure" || id == "endPressure" {
+        switch slider.type {
+        case .maxDepth, .time, .temp, .vis, .weight, .tank:
+            value = round(slider.value)
+        case .gas, .pressure:
             let step: Float = 10
             value = round(slider.value / step) * step
-        } else {
-            value = isDecimal ? round(slider.value * 10) / 10.0 :  round(slider.value)
-        }
-        slider.setValue(value, animated: false)
-        sliderLabel.text = String(value)
-    }
-    
-    private func setPickerOptions(segmentType: DiveLogInputType) {
-        switch segmentType {
-        case .diveType:
-            for (index, type) in DiveType.allCases.enumerated() {
-                segmentControl.insertSegment(withTitle: type.rawValue, at: index, animated: false)
-            }
-        case .waterType:
-            for (index, type) in WaterType.allCases.enumerated() {
-                segmentControl.insertSegment(withTitle: type.rawValue, at: index, animated: false)
-            }
-        case .waterBody:
-            for (index, type) in WaterBody.allCases.enumerated() {
-                segmentControl.insertSegment(withTitle: type.rawValue, at: index, animated: false)
-            }
-        case .diveWeather:
-            for (index, type) in DiveWeather.allCases.enumerated() {
-                segmentControl.insertSegment(withTitle: type.rawValue, at: index, animated: false)
-            }
-        case .diveVisibility:
-            for (index, type) in DiveVisibility.allCases.enumerated() {
-                segmentControl.insertSegment(withTitle: type.rawValue, at: index, animated: false)
-            }
-        case .waves:
-            for (index, type) in Waves.allCases.enumerated() {
-                segmentControl.insertSegment(withTitle: type.rawValue, at: index, animated: false)
-            }
-        case .current:
-            for (index, type) in Current.allCases.enumerated() {
-                segmentControl.insertSegment(withTitle: type.rawValue, at: index, animated: false)
-            }
-        case .surge:
-            for (index, type) in Surge.allCases.enumerated() {
-                segmentControl.insertSegment(withTitle: type.rawValue, at: index, animated: false)
-            }
-        case .suitType:
-            for (index, type) in SuitType.allCases.enumerated() {
-                segmentControl.insertSegment(withTitle: type.rawValue, at: index, animated: false)
-            }
-        case .tankType:
-            for (index, type) in TankType.allCases.enumerated() {
-                segmentControl.insertSegment(withTitle: type.rawValue, at: index, animated: false)
-            }
-        case .gasMixture:
-            for (index, type) in GasMixture.allCases.enumerated() {
-                segmentControl.insertSegment(withTitle: type.rawValue, at: index, animated: false)
-            }
         }
         
-        segmentControl.selectedSegmentIndex = 0
+        slider.setValue(value, animated: false)
+        sliderLabel.text = String(value)
     }
     
 }

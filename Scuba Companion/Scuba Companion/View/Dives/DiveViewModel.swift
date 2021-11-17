@@ -30,82 +30,83 @@ class DiveViewModel {
     private func loadDiveInfo(index: Int?) {
         guard let index = index else { return }
         let dive = diveLogVM.dives[index]
+        
         //load dive info
         for card in diveCards {
             switch card.id {
             case "title":
-                card.inputField.text = dive.title
+                card.inputField?.text = dive.title
             case "site":
-                card.inputField.text = dive.site
+                card.inputField?.text = dive.site
             case "date":
-                card.datePicker.date = dive.date
+                card.datePicker?.date = dive.date
             case "diveType":
-                card.segmentControl.selectedSegmentIndex = getIndexFromInputType(dive: dive, inputType: .diveType)
+                card.segmentControl?.getIndexFromInputType(dive: dive)
             case "maxDepth":
-                card.slider.setValue(dive.maxDepth, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.maxDepth, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "bottomTime":
-                card.slider.setValue(dive.diveLength, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.diveLength, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "waterType":
-                card.segmentControl.selectedSegmentIndex = getIndexFromInputType(dive: dive, inputType: .waterType)
+                card.segmentControl?.getIndexFromInputType(dive: dive)
             case "waterBody":
-                card.segmentControl.selectedSegmentIndex = getIndexFromInputType(dive: dive, inputType: .waterBody)
+                card.segmentControl?.getIndexFromInputType(dive: dive)
             case "weather":
-                card.segmentControl.selectedSegmentIndex = getIndexFromInputType(dive: dive, inputType: .diveWeather)
+                card.segmentControl?.getIndexFromInputType(dive: dive)
             case "airTemp":
-                card.slider.setValue(dive.airTemp, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.airTemp, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "surfaceTemp":
-                card.slider.setValue(dive.surfaceTemp, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.surfaceTemp, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "bottomTemp":
-                card.slider.setValue(dive.bottomTemp, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.bottomTemp, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "visibility":
-                card.segmentControl.selectedSegmentIndex = getIndexFromInputType(dive: dive, inputType: .diveVisibility)
+                card.segmentControl?.getIndexFromInputType(dive: dive)
             case "visibilityDistance":
-                card.slider.setValue(dive.visibilityInMeters, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.visibilityInMeters, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "wave":
-                card.segmentControl.selectedSegmentIndex = getIndexFromInputType(dive: dive, inputType: .waves)
+                card.segmentControl?.getIndexFromInputType(dive: dive)
             case "current":
-                card.segmentControl.selectedSegmentIndex = getIndexFromInputType(dive: dive, inputType: .current)
+                card.segmentControl?.getIndexFromInputType(dive: dive)
             case "surge":
-                card.segmentControl.selectedSegmentIndex = getIndexFromInputType(dive: dive, inputType: .surge)
+                card.segmentControl?.getIndexFromInputType(dive: dive)
             case "suitType":
-                card.segmentControl.selectedSegmentIndex = getIndexFromInputType(dive: dive, inputType: .suitType)
+                card.optionPicker?.setPickerValue(dive: dive)
             case "weight":
-                card.slider.setValue(dive.weight, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.weight, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "tankType":
-                card.segmentControl.selectedSegmentIndex = getIndexFromInputType(dive: dive, inputType: .tankType)
+                card.segmentControl?.getIndexFromInputType(dive: dive)
             case "tankUnits":
-                card.slider.setValue(dive.tankSize, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.tankSize, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "gas":
-                card.segmentControl.selectedSegmentIndex = getIndexFromInputType(dive: dive, inputType: .gasMixture)
+                card.optionPicker?.setPickerValue(dive: dive)
             case "oxygen":
-                card.slider.setValue(dive.oxygen, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.oxygen, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "nitrogen":
-                card.slider.setValue(dive.nitrogen, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.nitrogen, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "helium":
-                card.slider.setValue(dive.helium, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.helium, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "startPressure":
-                card.slider.setValue(dive.startPressure, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.startPressure, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "endPressure":
-                card.slider.setValue(dive.endPressure, animated: true)
-                card.sliderLabel.text = String(card.slider.value)
+                card.slider?.setValue(dive.endPressure, animated: true)
+                card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "diveBuddy":
-                card.inputField.text = dive.diveBuddy
+                card.inputField?.text = dive.diveBuddy
             case "diveCenter":
-                card.inputField.text = dive.diveCenter
+                card.inputField?.text = dive.diveCenter
             case "note":
-                card.inputField.text = dive.note
+                card.inputField?.text = dive.note
             default:
                 break
             }
@@ -116,25 +117,25 @@ class DiveViewModel {
         let title: String = getUserInputValues(id: "title")
         let site: String = getUserInputValues(id: "site")
         let date: Date = getDateValue(id: "date")
-        let diveType: DiveType = getSegmentSelection(id: "diveType", segmentType: .diveType) as! DiveType
+        let diveType: DiveType = getSegmentSelection(id: "diveType") as! DiveType
         let maxDepth: Float = getSliderValue(id: "maxDepth")
         let diveLength: Float = getSliderValue(id: "bottomTime")
-        let waterType: WaterType = getSegmentSelection(id: "waterType", segmentType: .waterType) as! WaterType
-        let waterBody: WaterBody = getSegmentSelection(id: "waterBody", segmentType: .waterBody) as! WaterBody
-        let diveWeather: DiveWeather = getSegmentSelection(id: "weather", segmentType: .diveWeather) as! DiveWeather
+        let waterType: WaterType = getSegmentSelection(id: "waterType") as! WaterType
+        let waterBody: WaterBody = getSegmentSelection(id: "waterBody") as! WaterBody
+        let diveWeather: DiveWeather = getSegmentSelection(id: "weather") as! DiveWeather
         let airTemp: Float = getSliderValue(id: "airTemp")
         let surfaceTemp: Float = getSliderValue(id: "surfaceTemp")
         let bottomTemp: Float = getSliderValue(id: "bottomTemp")
-        let visibility: DiveVisibility = getSegmentSelection(id: "visibility", segmentType: .diveVisibility) as! DiveVisibility
+        let visibility: DiveVisibility = getSegmentSelection(id: "visibility") as! DiveVisibility
         let visibilityInMeters: Float = getSliderValue(id: "visibilityDistance")
-        let waves: Waves = getSegmentSelection(id: "wave", segmentType: .waves) as! Waves
-        let current: Current = getSegmentSelection(id: "current", segmentType: .current) as! Current
-        let surge: Surge = getSegmentSelection(id: "surge", segmentType: .surge) as! Surge
-        let suitType: SuitType = getSegmentSelection(id: "suitType", segmentType: .suitType) as! SuitType
+        let waves: Waves = getSegmentSelection(id: "wave") as! Waves
+        let current: Current = getSegmentSelection(id: "current") as! Current
+        let surge: Surge = getSegmentSelection(id: "surge") as! Surge
+        let suitType: SuitType = getPickerOption(id: "suitType") as! SuitType
         let weight: Float = getSliderValue(id: "weight")
-        let tankType: TankType = getSegmentSelection(id: "tankType", segmentType: .tankType) as! TankType
+        let tankType: TankType = getSegmentSelection(id: "tankType") as! TankType
         let tankSize: Float = getSliderValue(id: "tankUnits")
-        let gasMixture: GasMixture = getSegmentSelection(id: "gas", segmentType: .gasMixture) as! GasMixture
+        let gasMixture: GasMixture = getPickerOption(id: "gas") as! GasMixture
         let oxygen: Float = getSliderValue(id: "oxygen")
         let nitrogen: Float = getSliderValue(id: "nitrogen")
         let helium: Float = getSliderValue(id: "helium")
@@ -169,112 +170,39 @@ class DiveViewModel {
     
     private func getUserInputValues(id: String) -> String {
         guard let card = diveCards.first(where: {$0.id == id}) else { return ""}
-        guard let value = card.inputField.text else { return ""}
+        guard let value = card.inputField?.text else { return ""}
         return value
     }
     
     private func getSliderValue(id: String) -> Float {
         guard let card = diveCards.first(where: {$0.id == id}) else { return 0}
-        return card.slider.value
+        return card.slider?.value ?? 0
     }
     
     private func getDateValue(id: String) -> Date {
         guard let card = diveCards.first(where: {$0.id == id}) else { return Date()}
-        return card.datePicker.date
+        return card.datePicker?.date ?? Date()
     }
     
-    private func getSegmentSelection(id: String, segmentType: DiveLogInputType) -> Any {
+    private func getSegmentSelection(id: String) -> Any {
         guard let card = diveCards.first(where: {$0.id == id}) else { return 0}
-        let index = card.segmentControl.selectedSegmentIndex
-        let val = card.segmentControl.titleForSegment(at: index)
-        return getType(val: val!, type: segmentType)
+        return card.segmentControl?.getSelectedSegment()
+    }
+    
+    private func getPickerOption(id: String) -> Any {
+        guard let card = diveCards.first(where: {$0.id == id}) else { return 0}
+        return card.optionPicker?.getValue()
     }
     
     private func getAmountUsed(start: Float, end: Float) -> Float {
         return start - end
     }
     
-    private func getType(val: String, type: DiveLogInputType) -> Any? {
-        switch type {
-        case .diveType:
-            return DiveType(rawValue: val)
-        case .waterType:
-            return WaterType(rawValue: val)
-        case .waterBody:
-            return WaterBody(rawValue: val)
-        case .diveWeather:
-            return DiveWeather(rawValue: val)
-        case .diveVisibility:
-            return DiveVisibility(rawValue: val)
-        case .waves:
-            return Waves(rawValue: val)
-        case .current:
-            return Current(rawValue: val)
-        case .surge:
-            return Surge(rawValue: val)
-        case .suitType:
-            return SuitType(rawValue: val)
-        case .tankType:
-            return TankType(rawValue: val)
-        case .gasMixture:
-            return GasMixture(rawValue: val)
-        }
-    }
-    
     private func getCurrentDiveDate(dive: Dive?) -> Date {
         return dive?.date ?? Date()
     }
     
-    private func getIndexFromInputType(dive: Dive?, inputType: DiveLogInputType) -> Int {
-        var indexInt = 0
-        switch inputType {
-        case .diveType:
-            for (index, type) in DiveType.allCases.enumerated() where type == dive?.diveType {
-                indexInt = index
-            }
-        case .waterType:
-            for (index, type) in WaterType.allCases.enumerated() where type == dive?.waterType {
-                indexInt = index
-            }
-        case .waterBody:
-            for (index, type) in WaterBody.allCases.enumerated() where type == dive?.waterBody {
-                indexInt = index
-            }
-        case .diveWeather:
-            for (index, type) in DiveWeather.allCases.enumerated() where type == dive?.diveWeather {
-                indexInt = index
-            }
-        case .diveVisibility:
-            for (index, type) in DiveVisibility.allCases.enumerated() where type == dive?.visibility {
-                indexInt = index
-            }
-        case .waves:
-            for (index, type) in Waves.allCases.enumerated() where type == dive?.waves {
-                indexInt = index
-            }
-        case .current:
-            for (index, type) in Current.allCases.enumerated() where type == dive?.current {
-                indexInt = index
-            }
-        case .surge:
-            for (index, type) in Surge.allCases.enumerated() where type == dive?.surge {
-                indexInt = index
-            }
-        case .suitType:
-            for (index, type) in SuitType.allCases.enumerated() where type == dive?.suitType {
-                indexInt = index
-            }
-        case .tankType:
-            for (index, type) in TankType.allCases.enumerated() where type == dive?.tankType {
-                indexInt = index
-            }
-        case .gasMixture:
-            for (index, type) in GasMixture.allCases.enumerated() where type == dive?.gasMixture {
-                indexInt = index
-            }
-        }
-        return indexInt
-    }
+    
     
     private func isTitleBlank(title: String) -> Bool {
         return title == ""

@@ -35,6 +35,12 @@
 		1CEEC7DB2742FE6B00B5F885 /* DivePresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC7DA2742FE6B00B5F885 /* DivePresentationView.swift */; };
 		1CEEC80B2743698900B5F885 /* DivePresentationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC80A2743698900B5F885 /* DivePresentationCard.swift */; };
 		1CEEC80D27438BCD00B5F885 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC80C27438BCD00B5F885 /* DummyData.swift */; };
+		1CEEC810274498BC00B5F885 /* DiveLogPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC80F274498BB00B5F885 /* DiveLogPicker.swift */; };
+		1CEEC8122744B1E900B5F885 /* DiveLogSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8112744B1E900B5F885 /* DiveLogSlider.swift */; };
+		1CEEC8142744B48800B5F885 /* DiveLogSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8132744B48800B5F885 /* DiveLogSegment.swift */; };
+		1CEEC8162744B6A000B5F885 /* DiveLogLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8152744B6A000B5F885 /* DiveLogLabel.swift */; };
+		1CEEC8182744B73900B5F885 /* DiveLogDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8172744B73900B5F885 /* DiveLogDatePicker.swift */; };
+		1CEEC81A2744B7B800B5F885 /* DiveLogInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8192744B7B800B5F885 /* DiveLogInputField.swift */; };
 		ABCA835C312F9BE1E43F9FC2 /* Pods_Scuba_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +75,12 @@
 		1CEEC7DA2742FE6B00B5F885 /* DivePresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivePresentationView.swift; sourceTree = "<group>"; };
 		1CEEC80A2743698900B5F885 /* DivePresentationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivePresentationCard.swift; sourceTree = "<group>"; };
 		1CEEC80C27438BCD00B5F885 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
+		1CEEC80F274498BB00B5F885 /* DiveLogPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogPicker.swift; sourceTree = "<group>"; };
+		1CEEC8112744B1E900B5F885 /* DiveLogSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogSlider.swift; sourceTree = "<group>"; };
+		1CEEC8132744B48800B5F885 /* DiveLogSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogSegment.swift; sourceTree = "<group>"; };
+		1CEEC8152744B6A000B5F885 /* DiveLogLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogLabel.swift; sourceTree = "<group>"; };
+		1CEEC8172744B73900B5F885 /* DiveLogDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogDatePicker.swift; sourceTree = "<group>"; };
+		1CEEC8192744B7B800B5F885 /* DiveLogInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogInputField.swift; sourceTree = "<group>"; };
 		6D052D10AD47CE926D5F3A1E /* Pods-Scuba Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.release.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.release.xcconfig"; sourceTree = "<group>"; };
 		8DB4920BA6FF95944A6C2EDD /* Pods-Scuba Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.debug.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.debug.xcconfig"; sourceTree = "<group>"; };
 		CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scuba_Companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +118,7 @@
 		1CA78830273B584A002FF62F /* Dive */ = {
 			isa = PBXGroup;
 			children = (
+				1CEEC80E2744987300B5F885 /* Sub */,
 				1CA78828273A4419002FF62F /* DiveLogCell.swift */,
 				1CA78831273BB382002FF62F /* DiveLogFormCards.swift */,
 				1CEEC80A2743698900B5F885 /* DivePresentationCard.swift */,
@@ -260,6 +273,19 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		1CEEC80E2744987300B5F885 /* Sub */ = {
+			isa = PBXGroup;
+			children = (
+				1CEEC80F274498BB00B5F885 /* DiveLogPicker.swift */,
+				1CEEC8112744B1E900B5F885 /* DiveLogSlider.swift */,
+				1CEEC8132744B48800B5F885 /* DiveLogSegment.swift */,
+				1CEEC8152744B6A000B5F885 /* DiveLogLabel.swift */,
+				1CEEC8172744B73900B5F885 /* DiveLogDatePicker.swift */,
+				1CEEC8192744B7B800B5F885 /* DiveLogInputField.swift */,
+			);
+			path = Sub;
+			sourceTree = "<group>";
+		};
 		4803486EF84B87A6B7F49AF6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,20 +399,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CEEC8142744B48800B5F885 /* DiveLogSegment.swift in Sources */,
 				1CBAFF2126C35FEA00C97334 /* DiveView.swift in Sources */,
 				1CECCADB26BC7AA400831FA3 /* AppDelegate.swift in Sources */,
 				1CECCB0626BCEAF600831FA3 /* MenuView.swift in Sources */,
 				1C95408A2734DADC005F3EFF /* APIModels.swift in Sources */,
 				1CA78827273A37C1002FF62F /* DiveLogView.swift in Sources */,
 				1CA7882B273B1104002FF62F /* DiveLogViewModel.swift in Sources */,
+				1CEEC810274498BC00B5F885 /* DiveLogPicker.swift in Sources */,
 				1CA78829273A4419002FF62F /* DiveLogCell.swift in Sources */,
 				1CA7882D273B117D002FF62F /* DiveViewModel.swift in Sources */,
 				1CEEC80B2743698900B5F885 /* DivePresentationCard.swift in Sources */,
 				1CECCAFB26BCB5A600831FA3 /* CustomColors.swift in Sources */,
 				1CBAFF2526C36FC800C97334 /* MapViewModel.swift in Sources */,
+				1CEEC8122744B1E900B5F885 /* DiveLogSlider.swift in Sources */,
+				1CEEC81A2744B7B800B5F885 /* DiveLogInputField.swift in Sources */,
 				1C9540872734DA95005F3EFF /* StationsAPI.swift in Sources */,
 				1CBAFF1F26C3590100C97334 /* MapView.swift in Sources */,
 				1CECCADD26BC7AA400831FA3 /* SceneDelegate.swift in Sources */,
+				1CEEC8162744B6A000B5F885 /* DiveLogLabel.swift in Sources */,
 				1CBAFF2926C457B900C97334 /* MapSearchViewModel.swift in Sources */,
 				1CBAFF3326C820A500C97334 /* SurfAPI.swift in Sources */,
 				1CA78825273A245A002FF62F /* Dive.swift in Sources */,
@@ -395,6 +426,7 @@
 				1CA78832273BB382002FF62F /* DiveLogFormCards.swift in Sources */,
 				1CBAFF3126C5EA1F00C97334 /* MapSearchCell.swift in Sources */,
 				1CBAFF2726C4445800C97334 /* MapSearchView.swift in Sources */,
+				1CEEC8182744B73900B5F885 /* DiveLogDatePicker.swift in Sources */,
 				1CEEC7D92742DA6E00B5F885 /* NotificationUtility.swift in Sources */,
 				1CEEC80D27438BCD00B5F885 /* DummyData.swift in Sources */,
 				1CEEC7DB2742FE6B00B5F885 /* DivePresentationView.swift in Sources */,
