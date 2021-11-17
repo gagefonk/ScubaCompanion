@@ -120,11 +120,11 @@ class DivePresentationView: UIViewController {
             //water card
             waterCard.diveTypeLabel.text = "Type: \(dive.diveType.rawValue)"
             waterCard.waterTypeLabel.text = "Water: \(dive.waterType.rawValue)"
-            waterCard.maxDepthLabel.text = "Max Depth: \(dive.maxDepth) m"
+            waterCard.maxDepthLabel.text = "Max: \(dive.maxDepth) ft"
             waterCard.waterBodyLabel.text = "Body: \(dive.waterBody.rawValue)"
             waterCard.bottomTimeLabel.text = "Length: \(dive.diveLength) min"
             waterCard.visLabel.text = "Vis Type: \(dive.visibility.rawValue)"
-            waterCard.visInMLabel.text = "Vis: \(dive.visibilityInMeters) m"
+            waterCard.visInMLabel.text = "Vis: \(dive.visibilityInMeters) ft"
             waterCard.waveLabel.text = "Waves: \(dive.waves.rawValue)"
             waterCard.currentLabel.text = "Current: \(dive.current.rawValue)"
             waterCard.surgeLabel.text = "Surge: \(dive.surge.rawValue)"

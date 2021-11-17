@@ -8,7 +8,7 @@
 import UIKit
 
 enum NotificationErrorType: Error {
-    case timeout, missingTitle
+    case network, missingTitle
 }
 
 struct NotificationUtility {
@@ -18,8 +18,8 @@ struct NotificationUtility {
         let message: String
         
         switch messageType {
-        case .timeout:
-            title = "Timeout"
+        case .network:
+            title = "Network Error"
             message = "Error with network call"
         case .missingTitle:
             title = "Missing Title"

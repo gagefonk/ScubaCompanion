@@ -19,35 +19,23 @@ struct StationsAPI {
         return plistDictionary?["stationsBaseURL"] as! String
     }()
     
-    func getListOfStations(completion: @escaping ([StationLocation])->Void) {
+    func getListOfStations(completion: @escaping ([Stations]?)->Void) {
         let url = URL(string: baseStationsURL)
-        let request = URLRequest(url: url!)
+        var request = URLRequest(url: url!)
+        request.timeoutInterval = 10.0
+        
         URLSession.shared.dataTask(with: request) { data, res, err in
             if err != nil {
-                print(err?.localizedDescription as Any)
+                completion(nil)
                 return
             }
             guard let data = data else { return }
             do {
                 let json = try JSONDecoder().decode(Locations.self, from: data)
-                let stationLocations = formatLocations(locations: json)
-                completion(stationLocations)
+                completion(json.locations)
             } catch let error {
-                print(error.localizedDescription)
+                completion(nil)
             }
         }.resume()
-    }
-    
-    private func formatLocations(locations: Locations) -> [StationLocation]{
-        
-        var stationLocations: [StationLocation] = []
-        locations.locations.forEach { station in
-            guard let lonString = station.lng, let latString = station.lat, let name = station.name, let id = station.stnid else { return }
-            guard let lon = Double(lonString), let lat = Double(latString) else { return }
-            let loc = CLLocation(latitude: lat, longitude: lon)
-            let stationLocation = StationLocation(name: name, id: id, location: loc)
-            stationLocations.append(stationLocation)
-        }
-        return stationLocations
     }
 }

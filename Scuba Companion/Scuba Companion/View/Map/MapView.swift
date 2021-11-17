@@ -13,8 +13,8 @@ class MapView: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     let mapSearchView = MapSearchView()
     let mapVM = MapViewModel()
-    let surfAPI = SurfAPI()
     let stationAPI = StationsAPI()
+    let notificationUtility = NotificationUtility()
     
     
     let mapView: MKMapView = {
@@ -42,7 +42,7 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         //add search functionality
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
         navigationItem.rightBarButtonItem?.tintColor = .systemPrimary
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "location"), style: .done, target: self, action: #selector(goToCurrentLocation))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "location"), style: .done, target: self, action: #selector(goToCurrentLocation))
         navigationItem.leftBarButtonItem?.tintColor = .systemPrimary
     }
     
@@ -70,18 +70,18 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         return locationManager.authorizationStatus == .authorizedWhenInUse || locationManager.authorizationStatus == .authorizedAlways
     }
     
-    @objc private func goToCurrentLocation() {
-        if isLocationServicesEnabled() {
-            guard let region = mapVM.getUserLocation(locationManager: locationManager) else { return }
-            let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-            let newRegion = MKCoordinateRegion(center: region.center, span: span)
-            let fitRegion = mapView.regionThatFits(newRegion)
-            mapView.setRegion(fitRegion, animated: true)
-            mapView.showsUserLocation = true
-        } else {
-            requestLocationServicesAuthorization()
-        }
-    }
+//    @objc private func goToCurrentLocation() {
+//        if isLocationServicesEnabled() {
+//            guard let region = mapVM.getUserLocation(locationManager: locationManager) else { return }
+//            let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+//            let newRegion = MKCoordinateRegion(center: region.center, span: span)
+//            let fitRegion = mapView.regionThatFits(newRegion)
+//            mapView.setRegion(fitRegion, animated: true)
+//            mapView.showsUserLocation = true
+//        } else {
+//            requestLocationServicesAuthorization()
+//        }
+//    }
     
     @objc func didTapSearch() {
         
@@ -95,12 +95,20 @@ extension MapView: LocationFromSearchDelegate {
 
     func goToSearchedLocation(center: CLLocationCoordinate2D) {
         
+        let chosenLocation = CLLocation(latitude: center.latitude, longitude: center.longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         let region = MKCoordinateRegion(center: center, span: span)
         let newRegion = mapView.regionThatFits(region)
         mapView.setRegion(newRegion, animated: true)
-        
-        mapVM.getClosestStation(chosenLocation: center)
+
+        mapVM.getClosestStation(chosenLocation: chosenLocation) { err in
+            if err != nil {
+                DispatchQueue.main.async {
+                    let alert = self.notificationUtility.getAlert(messageType: err!)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     

@@ -64,40 +64,36 @@ enum GasMixture: String, CaseIterable {
     case air = "Air", ean32 = "32", ean36 = "36", ean40 = "40", enriched = "Enriched", trimex = "Trimex", rebreather = "Rebreather"
 }
 
-enum CharType {
-    case intType, floatType, all
-}
-
 struct Dive {
     
     let title: String
     let site: String
     let date: Date
     let diveType: DiveType
-    let maxDepth: String
-    let diveLength: String
+    let maxDepth: Float
+    let diveLength: Float
     let waterType: WaterType
     let waterBody: WaterBody
     let diveWeather: DiveWeather
-    let airTemp: String
-    let surfaceTemp: String
-    let bottomTemp: String
+    let airTemp: Float
+    let surfaceTemp: Float
+    let bottomTemp: Float
     let visibility: DiveVisibility
-    let visibilityInMeters: String
+    let visibilityInMeters: Float
     let waves: Waves
     let current: Current
     let surge: Surge
     let suitType: SuitType
-    let weight: String
+    let weight: Float
     let tankType: TankType
-    let tankSize: String
+    let tankSize: Float
     let gasMixture: GasMixture
-    let oxygen: String
-    let nitrogen: String
-    let helium: String
-    let startPressure: String
-    let endPressure: String
-    let amountUsed: String
+    let oxygen: Float
+    let nitrogen: Float
+    let helium: Float
+    let startPressure: Float
+    let endPressure: Float
+    let amountUsed: Float
     let note: String
     let diveBuddy: String
     let diveCenter: String

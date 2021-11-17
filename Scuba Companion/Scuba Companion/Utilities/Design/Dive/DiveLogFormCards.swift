@@ -10,7 +10,7 @@ import UIKit
 class DiveLogFormCard: UIView, UITextFieldDelegate {
     
     //declare variables
-    var charType: CharType = .all
+    var isDecimal: Bool = true
     var id: String = ""
     var diveLogType: DiveLogType = .input
     
@@ -31,7 +31,7 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
     
     let unitLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
         
         return label
     }()
@@ -46,6 +46,21 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
         field.isUserInteractionEnabled = true
         
         return field
+    }()
+    
+    let slider: UISlider = {
+        let slider = UISlider()
+        slider.maximumTrackTintColor = .systemSecondary
+        slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
+        
+        return slider
+    }()
+    
+    let sliderLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        
+        return label
     }()
     
     let datePicker: UIDatePicker = {
@@ -65,7 +80,7 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
         return segment
     }()
     
-    convenience init(diveLogType: DiveLogType, charType: CharType, title: String, subtitle: String, units: String, placeholder: String, id: String) {
+    convenience init(diveLogType: DiveLogType, title: String, subtitle: String, units: String, placeholder: String, id: String) {
         self.init(frame: .zero)
         
         self.addSubview(unitLabel)
@@ -74,15 +89,29 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
         inputField.delegate = self
         
         self.diveLogType = diveLogType
-        self.charType = charType
         self.titleLabel.text = title
         self.subtitleLabel.text = subtitle
         self.unitLabel.text = units
         inputField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.white])
-        inputField.keyboardType = getKeyboardType(charType: charType)
         inputField.returnKeyType = .done
         self.id = id
         
+    }
+    
+    convenience init(diveLogType: DiveLogType, title: String, subtitle: String, units: String, isDecimal: Bool, minValue: Float, maxValue: Float, id: String){
+        self.init(frame: .zero)
+        
+        self.addSubview(slider)
+        self.addSubview(sliderLabel)
+        self.addSubview(unitLabel)
+        
+        self.diveLogType = diveLogType
+        self.titleLabel.text = title
+        self.subtitleLabel.text = subtitle
+        self.unitLabel.text = units
+        self.isDecimal = isDecimal
+        setSliderOptions(minValue: minValue, maxValue: maxValue)
+        self.id = id
     }
     
     convenience init(diveLogType: DiveLogType, title: String, subtitle: String, id: String) {
@@ -153,6 +182,22 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
             inputField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftPadding).isActive = true
             inputField.rightAnchor.constraint(equalTo: unitLabel.leftAnchor, constant: rightPadding).isActive = true
             inputField.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
+        case .slider:
+            sliderLabel.translatesAutoresizingMaskIntoConstraints = false
+            sliderLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: topPadding).isActive = true
+//            sliderLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            sliderLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftPadding).isActive = true
+            
+            unitLabel.translatesAutoresizingMaskIntoConstraints = false
+            unitLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: topPadding).isActive = true
+            unitLabel.leftAnchor.constraint(equalTo: sliderLabel.rightAnchor, constant: leftPadding / 4).isActive = true
+            unitLabel.bottomAnchor.constraint(equalTo: sliderLabel.bottomAnchor).isActive = true
+            
+            slider.translatesAutoresizingMaskIntoConstraints = false
+            slider.topAnchor.constraint(equalTo: sliderLabel.bottomAnchor, constant: topPadding).isActive = true
+            slider.leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftPadding).isActive = true
+            slider.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
+            slider.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
         case .date:
             datePicker.translatesAutoresizingMaskIntoConstraints = false
             datePicker.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: topPadding).isActive = true
@@ -174,35 +219,29 @@ class DiveLogFormCard: UIView, UITextFieldDelegate {
         self.layer.borderColor = UIColor.black.cgColor
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        switch charType {
-        case .floatType:
-            let allowedCharacters = CharacterSet(charactersIn: ".0123456789")
-            let characterSet = CharacterSet(charactersIn: string)
-            return allowedCharacters.isSuperset(of: characterSet)
-        case .intType:
-            let allowedCharacters = CharacterSet(charactersIn: "0123456789")
-            let characterSet = CharacterSet(charactersIn: string)
-            return allowedCharacters.isSuperset(of: characterSet)
-        case .all:
-            return true
-        }
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    private func getKeyboardType(charType: CharType) -> UIKeyboardType {
-        switch charType {
-        case .intType:
-            return .numberPad
-        case .floatType:
-            return .decimalPad
-        case .all:
-            return .default
+    private func setSliderOptions(minValue: Float, maxValue: Float) {
+        let setValue = ((maxValue + minValue) / 2).rounded()
+        self.slider.minimumValue = minValue
+        self.slider.maximumValue = maxValue
+        self.slider.setValue(setValue, animated: true)
+        self.sliderLabel.text = String(setValue)
+    }
+    
+    @objc private func sliderValueChanged() {
+        let value: Float
+        if id == "startPressure" || id == "endPressure" {
+            let step: Float = 10
+            value = round(slider.value / step) * step
+        } else {
+            value = isDecimal ? round(slider.value * 10) / 10.0 :  round(slider.value)
         }
+        slider.setValue(value, animated: false)
+        sliderLabel.text = String(value)
     }
     
     private func setPickerOptions(segmentType: DiveLogInputType) {
