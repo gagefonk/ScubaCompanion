@@ -41,7 +41,7 @@ class MenuView: UITabBarController {
         }
         
         //set selected index for now
-        self.selectedIndex = 1
+        self.selectedIndex = tabs.startIndex
         
         
     }

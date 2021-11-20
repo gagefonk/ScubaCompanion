@@ -11,10 +11,9 @@ import MapKit
 
 class MapSearchViewModel {
     
-    var filteredData: [MKMapItem] = []
     var searchData: [MKLocalSearchCompletion] = []
-    let interestCategory: MKPointOfInterestCategory = .beach
     
+    //search for location from search completer
     func performSearch(searchTerm: MKLocalSearchCompletion, completion: @escaping (_ foundItem: MKMapItem)->Void) {
         let searchRequest = MKLocalSearch.Request(completion: searchTerm)
         let search = MKLocalSearch(request: searchRequest)
@@ -23,7 +22,7 @@ class MapSearchViewModel {
                 print(err?.localizedDescription)
                 return
             }
-            if let item = res.mapItems.first {
+            if let item = res.mapItems.first{
                 completion(item)
             }
         }
@@ -31,7 +30,6 @@ class MapSearchViewModel {
     }
     
     func clearFilteredData() {
-        filteredData.removeAll()
         searchData.removeAll()
     }
     

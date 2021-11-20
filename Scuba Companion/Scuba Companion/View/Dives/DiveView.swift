@@ -72,10 +72,6 @@ class DiveView: UIViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-    
     @objc private func cancelButtonClicked() {
         navigationController?.popViewController(animated: true)
     }

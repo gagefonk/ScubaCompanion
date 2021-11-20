@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C7B15B42746365100E84986 /* SurfDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B15B32746365100E84986 /* SurfDisplayData.swift */; };
+		1C7B15B6274636A300E84986 /* SurfForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B15B5274636A300E84986 /* SurfForecast.swift */; };
+		1C7B15B82746373F00E84986 /* SurfPresentationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B15B72746373F00E84986 /* SurfPresentationCard.swift */; };
+		1C7B15BC274637BE00E84986 /* SurfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B15BB274637BE00E84986 /* SurfView.swift */; };
+		1C7B15BE27463A2A00E84986 /* SurfLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B15BD27463A2A00E84986 /* SurfLabel.swift */; };
+		1C7B15C02746DBCB00E84986 /* SurfProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B15BF2746DBCB00E84986 /* SurfProgressView.swift */; };
+		1C7B15C22746E34000E84986 /* SurfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7B15C12746E34000E84986 /* SurfViewModel.swift */; };
 		1C9540872734DA95005F3EFF /* StationsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9540862734DA95005F3EFF /* StationsAPI.swift */; };
 		1C95408A2734DADC005F3EFF /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9540892734DADC005F3EFF /* APIModels.swift */; };
 		1CA78825273A245A002FF62F /* Dive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA78824273A245A002FF62F /* Dive.swift */; };
@@ -45,6 +52,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C7B15B32746365100E84986 /* SurfDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfDisplayData.swift; sourceTree = "<group>"; };
+		1C7B15B5274636A300E84986 /* SurfForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfForecast.swift; sourceTree = "<group>"; };
+		1C7B15B72746373F00E84986 /* SurfPresentationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfPresentationCard.swift; sourceTree = "<group>"; };
+		1C7B15BB274637BE00E84986 /* SurfView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfView.swift; sourceTree = "<group>"; };
+		1C7B15BD27463A2A00E84986 /* SurfLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfLabel.swift; sourceTree = "<group>"; };
+		1C7B15BF2746DBCB00E84986 /* SurfProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfProgressView.swift; sourceTree = "<group>"; };
+		1C7B15C12746E34000E84986 /* SurfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfViewModel.swift; sourceTree = "<group>"; };
 		1C9540862734DA95005F3EFF /* StationsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsAPI.swift; sourceTree = "<group>"; };
 		1C9540892734DADC005F3EFF /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
 		1CA78824273A245A002FF62F /* Dive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dive.swift; sourceTree = "<group>"; };
@@ -98,6 +112,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C7B15B22746362100E84986 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				1C7B15B32746365100E84986 /* SurfDisplayData.swift */,
+				1C7B15B5274636A300E84986 /* SurfForecast.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		1C7B15B92746375400E84986 /* Sub */ = {
+			isa = PBXGroup;
+			children = (
+				1C7B15BD27463A2A00E84986 /* SurfLabel.swift */,
+				1C7B15BF2746DBCB00E84986 /* SurfProgressView.swift */,
+			);
+			path = Sub;
+			sourceTree = "<group>";
+		};
+		1C7B15BA274637AB00E84986 /* Surf */ = {
+			isa = PBXGroup;
+			children = (
+				1C7B15BB274637BE00E84986 /* SurfView.swift */,
+				1C7B15C12746E34000E84986 /* SurfViewModel.swift */,
+			);
+			path = Surf;
+			sourceTree = "<group>";
+		};
 		1C9540882734DA9F005F3EFF /* APIModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,7 +170,9 @@
 		1CA78833273C4295002FF62F /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				1C7B15B92746375400E84986 /* Sub */,
 				1CBAFF3026C5EA1F00C97334 /* MapSearchCell.swift */,
+				1C7B15B72746373F00E84986 /* SurfPresentationCard.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -195,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				1CECCAF826BCB59100831FA3 /* Utilities */,
+				1CECCAF926BCB59800831FA3 /* Design */,
 				1CECCAEF26BC7B1900831FA3 /* Model */,
 				1CECCAEE26BC7B1000831FA3 /* View */,
 				1CECCADA26BC7AA400831FA3 /* AppDelegate.swift */,
@@ -210,6 +254,7 @@
 		1CECCAEE26BC7B1000831FA3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1C7B15BA274637AB00E84986 /* Surf */,
 				1CBAFF1D26C3583300C97334 /* Account */,
 				1CBAFF1C26C3582A00C97334 /* Dives */,
 				1CBAFF1B26C3582500C97334 /* Map */,
@@ -221,6 +266,7 @@
 		1CECCAEF26BC7B1900831FA3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1C7B15B22746362100E84986 /* Map */,
 				1CA78823273A243C002FF62F /* Dive */,
 				1C9540882734DA9F005F3EFF /* APIModels */,
 				1CEEC80C27438BCD00B5F885 /* DummyData.swift */,
@@ -233,7 +279,6 @@
 			children = (
 				1CEEC7D72742DA5100B5F885 /* Notifications */,
 				1CECCAFE26BCC30300831FA3 /* API */,
-				1CECCAF926BCB59800831FA3 /* Design */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -399,19 +444,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C7B15B42746365100E84986 /* SurfDisplayData.swift in Sources */,
 				1CEEC8142744B48800B5F885 /* DiveLogSegment.swift in Sources */,
 				1CBAFF2126C35FEA00C97334 /* DiveView.swift in Sources */,
 				1CECCADB26BC7AA400831FA3 /* AppDelegate.swift in Sources */,
+				1C7B15C02746DBCB00E84986 /* SurfProgressView.swift in Sources */,
 				1CECCB0626BCEAF600831FA3 /* MenuView.swift in Sources */,
 				1C95408A2734DADC005F3EFF /* APIModels.swift in Sources */,
 				1CA78827273A37C1002FF62F /* DiveLogView.swift in Sources */,
 				1CA7882B273B1104002FF62F /* DiveLogViewModel.swift in Sources */,
 				1CEEC810274498BC00B5F885 /* DiveLogPicker.swift in Sources */,
 				1CA78829273A4419002FF62F /* DiveLogCell.swift in Sources */,
+				1C7B15BE27463A2A00E84986 /* SurfLabel.swift in Sources */,
+				1C7B15B6274636A300E84986 /* SurfForecast.swift in Sources */,
 				1CA7882D273B117D002FF62F /* DiveViewModel.swift in Sources */,
 				1CEEC80B2743698900B5F885 /* DivePresentationCard.swift in Sources */,
 				1CECCAFB26BCB5A600831FA3 /* CustomColors.swift in Sources */,
 				1CBAFF2526C36FC800C97334 /* MapViewModel.swift in Sources */,
+				1C7B15B82746373F00E84986 /* SurfPresentationCard.swift in Sources */,
+				1C7B15C22746E34000E84986 /* SurfViewModel.swift in Sources */,
 				1CEEC8122744B1E900B5F885 /* DiveLogSlider.swift in Sources */,
 				1CEEC81A2744B7B800B5F885 /* DiveLogInputField.swift in Sources */,
 				1C9540872734DA95005F3EFF /* StationsAPI.swift in Sources */,
@@ -425,6 +476,7 @@
 				1CBAFF2326C3600600C97334 /* AccountView.swift in Sources */,
 				1CA78832273BB382002FF62F /* DiveLogFormCards.swift in Sources */,
 				1CBAFF3126C5EA1F00C97334 /* MapSearchCell.swift in Sources */,
+				1C7B15BC274637BE00E84986 /* SurfView.swift in Sources */,
 				1CBAFF2726C4445800C97334 /* MapSearchView.swift in Sources */,
 				1CEEC8182744B73900B5F885 /* DiveLogDatePicker.swift in Sources */,
 				1CEEC7D92742DA6E00B5F885 /* NotificationUtility.swift in Sources */,

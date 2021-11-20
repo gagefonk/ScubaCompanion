@@ -11,11 +11,10 @@ import MapKit
 class MapView: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
-    let mapSearchView = MapSearchView()
+    let mapSearchView: MapSearchView
     let mapVM = MapViewModel()
     let stationAPI = StationsAPI()
     let notificationUtility = NotificationUtility()
-    
     
     let mapView: MKMapView = {
         
@@ -26,7 +25,16 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         
         return map
     }()
-
+    
+    init() {
+        self.mapSearchView = MapSearchView(notificationUtility: notificationUtility)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -43,6 +51,7 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
         navigationItem.rightBarButtonItem?.tintColor = .systemPrimary
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "location"), style: .done, target: self, action: #selector(goToCurrentLocation))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(displaySurfData))
         navigationItem.leftBarButtonItem?.tintColor = .systemPrimary
     }
     
@@ -70,6 +79,11 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         return locationManager.authorizationStatus == .authorizedWhenInUse || locationManager.authorizationStatus == .authorizedAlways
     }
     
+    @objc private func displaySurfData() {
+        let surfView = SurfView()
+        navigationController?.pushViewController(surfView, animated: true)
+    }
+    
 //    @objc private func goToCurrentLocation() {
 //        if isLocationServicesEnabled() {
 //            guard let region = mapVM.getUserLocation(locationManager: locationManager) else { return }
@@ -84,9 +98,7 @@ class MapView: UIViewController, CLLocationManagerDelegate {
 //    }
     
     @objc func didTapSearch() {
-        
         present(UINavigationController(rootViewController: mapSearchView), animated: true, completion: nil)
-        
     }
 
 }

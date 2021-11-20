@@ -17,6 +17,7 @@ class MapSearchView: UIViewController, UISearchControllerDelegate {
     let searchController = UISearchController(searchResultsController: nil)
     let mapSearchVM = MapSearchViewModel()
     let searchCompleter = MKLocalSearchCompleter()
+    let notificationUtility: NotificationUtility
     weak var delegate: LocationFromSearchDelegate?
     
     let tableView: UITableView = {
@@ -25,6 +26,16 @@ class MapSearchView: UIViewController, UISearchControllerDelegate {
         
         return tableView
     }()
+    
+    init(notificationUtility: NotificationUtility){
+        self.notificationUtility = notificationUtility
+        super.init(nibName: nil, bundle: nil)
+        self.modalPresentationStyle = .popover
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,15 +47,13 @@ class MapSearchView: UIViewController, UISearchControllerDelegate {
         
         tableView.tableHeaderView = searchController.searchBar
         
+        searchController.searchBar.backgroundColor = .systemBackground
+        
         searchController.delegate = self
         searchController.searchResultsUpdater = self
-        searchController.searchBar.backgroundColor = UIColor(named: "darkBackground")
-        
         searchController.searchBar.delegate = self
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
         searchCompleter.delegate = self
         
     }
@@ -68,7 +77,10 @@ class MapSearchView: UIViewController, UISearchControllerDelegate {
 extension MapSearchView: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.searchTextField.text else { return }
-        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter(including: [MKPointOfInterestCategory.beach])
+//        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter(including: [MKPointOfInterestCategory.beach])
+//        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter.init(including: [.beach])
+        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter(including: [.beach])
+        searchCompleter.resultTypes = .pointOfInterest
         searchCompleter.queryFragment = searchText
     }
     
@@ -104,9 +116,9 @@ extension MapSearchView: UITableViewDelegate, UITableViewDataSource, MKLocalSear
             //clear search
             self.clearSearch()
             self.searchController.dismiss(animated: false) {
-                self.dismiss(animated: true) {
+                self.navigationController?.dismiss(animated: true, completion: {
                     self.delegate?.goToSearchedLocation(center: center)
-                }
+                })
             }
         }
     }
