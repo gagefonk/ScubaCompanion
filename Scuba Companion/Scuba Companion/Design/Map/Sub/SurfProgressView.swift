@@ -59,13 +59,16 @@ class SurfProgressView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         label.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        
+        //animate
+        animateProgress()
     }
     
     func animateProgress() {
         let progressValue = Double(value) / Double(maxValue)
         
         let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        circularProgressAnimation.duration = 1.0
+        circularProgressAnimation.duration = 1.5
         circularProgressAnimation.fromValue = 0
         circularProgressAnimation.toValue = progressValue
         circularProgressAnimation.fillMode = .forwards

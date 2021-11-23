@@ -24,37 +24,39 @@ class MapViewModel {
         return region
     }
     
-    func getClosestStation(chosenLocation: CLLocation, completion: @escaping (NotificationErrorType?)->Void) {
-        getListOfStations { err in
-            if err != nil {
+    func getClosestStation(chosenLocation: CLLocation, completion: @escaping (Error?)->Void) {
+        getListOfStations { [weak self] err in
+            guard let self = self, err == nil else {
                 completion(err)
-            } else {
-                //get closest station
-                var closestLocation = self.stationList[0]
-                for station in self.stationList {
-                    let distanceFromClosest = chosenLocation.distance(from: closestLocation.location)
-                    let distanceFromNext = chosenLocation.distance(from: station.location)
-                    closestLocation = distanceFromNext < distanceFromClosest ? station : closestLocation
-                }
-                print("The closest station to chosen location is: Name: \(closestLocation.name)\nID: \(closestLocation.id)\nLat: \(closestLocation.location.coordinate.latitude)\nLon:\(closestLocation.location.coordinate.longitude)")
-                completion(nil)
+                return
             }
+            //get closest station
+            var closestLocation = self.stationList[0]
+            for station in self.stationList {
+                let distanceFromClosest = chosenLocation.distance(from: closestLocation.location)
+                let distanceFromNext = chosenLocation.distance(from: station.location)
+                closestLocation = distanceFromNext < distanceFromClosest ? station : closestLocation
+            }
+            print("The closest station to chosen location is: Name: \(closestLocation.name)\nID: \(closestLocation.id)\nLat: \(closestLocation.location.coordinate.latitude)\nLon:\(closestLocation.location.coordinate.longitude)")
+            completion(nil)
         }
     }
     
-    private func getListOfStations(completion: @escaping (NotificationErrorType?)->Void) {
-        //get stations if empty
+    private func getListOfStations(completion: @escaping (APIError?) -> Void) {
         if stationList.isEmpty {
-            stationsAPI.getListOfStations { stations in
-                guard let stations = stations else {
-                    completion(.network)
+            stationsAPI.getListOfStations { [weak self] result in
+                guard let self = self else {
+                    completion(.data)
                     return
                 }
-                self.stationList = self.formatLocations(stations: stations)
-                completion(nil)
+                switch result {
+                case .success(let stations):
+                    self.stationList = self.formatLocations(stations: stations)
+                    completion(nil)
+                case .failure(let error):
+                    completion(error)
+                }
             }
-        } else {
-            completion(nil)
         }
     }
     

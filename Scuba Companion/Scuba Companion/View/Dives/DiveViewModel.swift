@@ -113,7 +113,7 @@ class DiveViewModel {
         }
     }
     
-    func createDiveLog(with addOrSave: AddSave, index: Int?, completion: (NotificationErrorType?)->Void) {
+    func createDiveLog(with addOrSave: AddSave, index: Int?, completion: (DiveError?)->Void) {
         let title: String = getUserInputValues(id: "title")
         let site: String = getUserInputValues(id: "site")
         let date: Date = getDateValue(id: "date")
@@ -147,7 +147,7 @@ class DiveViewModel {
         let diveCenter: String = getUserInputValues(id: "diveCenter")
         
         if isTitleBlank(title: title) {
-            let err: NotificationErrorType = .missingTitle
+            let err: DiveError = .title
             completion(err)
             return
         }

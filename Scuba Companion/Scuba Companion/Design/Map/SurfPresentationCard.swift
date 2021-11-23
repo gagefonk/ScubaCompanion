@@ -13,8 +13,9 @@ class SurfPresentationCard: UIView {
     let titleLabel: SurfLabel
     let subtitleLabel: SurfLabel
     let type: SurfCardType
+    var dateView: SurfLabel?
     var progressView: SurfProgressView?
-    let radius = UIScreen.main.bounds.width / 4
+    let radius = UIScreen.main.bounds.width / 8
     
     init(type: SurfCardType, title: String, subtitle: String, id: String) {
         self.type = type
@@ -25,6 +26,16 @@ class SurfPresentationCard: UIView {
         
         self.addSubview(titleLabel)
         self.addSubview(subtitleLabel)
+    }
+    
+    convenience init(type: SurfCardType, date: String, id: String) {
+        self.init(type: type, title: "", subtitle: "", id: date)
+        
+        dateView = SurfLabel(text: date, style: .title1, color: .systemPrimary)
+        
+        guard let dateView = dateView else { return }
+        
+        self.addSubview(dateView)
     }
     
     convenience init(type: SurfCardType, title: String, subtitle: String, maxValue: Int, value: Int, id: String) {
@@ -51,7 +62,7 @@ class SurfPresentationCard: UIView {
         let bottomPadding: CGFloat = -20
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: topPadding).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftPadding).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
         
@@ -72,6 +83,15 @@ class SurfPresentationCard: UIView {
             progressView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
             progressView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
             
+        case .date:
+            dateView?.textAlignment = .center
+            dateView?.translatesAutoresizingMaskIntoConstraints = false
+            dateView?.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+            dateView?.leftAnchor.constraint(equalTo: self.leftAnchor, constant: leftPadding).isActive = true
+            dateView?.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
+            dateView?.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
+        case .temp, .tide, .swell, .wind, .weather:
+            break
         }
         
         //bg design

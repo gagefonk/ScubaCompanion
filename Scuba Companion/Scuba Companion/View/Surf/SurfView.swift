@@ -34,22 +34,28 @@ class SurfView : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Surf Forecast"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.sizeToFit()
+        
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         for card in surfVM.surfCards {
             contentView.addSubview(card)
         }
-        
-        animateRings()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let leftPadding: CGFloat = 20
-        let rightPadding: CGFloat = -20
+        let leftPadding: CGFloat = 10
+        let leftHalfPadding: CGFloat = 5
+        let rightPadding: CGFloat = -10
+        let rightHalfPadding: CGFloat = -5
         let topPadding: CGFloat = 10
-        let bottomPadding: CGFloat = -20
+        let bottomPadding: CGFloat = -10
         
         //constrain scroll
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,22 +72,33 @@ class SurfView : UIViewController {
         
         for (index, card) in surfVM.surfCards.enumerated() {
             card.translatesAutoresizingMaskIntoConstraints = false
-            if index == 0 {
-                card.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-            } else {
-                card.topAnchor.constraint(equalTo: surfVM.surfCards[index - 1].bottomAnchor, constant: topPadding).isActive = true
-            }
-            if index == surfVM.surfCards.endIndex - 1 {
-                card.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: bottomPadding).isActive = true
-            }
-            card.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: leftPadding).isActive = true
-            card.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: rightPadding).isActive = true
-        }
-    }
+            switch card.type {
+            case .date:
+                card.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: topPadding).isActive = true
+                card.leftAnchor.constraint(equalTo: view.leftAnchor, constant: leftPadding).isActive = true
+                card.rightAnchor.constraint(equalTo: view.rightAnchor, constant: rightPadding).isActive = true
+            default:
+                if index == 0 || index == 1 {
+                    if surfVM.surfCards[0].type == .date{
+                        card.topAnchor.constraint(equalTo: surfVM.surfCards[0].bottomAnchor, constant: topPadding).isActive = true
+                    } else {
+                        card.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+                    }
+                } else {
+                    card.topAnchor.constraint(equalTo: surfVM.surfCards[index - 2].bottomAnchor, constant: topPadding).isActive = true
+                }
+                if index == surfVM.surfCards.endIndex - 1 {
+                    card.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: bottomPadding).isActive = true
+                }
     
-    func animateRings() {
-        for card in surfVM.surfCards {
-            card.progressView?.animateProgress()
+                if index % 2 != 0 {
+                    card.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: leftPadding).isActive = true
+                    card.rightAnchor.constraint(equalTo: contentView.centerXAnchor, constant: rightHalfPadding).isActive = true
+                } else {
+                    card.leftAnchor.constraint(equalTo: contentView.centerXAnchor, constant: leftHalfPadding).isActive = true
+                    card.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: rightPadding).isActive = true
+                }
+            }
         }
     }
     

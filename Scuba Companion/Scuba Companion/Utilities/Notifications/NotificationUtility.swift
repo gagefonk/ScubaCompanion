@@ -7,26 +7,10 @@
 
 import UIKit
 
-enum NotificationErrorType: Error {
-    case network, missingTitle
-}
-
 struct NotificationUtility {
     
-    func getAlert(messageType: NotificationErrorType) -> UIAlertController {
-        let title: String
-        let message: String
-        
-        switch messageType {
-        case .network:
-            title = "Network Error"
-            message = "Error with network call"
-        case .missingTitle:
-            title = "Missing Title"
-            message = "Please enter a dive title"
-        }
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    func getAlert(title: String, error: Error) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         
         return alert

@@ -7,6 +7,21 @@
 
 import UIKit
 
+enum DiveError: LocalizedError {
+    case title, add, save
+    
+    var errorDescription: String? {
+        switch self {
+        case .title:
+            return NSLocalizedString("Dive is missing the title.", comment: "")
+        case .add:
+            return NSLocalizedString("Unable to add dive.", comment: "")
+        case .save:
+            return NSLocalizedString("Unable to save dive.", comment: "")
+        }
+    }
+}
+
 class DiveView: UIViewController {
     
     let diveVM: DiveViewModel
@@ -77,25 +92,24 @@ class DiveView: UIViewController {
     }
     
     @objc private func addButtonClicked() {
-        diveVM.createDiveLog(with: .add, index: nil) { err in
-            if let err = err {
-                let alert = notificationUtility.getAlert(messageType: err)
-                self.present(alert, animated: true, completion: nil)
-            } else {
+        diveVM.createDiveLog(with: .add, index: nil) { [weak self] err in
+            guard let self = self, let err = err else {
                 navigationController?.popViewController(animated: true)
+                return
             }
+            let alert = notificationUtility.getAlert(title: "Add Error", error: err)
+            self.present(alert, animated: true, completion: nil)
         }
-        
     }
     
     @objc private func saveButtonClicked() {
-        diveVM.createDiveLog(with: .save, index: editingIndex) { err in
-            if let err = err {
-                let alert = notificationUtility.getAlert(messageType: err)
-                self.present(alert, animated: true, completion: nil)
-            } else {
+        diveVM.createDiveLog(with: .save, index: editingIndex) { [weak self] err in
+            guard let self = self, let err = err else {
                 navigationController?.popViewController(animated: true)
+                return
             }
+            let alert = notificationUtility.getAlert(title: "Save Error", error: err)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -120,13 +134,13 @@ class DiveView: UIViewController {
         if index == 0 {
             card.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         } else {
-            card.topAnchor.constraint(equalTo: diveVM.diveCards[index - 1].bottomAnchor, constant: 20).isActive = true
+            card.topAnchor.constraint(equalTo: diveVM.diveCards[index - 1].bottomAnchor, constant: 10).isActive = true
         }
         if index == diveVM.diveCards.endIndex - 1 {
-            card.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
+            card.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
         }
-        card.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
-        card.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
+        card.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
+        card.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
 
     }
     

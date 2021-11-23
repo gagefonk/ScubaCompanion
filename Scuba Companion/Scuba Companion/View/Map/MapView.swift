@@ -51,7 +51,7 @@ class MapView: UIViewController, CLLocationManagerDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTapSearch))
         navigationItem.rightBarButtonItem?.tintColor = .systemPrimary
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "location"), style: .done, target: self, action: #selector(goToCurrentLocation))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(displaySurfData))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(displaySurfData))
         navigationItem.leftBarButtonItem?.tintColor = .systemPrimary
     }
     
@@ -114,11 +114,10 @@ extension MapView: LocationFromSearchDelegate {
         mapView.setRegion(newRegion, animated: true)
 
         mapVM.getClosestStation(chosenLocation: chosenLocation) { err in
-            if err != nil {
-                DispatchQueue.main.async {
-                    let alert = self.notificationUtility.getAlert(messageType: err!)
-                    self.present(alert, animated: true, completion: nil)
-                }
+            guard let err = err else { return }
+            DispatchQueue.main.async {
+                let alert = self.notificationUtility.getAlert(title: "Location Error", error: err)
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

@@ -79,7 +79,7 @@ extension MapSearchView: UISearchResultsUpdating {
         guard let searchText = searchController.searchBar.searchTextField.text else { return }
 //        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter(including: [MKPointOfInterestCategory.beach])
 //        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter.init(including: [.beach])
-        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter(including: [.beach])
+//        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter(including: [.beach])
         searchCompleter.resultTypes = .pointOfInterest
         searchCompleter.queryFragment = searchText
     }
@@ -111,7 +111,8 @@ extension MapSearchView: UITableViewDelegate, UITableViewDataSource, MKLocalSear
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        mapSearchVM.performSearch(searchTerm: mapSearchVM.searchData[indexPath.row]) { foundItem in
+        mapSearchVM.performSearch(searchTerm: mapSearchVM.searchData[indexPath.row]) { [weak self] foundItem in
+            guard let self = self else { return }
             let center = foundItem.placemark.coordinate
             //clear search
             self.clearSearch()

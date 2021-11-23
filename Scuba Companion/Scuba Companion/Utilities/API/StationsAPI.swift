@@ -8,8 +8,23 @@
 import Foundation
 import CoreLocation
 
+enum APIError: LocalizedError {
+    case url, data, json
+    
+    var errorDescription: String? {
+        switch self {
+        case .url:
+            return NSLocalizedString("Failed to form URL", comment: "")
+        case .data:
+            return NSLocalizedString("Failed to retrieve data", comment: "")
+        case .json:
+            return NSLocalizedString("Failed to decode data", comment: "")
+        }
+    }
+}
 
-struct StationsAPI {
+
+class StationsAPI {
     
     private let baseStationsURL: String = {
         var plistDictionary: NSDictionary?
@@ -19,22 +34,24 @@ struct StationsAPI {
         return plistDictionary?["stationsBaseURL"] as! String
     }()
     
-    func getListOfStations(completion: @escaping ([Stations]?)->Void) {
-        let url = URL(string: baseStationsURL)
-        var request = URLRequest(url: url!)
-        request.timeoutInterval = 10.0
+    func getListOfStations(completion: @escaping ((Result<[Stations], APIError>) -> Void)){
+        guard let url = URL(string: baseStationsURL) else {
+            completion(.failure(.url))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.timeoutInterval = 10
         
-        URLSession.shared.dataTask(with: request) { data, res, err in
-            if err != nil {
-                completion(nil)
+        URLSession.shared.dataTask(with: request) { data, _, err in
+            guard let data = data, err == nil else {
+                completion(.failure(.data))
                 return
             }
-            guard let data = data else { return }
             do {
                 let json = try JSONDecoder().decode(Locations.self, from: data)
-                completion(json.locations)
-            } catch let error {
-                completion(nil)
+                completion(.success(json.locations))
+            } catch {
+                completion(.failure(.json))
             }
         }.resume()
     }
