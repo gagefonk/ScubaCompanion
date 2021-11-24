@@ -34,7 +34,7 @@ class StationsAPI {
         return plistDictionary?["stationsBaseURL"] as! String
     }()
     
-    func getListOfStations(completion: @escaping ((Result<[Stations], APIError>) -> Void)){
+    func getListOfStations(completion: @escaping ((Result<[BuoyStation], APIError>) -> Void)){
         guard let url = URL(string: baseStationsURL) else {
             completion(.failure(.url))
             return
@@ -45,14 +45,18 @@ class StationsAPI {
         URLSession.shared.dataTask(with: request) { data, _, err in
             guard let data = data, err == nil else {
                 completion(.failure(.data))
+                print("failed")
                 return
             }
             do {
-                let json = try JSONDecoder().decode(Locations.self, from: data)
-                completion(.success(json.locations))
+                print("decoding")
+                let json = try JSONDecoder().decode(Stations.self, from: data)
+                completion(.success(json.stations.station))
             } catch {
+                print("cant decode")
                 completion(.failure(.json))
             }
         }.resume()
     }
+    
 }

@@ -104,20 +104,22 @@ class MapView: UIViewController, CLLocationManagerDelegate {
 }
 
 extension MapView: LocationFromSearchDelegate {
-
-    func goToSearchedLocation(center: CLLocationCoordinate2D) {
-        
-        let chosenLocation = CLLocation(latitude: center.latitude, longitude: center.longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        let region = MKCoordinateRegion(center: center, span: span)
-        let newRegion = mapView.regionThatFits(region)
-        mapView.setRegion(newRegion, animated: true)
-
-        mapVM.getClosestStation(chosenLocation: chosenLocation) { err in
-            guard let err = err else { return }
+    func goToSearchedLocation(chosenLocation: CLLocation) {
+        mapVM.getClosestStation(chosenLocation: chosenLocation) { [weak self] result in
+            guard let self = self else { return }
             DispatchQueue.main.async {
-                let alert = self.notificationUtility.getAlert(title: "Location Error", error: err)
-                self.present(alert, animated: true, completion: nil)
+                switch result {
+                case .success(let buoyStation):
+                    guard let location = self.mapVM.formatLocations(buoyStation: buoyStation) else { return }
+                    let center = location.coordinate
+                    let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                    let region = MKCoordinateRegion(center: center, span: span)
+                    let fitRegion = self.mapView.regionThatFits(region)
+                    self.mapView.setRegion(fitRegion, animated: true)
+                case .failure(let error):
+                    let alert = self.notificationUtility.getAlert(title: "Location Error", error: error)
+                    self.present(alert, animated: true, completion: nil)
+            }
             }
         }
     }

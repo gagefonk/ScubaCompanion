@@ -11,7 +11,7 @@ import MapKit
 class MapViewModel {
     
     let stationsAPI = StationsAPI()
-    var stationList: [StationLocation] = []
+    var stationList: [BuoyStation] = []
     
     init() {
     }
@@ -24,21 +24,23 @@ class MapViewModel {
         return region
     }
     
-    func getClosestStation(chosenLocation: CLLocation, completion: @escaping (Error?)->Void) {
+    func getClosestStation(chosenLocation: CLLocation, completion: @escaping (Result<BuoyStation, APIError>)->Void) {
         getListOfStations { [weak self] err in
             guard let self = self, err == nil else {
-                completion(err)
+                completion(.failure(err!))
                 return
             }
             //get closest station
             var closestLocation = self.stationList[0]
             for station in self.stationList {
-                let distanceFromClosest = chosenLocation.distance(from: closestLocation.location)
-                let distanceFromNext = chosenLocation.distance(from: station.location)
+                guard let chosenLocationFormatted = self.formatLocations(buoyStation: closestLocation) else { return }
+                guard let nextLocationFormatted = self.formatLocations(buoyStation: station) else { return }
+                let distanceFromClosest = chosenLocation.distance(from: chosenLocationFormatted)
+                let distanceFromNext = chosenLocation.distance(from: nextLocationFormatted)
                 closestLocation = distanceFromNext < distanceFromClosest ? station : closestLocation
             }
-            print("The closest station to chosen location is: Name: \(closestLocation.name)\nID: \(closestLocation.id)\nLat: \(closestLocation.location.coordinate.latitude)\nLon:\(closestLocation.location.coordinate.longitude)")
-            completion(nil)
+            print("The closest station to chosen location is: ID: \(closestLocation.id)\nLat: \(closestLocation.lat)\nLon:\(closestLocation.lon)")
+            completion(.success(closestLocation))
         }
     }
     
@@ -50,26 +52,21 @@ class MapViewModel {
                     return
                 }
                 switch result {
-                case .success(let stations):
-                    self.stationList = self.formatLocations(stations: stations)
+                case .success(let buoyStations):
+                    self.stationList = buoyStations
                     completion(nil)
                 case .failure(let error):
                     completion(error)
                 }
             }
+        } else {
+            completion(nil)
         }
     }
     
-    private func formatLocations(stations: [Stations]) -> [StationLocation]{
-        
-        var stationLocations: [StationLocation] = []
-        for station in stations {
-            guard let lonString = station.lng, let latString = station.lat, let name = station.name, let id = station.stnid else { break }
-            guard let lon = Double(lonString), let lat = Double(latString) else { break }
-            let loc = CLLocation(latitude: lat, longitude: lon)
-            let stationLocation = StationLocation(name: name, id: id, location: loc)
-            stationLocations.append(stationLocation)
-        }
-        return stationLocations
+    func formatLocations(buoyStation: BuoyStation) -> CLLocation?{
+        guard let latString = buoyStation.lat, let lonString = buoyStation.lon else { return nil }
+        guard let lat = Double(latString), let lon = Double(lonString) else { return nil }
+        return CLLocation(latitude: lat, longitude: lon)
     }
 }

@@ -8,22 +8,16 @@
 import Foundation
 import CoreLocation
 
-//get list of stations from URL
-
-struct Locations: Codable {
-    let locations: [Stations]
-}
-
 struct Stations: Codable {
-    let stnid: String?
-    let name: String?
-    let state: String?
-    let lat: String?
-    let lng: String?
+    let stations: Station
 }
 
-struct StationLocation {
-    let name: String
-    let id: String
-    let location: CLLocation
+struct Station: Codable {
+    let station: [BuoyStation]
+}
+
+struct BuoyStation: Codable {
+    let id: String?
+    let lat: String?
+    let lon: String?
 }

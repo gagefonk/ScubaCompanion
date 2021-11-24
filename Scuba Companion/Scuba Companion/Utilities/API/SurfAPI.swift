@@ -25,33 +25,4 @@ struct SurfAPI {
         }
         return plistDictionary?["baseApiURL"] as! String
     }()
-    
-
-//    func getData() {
-//        let header: [String : String] = [
-//            "token" : token
-//        ]
-//        let url = URL(string: baseURL + "datacategories")
-//        var request = URLRequest(url: url!)
-//        request.allHTTPHeaderFields = header
-//        request.httpMethod = "get"
-//        
-//        URLSession.shared.dataTask(with: request) { data, response, error in
-//            guard let data = data else {
-//                print(error!)
-//                return
-//            }
-//            do {
-//                let decoder = JSONDecoder()
-//                let codeableData = try decoder.decode(DataCategories.self, from: data)
-//                codeableData.results.forEach { result in
-//                    print(result.name)
-//                }
-//            }
-//            catch let parsingError {
-//                print(parsingError)
-//            }
-//            
-//        }.resume()
-//    }
 }

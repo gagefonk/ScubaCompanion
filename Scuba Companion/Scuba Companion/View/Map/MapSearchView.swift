@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 protocol LocationFromSearchDelegate: AnyObject {
-    func goToSearchedLocation(center: CLLocationCoordinate2D)
+    func goToSearchedLocation(chosenLocation: CLLocation)
 }
 
 class MapSearchView: UIViewController, UISearchControllerDelegate {
@@ -77,10 +77,8 @@ class MapSearchView: UIViewController, UISearchControllerDelegate {
 extension MapSearchView: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.searchTextField.text else { return }
-//        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter(including: [MKPointOfInterestCategory.beach])
-//        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter.init(including: [.beach])
-//        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter(including: [.beach])
         searchCompleter.resultTypes = .pointOfInterest
+        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter.init(including: [.beach])
         searchCompleter.queryFragment = searchText
     }
     
@@ -113,12 +111,12 @@ extension MapSearchView: UITableViewDelegate, UITableViewDataSource, MKLocalSear
         tableView.deselectRow(at: indexPath, animated: true)
         mapSearchVM.performSearch(searchTerm: mapSearchVM.searchData[indexPath.row]) { [weak self] foundItem in
             guard let self = self else { return }
-            let center = foundItem.placemark.coordinate
+            guard let chosenLocation = foundItem.placemark.location else { return }
             //clear search
             self.clearSearch()
             self.searchController.dismiss(animated: false) {
                 self.navigationController?.dismiss(animated: true, completion: {
-                    self.delegate?.goToSearchedLocation(center: center)
+                    self.delegate?.goToSearchedLocation(chosenLocation: chosenLocation)
                 })
             }
         }
@@ -133,8 +131,6 @@ extension MapSearchView: UITableViewDelegate, UITableViewDataSource, MKLocalSear
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         print(error.localizedDescription)
     }
-    
-    
 }
 
     
