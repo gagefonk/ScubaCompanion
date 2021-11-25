@@ -22,9 +22,6 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 
-##GOOGLE PLIST FILE
-GoogleService-Info.plist
-
 ##API PLIST FILE
 api.plist
 

@@ -31,13 +31,11 @@
 		1CBAFF2926C457B900C97334 /* MapSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF2826C457B900C97334 /* MapSearchViewModel.swift */; };
 		1CBAFF3126C5EA1F00C97334 /* MapSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF3026C5EA1F00C97334 /* MapSearchCell.swift */; };
 		1CBAFF3326C820A500C97334 /* SurfAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBAFF3226C820A500C97334 /* SurfAPI.swift */; };
-		1CBAFF3926CE19F200C97334 /* api.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CBAFF3826CE19F200C97334 /* api.plist */; };
 		1CECCADB26BC7AA400831FA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCADA26BC7AA400831FA3 /* AppDelegate.swift */; };
 		1CECCADD26BC7AA400831FA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCADC26BC7AA400831FA3 /* SceneDelegate.swift */; };
 		1CECCAE426BC7AA700831FA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CECCAE326BC7AA700831FA3 /* Assets.xcassets */; };
 		1CECCAFB26BCB5A600831FA3 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCAFA26BCB5A600831FA3 /* CustomColors.swift */; };
 		1CECCB0626BCEAF600831FA3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CECCB0526BCEAF600831FA3 /* MenuView.swift */; };
-		1CECCB0F26C0D37E00831FA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */; };
 		1CEEC7D92742DA6E00B5F885 /* NotificationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC7D82742DA6E00B5F885 /* NotificationUtility.swift */; };
 		1CEEC7DB2742FE6B00B5F885 /* DivePresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC7DA2742FE6B00B5F885 /* DivePresentationView.swift */; };
 		1CEEC80B2743698900B5F885 /* DivePresentationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC80A2743698900B5F885 /* DivePresentationCard.swift */; };
@@ -48,6 +46,7 @@
 		1CEEC8162744B6A000B5F885 /* DiveLogLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8152744B6A000B5F885 /* DiveLogLabel.swift */; };
 		1CEEC8182744B73900B5F885 /* DiveLogDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8172744B73900B5F885 /* DiveLogDatePicker.swift */; };
 		1CEEC81A2744B7B800B5F885 /* DiveLogInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8192744B7B800B5F885 /* DiveLogInputField.swift */; };
+		4383124E274F1EDD00A11218 /* api.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4383124D274F1EDD00A11218 /* api.plist */; };
 		ABCA835C312F9BE1E43F9FC2 /* Pods_Scuba_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +75,6 @@
 		1CBAFF2826C457B900C97334 /* MapSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchViewModel.swift; sourceTree = "<group>"; };
 		1CBAFF3026C5EA1F00C97334 /* MapSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchCell.swift; sourceTree = "<group>"; };
 		1CBAFF3226C820A500C97334 /* SurfAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfAPI.swift; sourceTree = "<group>"; };
-		1CBAFF3826CE19F200C97334 /* api.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = api.plist; sourceTree = "<group>"; };
 		1CECCAD726BC7AA400831FA3 /* Scuba Companion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scuba Companion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CECCADA26BC7AA400831FA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CECCADC26BC7AA400831FA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 		1CECCAE826BC7AA700831FA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CECCAFA26BCB5A600831FA3 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		1CECCB0526BCEAF600831FA3 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1CEEC7D82742DA6E00B5F885 /* NotificationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtility.swift; sourceTree = "<group>"; };
 		1CEEC7DA2742FE6B00B5F885 /* DivePresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivePresentationView.swift; sourceTree = "<group>"; };
 		1CEEC80A2743698900B5F885 /* DivePresentationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivePresentationCard.swift; sourceTree = "<group>"; };
@@ -95,6 +92,7 @@
 		1CEEC8152744B6A000B5F885 /* DiveLogLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogLabel.swift; sourceTree = "<group>"; };
 		1CEEC8172744B73900B5F885 /* DiveLogDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogDatePicker.swift; sourceTree = "<group>"; };
 		1CEEC8192744B7B800B5F885 /* DiveLogInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogInputField.swift; sourceTree = "<group>"; };
+		4383124D274F1EDD00A11218 /* api.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = api.plist; sourceTree = "<group>"; };
 		6D052D10AD47CE926D5F3A1E /* Pods-Scuba Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.release.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.release.xcconfig"; sourceTree = "<group>"; };
 		8DB4920BA6FF95944A6C2EDD /* Pods-Scuba Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.debug.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.debug.xcconfig"; sourceTree = "<group>"; };
 		CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scuba_Companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,8 +243,7 @@
 				1CECCADC26BC7AA400831FA3 /* SceneDelegate.swift */,
 				1CECCAE326BC7AA700831FA3 /* Assets.xcassets */,
 				1CECCAE826BC7AA700831FA3 /* Info.plist */,
-				1CECCB0E26C0D37E00831FA3 /* GoogleService-Info.plist */,
-				1CBAFF3826CE19F200C97334 /* api.plist */,
+				4383124D274F1EDD00A11218 /* api.plist */,
 			);
 			path = "Scuba Companion";
 			sourceTree = "<group>";
@@ -407,8 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CECCAE426BC7AA700831FA3 /* Assets.xcassets in Resources */,
-				1CBAFF3926CE19F200C97334 /* api.plist in Resources */,
-				1CECCB0F26C0D37E00831FA3 /* GoogleService-Info.plist in Resources */,
+				4383124E274F1EDD00A11218 /* api.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
