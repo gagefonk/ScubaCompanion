@@ -23,7 +23,7 @@ You can view the dive information on this screen.
 
 You can add and edit new dives.
 
-![](https://user-images.githubusercontent.com/20136457/145277189-ec9e31db-8f28-4534-8d89-ce407227d213.mov)
+https://user-images.githubusercontent.com/20136457/145277189-ec9e31db-8f28-4534-8d89-ce407227d213.mov
 
 
 
