@@ -9,4 +9,4 @@ An app to record dives and get relevenat surf forecast information to plan dives
 
 You can see all of your dives here
 
-![Dive Preview](https://user-images.githubusercontent.com/20136457/145270780-f6291804-e11a-4ceb-953b-75791cc0c323.png)
+![Dive Preview](https://user-images.githubusercontent.com/20136457/145272717-addb5475-b9bf-4012-9a82-2acbe660f85a.png)
