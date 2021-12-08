@@ -7,12 +7,22 @@ An app to record dives and get relevenat surf forecast information to plan dives
 ---
 ## Dive Log View
 
-You can see all of your dives here
+You can see all of your dives here.
 
 ![Dive Log Preview](https://user-images.githubusercontent.com/20136457/145272930-ae2e7ec9-4e6f-43b1-948d-bd717f7044b7.png)
 
+---
 ## Dive View
 
-You can view the dive information on this screen
+You can view the dive information on this screen.
 
 ![Dive Preview](https://user-images.githubusercontent.com/20136457/145273274-a4679d55-fbfe-4016-9f5b-120ba39e69d2.png)
+
+---
+## Dive Add/Edit
+
+You can add and edit new dives.
+
+![Dive Add/Edit] https://user-images.githubusercontent.com/20136457/145275311-52fb57a9-7fa2-434d-af2e-c55816d5ec98.mp4
+
+---
