@@ -9,21 +9,21 @@ An app to record dives and get relevenat surf forecast information to plan dives
 
 You can see all of your dives here.
 
-![Dive Log Preview](https://github.com/gagefonk/ScubaCompanion/blob/master/ReadMeFiles/DiveLogView.png)
+![Dive Log Preview](/ReadMeFiles/DiveLogView.png)
 
 ---
 ## Dive View
 
 You can view the dive information on this screen.
 
-![Dive Preview](https://github.com/gagefonk/ScubaCompanion/blob/master/ReadMeFiles/DiveView.png)
+![Dive Preview](/ReadMeFiles/DiveView.png)
 
 ---
 ## Dive Add/Edit
 
 You can add and edit new dives.
 
-<img src="/ReadMeFiles/newDive.gif" width="250" height="250"/>
+<img src="/ReadMeFiles/newDive.gif" width="250"/>
 
 ![Add Dive](https://github.com/gagefonk/ScubaCompanion/blob/master/ReadMeFiles/newDive.gif) | ![Edit Dive](https://github.com/gagefonk/ScubaCompanion/blob/master/ReadMeFiles/EditDive.gif)
 
