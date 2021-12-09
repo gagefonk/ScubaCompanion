@@ -21,9 +21,11 @@ You can view the dive information on this screen.
 ---
 ## Dive Add/Edit
 
-You can add and edit new dives.
+You can add and edit dives.
 
-<img src="/ReadMeFiles/newDive.gif" width="348"/> | <img src="/ReadMeFiles/EditDive.gif" width="348"/>
+<img src="/ReadMeFiles/newDive.gif" width="348"/>
+
+<img src="/ReadMeFiles/EditDive.gif" width="348"/>
 
 ---
 ## Search Locations
