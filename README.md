@@ -23,7 +23,7 @@ You can view the dive information on this screen.
 
 You can add and edit new dives.
 
-<img src="/ReadMeFiles/newDive.gif" width="250"/>
+<img src="/ReadMeFiles/newDive.gif" width="348"/> | <img src="/ReadMeFiles/EditDive.gif" width="348"/>
 
 ![Add Dive](https://github.com/gagefonk/ScubaCompanion/blob/master/ReadMeFiles/newDive.gif) | ![Edit Dive](https://github.com/gagefonk/ScubaCompanion/blob/master/ReadMeFiles/EditDive.gif)
 
