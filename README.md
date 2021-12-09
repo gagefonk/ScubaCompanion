@@ -30,6 +30,6 @@ You can add and edit dives.
 ---
 ## Search Locations
 
-Search for locations to grab nearest bouy and surf information.
+Search for locations to grab nearest buoy and surf information.
 
 <img src="/ReadMeFiles/LocationSearch.gif" width="348"/>
