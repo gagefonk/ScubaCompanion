@@ -6,22 +6,6 @@
 //
 
 import Foundation
-import CoreLocation
-
-enum APIError: LocalizedError {
-    case url, data, json
-    
-    var errorDescription: String? {
-        switch self {
-        case .url:
-            return NSLocalizedString("Failed to form URL", comment: "")
-        case .data:
-            return NSLocalizedString("Failed to retrieve data", comment: "")
-        case .json:
-            return NSLocalizedString("Failed to decode data", comment: "")
-        }
-    }
-}
 
 
 class StationsAPI {
@@ -40,7 +24,7 @@ class StationsAPI {
             return
         }
         var request = URLRequest(url: url)
-        request.timeoutInterval = 10
+        request.timeoutInterval = 10.0
         
         URLSession.shared.dataTask(with: request) { data, _, err in
             guard let data = data, err == nil else {

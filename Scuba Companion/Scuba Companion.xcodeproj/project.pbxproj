@@ -46,6 +46,7 @@
 		1CEEC8162744B6A000B5F885 /* DiveLogLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8152744B6A000B5F885 /* DiveLogLabel.swift */; };
 		1CEEC8182744B73900B5F885 /* DiveLogDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8172744B73900B5F885 /* DiveLogDatePicker.swift */; };
 		1CEEC81A2744B7B800B5F885 /* DiveLogInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8192744B7B800B5F885 /* DiveLogInputField.swift */; };
+		4357B00E275DDFDF00250AAA /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4357B00D275DDFDF00250AAA /* WeatherAPI.swift */; };
 		4383124E274F1EDD00A11218 /* api.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4383124D274F1EDD00A11218 /* api.plist */; };
 		ABCA835C312F9BE1E43F9FC2 /* Pods_Scuba_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 		1CEEC8152744B6A000B5F885 /* DiveLogLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogLabel.swift; sourceTree = "<group>"; };
 		1CEEC8172744B73900B5F885 /* DiveLogDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogDatePicker.swift; sourceTree = "<group>"; };
 		1CEEC8192744B7B800B5F885 /* DiveLogInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogInputField.swift; sourceTree = "<group>"; };
+		4357B00D275DDFDF00250AAA /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		4383124D274F1EDD00A11218 /* api.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = api.plist; sourceTree = "<group>"; };
 		6D052D10AD47CE926D5F3A1E /* Pods-Scuba Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.release.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.release.xcconfig"; sourceTree = "<group>"; };
 		8DB4920BA6FF95944A6C2EDD /* Pods-Scuba Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.debug.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.debug.xcconfig"; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 			children = (
 				1CBAFF3226C820A500C97334 /* SurfAPI.swift */,
 				1C9540862734DA95005F3EFF /* StationsAPI.swift */,
+				4357B00D275DDFDF00250AAA /* WeatherAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				1CBAFF2726C4445800C97334 /* MapSearchView.swift in Sources */,
 				1CEEC8182744B73900B5F885 /* DiveLogDatePicker.swift in Sources */,
 				1CEEC7D92742DA6E00B5F885 /* NotificationUtility.swift in Sources */,
+				4357B00E275DDFDF00250AAA /* WeatherAPI.swift in Sources */,
 				1CEEC80D27438BCD00B5F885 /* DummyData.swift in Sources */,
 				1CEEC7DB2742FE6B00B5F885 /* DivePresentationView.swift in Sources */,
 			);

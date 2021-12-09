@@ -57,7 +57,7 @@ class SurfView : UIViewController {
         let topPadding: CGFloat = 10
         let bottomPadding: CGFloat = -10
         
-        //constrain scroll
+        //constrain scroll view
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
