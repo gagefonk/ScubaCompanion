@@ -39,7 +39,6 @@
 		1CEEC7D92742DA6E00B5F885 /* NotificationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC7D82742DA6E00B5F885 /* NotificationUtility.swift */; };
 		1CEEC7DB2742FE6B00B5F885 /* DivePresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC7DA2742FE6B00B5F885 /* DivePresentationView.swift */; };
 		1CEEC80B2743698900B5F885 /* DivePresentationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC80A2743698900B5F885 /* DivePresentationCard.swift */; };
-		1CEEC80D27438BCD00B5F885 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC80C27438BCD00B5F885 /* DummyData.swift */; };
 		1CEEC810274498BC00B5F885 /* DiveLogPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC80F274498BB00B5F885 /* DiveLogPicker.swift */; };
 		1CEEC8122744B1E900B5F885 /* DiveLogSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8112744B1E900B5F885 /* DiveLogSlider.swift */; };
 		1CEEC8142744B48800B5F885 /* DiveLogSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8132744B48800B5F885 /* DiveLogSegment.swift */; };
@@ -47,6 +46,7 @@
 		1CEEC8182744B73900B5F885 /* DiveLogDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8172744B73900B5F885 /* DiveLogDatePicker.swift */; };
 		1CEEC81A2744B7B800B5F885 /* DiveLogInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEEC8192744B7B800B5F885 /* DiveLogInputField.swift */; };
 		4357B00E275DDFDF00250AAA /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4357B00D275DDFDF00250AAA /* WeatherAPI.swift */; };
+		4357B0142762B9D100250AAA /* DiveModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4357B0122762B9D100250AAA /* DiveModel.xcdatamodeld */; };
 		4383124E274F1EDD00A11218 /* api.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4383124D274F1EDD00A11218 /* api.plist */; };
 		ABCA835C312F9BE1E43F9FC2 /* Pods_Scuba_Companion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */; };
 /* End PBXBuildFile section */
@@ -86,7 +86,6 @@
 		1CEEC7D82742DA6E00B5F885 /* NotificationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtility.swift; sourceTree = "<group>"; };
 		1CEEC7DA2742FE6B00B5F885 /* DivePresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivePresentationView.swift; sourceTree = "<group>"; };
 		1CEEC80A2743698900B5F885 /* DivePresentationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivePresentationCard.swift; sourceTree = "<group>"; };
-		1CEEC80C27438BCD00B5F885 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 		1CEEC80F274498BB00B5F885 /* DiveLogPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogPicker.swift; sourceTree = "<group>"; };
 		1CEEC8112744B1E900B5F885 /* DiveLogSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogSlider.swift; sourceTree = "<group>"; };
 		1CEEC8132744B48800B5F885 /* DiveLogSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogSegment.swift; sourceTree = "<group>"; };
@@ -94,7 +93,9 @@
 		1CEEC8172744B73900B5F885 /* DiveLogDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogDatePicker.swift; sourceTree = "<group>"; };
 		1CEEC8192744B7B800B5F885 /* DiveLogInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogInputField.swift; sourceTree = "<group>"; };
 		4357B00D275DDFDF00250AAA /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
+		4357B0132762B9D100250AAA /* DiveModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DiveModel.xcdatamodel; sourceTree = "<group>"; };
 		4383124D274F1EDD00A11218 /* api.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = api.plist; sourceTree = "<group>"; };
+		43B8DDA92763F3CB002BC2C5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6D052D10AD47CE926D5F3A1E /* Pods-Scuba Companion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.release.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.release.xcconfig"; sourceTree = "<group>"; };
 		8DB4920BA6FF95944A6C2EDD /* Pods-Scuba Companion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Scuba Companion.debug.xcconfig"; path = "Target Support Files/Pods-Scuba Companion/Pods-Scuba Companion.debug.xcconfig"; sourceTree = "<group>"; };
 		CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Scuba_Companion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +153,7 @@
 			children = (
 				1CA78824273A245A002FF62F /* Dive.swift */,
 				1CA78835273CB8D6002FF62F /* DiveLogForms.swift */,
+				4357B0122762B9D100250AAA /* DiveModel.xcdatamodeld */,
 			);
 			path = Dive;
 			sourceTree = "<group>";
@@ -268,7 +270,6 @@
 				1C7B15B22746362100E84986 /* Map */,
 				1CA78823273A243C002FF62F /* Dive */,
 				1C9540882734DA9F005F3EFF /* APIModels */,
-				1CEEC80C27438BCD00B5F885 /* DummyData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -343,6 +344,7 @@
 		6BE762D99E7C436D2A96E289 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				43B8DDA92763F3CB002BC2C5 /* CoreData.framework */,
 				CAE1CA7931747170D1F0980F /* Pods_Scuba_Companion.framework */,
 			);
 			name = Frameworks;
@@ -450,6 +452,7 @@
 				1C7B15C02746DBCB00E84986 /* SurfProgressView.swift in Sources */,
 				1CECCB0626BCEAF600831FA3 /* MenuView.swift in Sources */,
 				1C95408A2734DADC005F3EFF /* APIModels.swift in Sources */,
+				4357B0142762B9D100250AAA /* DiveModel.xcdatamodeld in Sources */,
 				1CA78827273A37C1002FF62F /* DiveLogView.swift in Sources */,
 				1CA7882B273B1104002FF62F /* DiveLogViewModel.swift in Sources */,
 				1CEEC810274498BC00B5F885 /* DiveLogPicker.swift in Sources */,
@@ -480,7 +483,6 @@
 				1CEEC8182744B73900B5F885 /* DiveLogDatePicker.swift in Sources */,
 				1CEEC7D92742DA6E00B5F885 /* NotificationUtility.swift in Sources */,
 				4357B00E275DDFDF00250AAA /* WeatherAPI.swift in Sources */,
-				1CEEC80D27438BCD00B5F885 /* DummyData.swift in Sources */,
 				1CEEC7DB2742FE6B00B5F885 /* DivePresentationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -668,6 +670,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4357B0122762B9D100250AAA /* DiveModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4357B0132762B9D100250AAA /* DiveModel.xcdatamodel */,
+			);
+			currentVersion = 4357B0132762B9D100250AAA /* DiveModel.xcdatamodel */;
+			path = DiveModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1CECCACF26BC7AA400831FA3 /* Project object */;
 }

@@ -5,28 +5,31 @@
 //  Created by Gage Fonk on 11/9/21.
 //
 
-import Foundation
+import UIKit
+import CoreData
 
 protocol DiveLogViewModelDelegate: AnyObject {
     func reloadTableData()
 }
 
 class DiveLogViewModel {
-    var dives: [Dive] = []
+    var dives: [DiveModel] = []
     weak var delegate: DiveLogViewModelDelegate?
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     init() {
-        dives = DummyData().dives
+        fetchFromCoreData()
     }
     
-    func addDive(dive: Dive) {
+    func addDive(dive: DiveModel) {
         dives.append(dive)
+        savePersistentData()
         delegate?.reloadTableData()
     }
     
-    func saveDive(dive: Dive, index: Int) {
-        dives.remove(at: index)
-        dives.insert(dive, at: index)
+    func saveDive(dive: DiveModel, index: Int) {
+        dives[index] = dive
+        savePersistentData()
         delegate?.reloadTableData()
     }
     
@@ -35,6 +38,27 @@ class DiveLogViewModel {
         dateFormatter.dateFormat = "MMM d, yyyy"
         
         return dateFormatter.string(from: date)
+    }
+    
+    private func fetchFromCoreData() {
+        do {
+            dives = try context.fetch(DiveModel.fetchRequest())
+        } catch let error{
+            print(error)
+        }
+    }
+    
+    func removePersistentData(at index: Int) {
+        context.delete(dives[index])
+        savePersistentData()
+    }
+    
+    func savePersistentData() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving: \(error)")
+        }
     }
     
 }

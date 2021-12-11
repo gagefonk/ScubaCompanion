@@ -5,7 +5,6 @@
 //  Created by Gage Fonk on 11/9/21.
 //
 
-import Foundation
 import UIKit
 
 enum AddSave {
@@ -39,9 +38,9 @@ class DiveViewModel {
             case "site":
                 card.inputField?.text = dive.site
             case "date":
-                card.datePicker?.date = dive.date
+                card.datePicker?.date = dive.date!
             case "diveType":
-                card.segmentControl?.getIndexFromInputType(dive: dive)
+                card.segmentControl?.setSegmentIndex(dive: dive)
             case "maxDepth":
                 card.slider?.setValue(dive.maxDepth, animated: true)
                 card.sliderLabel?.text = String(card.slider?.value ?? 0)
@@ -49,11 +48,11 @@ class DiveViewModel {
                 card.slider?.setValue(dive.diveLength, animated: true)
                 card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "waterType":
-                card.segmentControl?.getIndexFromInputType(dive: dive)
+                card.segmentControl?.setSegmentIndex(dive: dive)
             case "waterBody":
-                card.segmentControl?.getIndexFromInputType(dive: dive)
+                card.segmentControl?.setSegmentIndex(dive: dive)
             case "weather":
-                card.segmentControl?.getIndexFromInputType(dive: dive)
+                card.segmentControl?.setSegmentIndex(dive: dive)
             case "airTemp":
                 card.slider?.setValue(dive.airTemp, animated: true)
                 card.sliderLabel?.text = String(card.slider?.value ?? 0)
@@ -64,23 +63,23 @@ class DiveViewModel {
                 card.slider?.setValue(dive.bottomTemp, animated: true)
                 card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "visibility":
-                card.segmentControl?.getIndexFromInputType(dive: dive)
+                card.segmentControl?.setSegmentIndex(dive: dive)
             case "visibilityDistance":
                 card.slider?.setValue(dive.visibilityInMeters, animated: true)
                 card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "wave":
-                card.segmentControl?.getIndexFromInputType(dive: dive)
+                card.segmentControl?.setSegmentIndex(dive: dive)
             case "current":
-                card.segmentControl?.getIndexFromInputType(dive: dive)
+                card.segmentControl?.setSegmentIndex(dive: dive)
             case "surge":
-                card.segmentControl?.getIndexFromInputType(dive: dive)
+                card.segmentControl?.setSegmentIndex(dive: dive)
             case "suitType":
                 card.optionPicker?.setPickerValue(dive: dive)
             case "weight":
                 card.slider?.setValue(dive.weight, animated: true)
                 card.sliderLabel?.text = String(card.slider?.value ?? 0)
             case "tankType":
-                card.segmentControl?.getIndexFromInputType(dive: dive)
+                card.segmentControl?.setSegmentIndex(dive: dive)
             case "tankUnits":
                 card.slider?.setValue(dive.tankSize, animated: true)
                 card.sliderLabel?.text = String(card.slider?.value ?? 0)
@@ -117,25 +116,25 @@ class DiveViewModel {
         let title: String = getUserInputValues(id: "title")
         let site: String = getUserInputValues(id: "site")
         let date: Date = getDateValue(id: "date")
-        let diveType: DiveType = getSegmentSelection(id: "diveType") as! DiveType
+        let diveType: Int = getSegmentSelection(id: "diveType")
         let maxDepth: Float = getSliderValue(id: "maxDepth")
         let diveLength: Float = getSliderValue(id: "bottomTime")
-        let waterType: WaterType = getSegmentSelection(id: "waterType") as! WaterType
-        let waterBody: WaterBody = getSegmentSelection(id: "waterBody") as! WaterBody
-        let diveWeather: DiveWeather = getSegmentSelection(id: "weather") as! DiveWeather
+        let waterType: Int = getSegmentSelection(id: "waterType")
+        let waterBody: Int = getSegmentSelection(id: "waterBody")
+        let diveWeather: Int = getSegmentSelection(id: "weather")
         let airTemp: Float = getSliderValue(id: "airTemp")
         let surfaceTemp: Float = getSliderValue(id: "surfaceTemp")
         let bottomTemp: Float = getSliderValue(id: "bottomTemp")
-        let visibility: DiveVisibility = getSegmentSelection(id: "visibility") as! DiveVisibility
+        let visibility: Int = getSegmentSelection(id: "visibility")
         let visibilityInMeters: Float = getSliderValue(id: "visibilityDistance")
-        let waves: Waves = getSegmentSelection(id: "wave") as! Waves
-        let current: Current = getSegmentSelection(id: "current") as! Current
-        let surge: Surge = getSegmentSelection(id: "surge") as! Surge
-        let suitType: SuitType = getPickerOption(id: "suitType") as! SuitType
+        let waves: Int = getSegmentSelection(id: "wave")
+        let current: Int = getSegmentSelection(id: "current")
+        let surge: Int = getSegmentSelection(id: "surge")
+        let suitType: Int = getPickerOption(id: "suitType")
         let weight: Float = getSliderValue(id: "weight")
-        let tankType: TankType = getSegmentSelection(id: "tankType") as! TankType
+        let tankType: Int = getSegmentSelection(id: "tankType")
         let tankSize: Float = getSliderValue(id: "tankUnits")
-        let gasMixture: GasMixture = getPickerOption(id: "gas") as! GasMixture
+        let gasMixture: Int = getPickerOption(id: "gas")
         let oxygen: Float = getSliderValue(id: "oxygen")
         let nitrogen: Float = getSliderValue(id: "nitrogen")
         let helium: Float = getSliderValue(id: "helium")
@@ -152,7 +151,39 @@ class DiveViewModel {
             return
         }
         
-        let dive = Dive(title: title, site: site, date: date, diveType: diveType, maxDepth: maxDepth, diveLength: diveLength, waterType: waterType, waterBody: waterBody, diveWeather: diveWeather, airTemp: airTemp, surfaceTemp: surfaceTemp, bottomTemp: bottomTemp, visibility: visibility, visibilityInMeters: visibilityInMeters, waves: waves, current: current, surge: surge, suitType: suitType, weight: weight, tankType: tankType, tankSize: tankSize, gasMixture: gasMixture, oxygen: oxygen, nitrogen: nitrogen, helium: helium, startPressure: startPressure, endPressure: endPressure, amountUsed: amountUsed, note: note, diveBuddy: diveBuddy, diveCenter: diveCenter)
+        let dive = DiveModel(context: diveLogVM.context)
+        //add dive info
+        dive.title = title
+        dive.site = site
+        dive.date = date
+        dive.diveType = Int64(diveType)
+        dive.maxDepth = maxDepth
+        dive.diveLength = diveLength
+        dive.waterType = Int64(waterType)
+        dive.waterBody = Int64(waterBody)
+        dive.diveWeather = Int64(diveWeather)
+        dive.airTemp = airTemp
+        dive.surfaceTemp = surfaceTemp
+        dive.bottomTemp = bottomTemp
+        dive.visibility = Int64(visibility)
+        dive.visibilityInMeters = visibilityInMeters
+        dive.waves = Int64(waves)
+        dive.current = Int64(current)
+        dive.surge = Int64(surge)
+        dive.suitType = Int64(suitType)
+        dive.weight = weight
+        dive.tankType = Int64(tankType)
+        dive.tankSize = tankSize
+        dive.gasMixture = Int64(gasMixture)
+        dive.oxygen = oxygen
+        dive.nitrogen = nitrogen
+        dive.helium = helium
+        dive.startPressure = startPressure
+        dive.endPressure = endPressure
+        dive.amountUsed = amountUsed
+        dive.note = note
+        dive.diveBuddy = diveBuddy
+        dive.diveCenter = diveCenter
         
         switch addOrSave {
         case .add:
@@ -184,25 +215,19 @@ class DiveViewModel {
         return card.datePicker?.date ?? Date()
     }
     
-    private func getSegmentSelection(id: String) -> Any {
+    private func getSegmentSelection(id: String) -> Int {
         guard let card = diveCards.first(where: {$0.id == id}) else { return 0}
-        return card.segmentControl?.getSelectedSegment()
+        return card.segmentControl?.selectedSegmentIndex ?? 0
     }
     
-    private func getPickerOption(id: String) -> Any {
+    private func getPickerOption(id: String) -> Int {
         guard let card = diveCards.first(where: {$0.id == id}) else { return 0}
-        return card.optionPicker?.getValue()
+        return card.optionPicker?.getValue() ?? 0
     }
     
     private func getAmountUsed(start: Float, end: Float) -> Float {
         return start - end
     }
-    
-    private func getCurrentDiveDate(dive: Dive?) -> Date {
-        return dive?.date ?? Date()
-    }
-    
-    
     
     private func isTitleBlank(title: String) -> Bool {
         return title == ""

@@ -110,40 +110,40 @@ class DivePresentationView: UIViewController {
     
     func updateView() {
         let dive = diveLogVM.dives[diveIndex]
-        let date = diveLogVM.getFormattedDate(date: dive.date)
+        let date = diveLogVM.getFormattedDate(date: dive.date!)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             //set title
             self.title = dive.title
             //main card
-            self.mainCard.siteLabel.text = "Site: \(dive.site)"
+            self.mainCard.siteLabel.text = "Site: \(dive.site ?? "")"
             self.mainCard.dateLabel.text = "\(date)"
             //water card
-            self.waterCard.diveTypeLabel.text = "Type: \(dive.diveType.rawValue)"
-            self.waterCard.waterTypeLabel.text = "Water: \(dive.waterType.rawValue)"
+            self.waterCard.diveTypeLabel.text = "Type: \(self.getDisplayStringForType(type: .diveType, dive: dive))"
+            self.waterCard.waterTypeLabel.text = "Water: \(self.getDisplayStringForType(type: .waterType, dive: dive))"
             self.waterCard.maxDepthLabel.text = "Max: \(dive.maxDepth) ft"
-            self.waterCard.waterBodyLabel.text = "Body: \(dive.waterBody.rawValue)"
+            self.waterCard.waterBodyLabel.text = "Body: \(self.getDisplayStringForType(type: .waterBody, dive: dive))"
             self.waterCard.bottomTimeLabel.text = "Length: \(dive.diveLength) min"
-            self.waterCard.visLabel.text = "Vis Type: \(dive.visibility.rawValue)"
+            self.waterCard.visLabel.text = "Vis Type: \(dive.visibility)"
             self.waterCard.visInMLabel.text = "Vis: \(dive.visibilityInMeters) ft"
-            self.waterCard.waveLabel.text = "Waves: \(dive.waves.rawValue)"
-            self.waterCard.currentLabel.text = "Current: \(dive.current.rawValue)"
-            self.waterCard.surgeLabel.text = "Surge: \(dive.surge.rawValue)"
+            self.waterCard.waveLabel.text = "Waves: \(self.getDisplayStringForType(type: .waves, dive: dive))"
+            self.waterCard.currentLabel.text = "Current: \(self.getDisplayStringForType(type: .current, dive: dive))"
+            self.waterCard.surgeLabel.text = "Surge: \(self.getDisplayStringForType(type: .surge, dive: dive))"
             
             //weather card
-            self.weatherCard.weatherLabel.text = "Weather: \(dive.diveWeather.rawValue)"
+            self.weatherCard.weatherLabel.text = "Weather: \(self.getDisplayStringForType(type: .diveWeather, dive: dive))"
             self.weatherCard.airTempLabel.text = "Air: \(dive.airTemp) F"
             self.weatherCard.surfaceTempLabel.text = "Surface: \(dive.surfaceTemp) F"
             self.weatherCard.bottomTempLabel.text = "Bottom: \(dive.bottomTemp) F"
             
             //gear card
-            self.gearCard.suitLabel.text = "Suit Type: \(dive.suitType.rawValue)"
+            self.gearCard.suitLabel.text = "Suit Type: \(self.getDisplayStringForType(type: .suitType, dive: dive))"
             self.gearCard.weightLabel.text = "Weight: \(dive.weight) lbs"
-            self.gearCard.tankTypeLabel.text = "Tank: \(dive.tankType.rawValue)"
+            self.gearCard.tankTypeLabel.text = "Tank: \(self.getDisplayStringForType(type: .tankType, dive: dive))"
             self.gearCard.tankSizeLabel.text = "Tank Size: \(dive.tankSize) L"
             
             //gas card
-            self.gasCard.gasLabel.text = "Gas: \(dive.gasMixture.rawValue)"
+            self.gasCard.gasLabel.text = "Gas: \(self.getDisplayStringForType(type: .gasMixture, dive: dive))"
             self.gasCard.oxygenLabel.text = "Oxygen: \(dive.oxygen) %"
             self.gasCard.nitrogenLabel.text = "Nitrogen: \(dive.nitrogen) %"
             self.gasCard.heliumLabel.text = "Helium: \(dive.helium) %"
@@ -152,10 +152,61 @@ class DivePresentationView: UIViewController {
             self.gasCard.amountUsedLabel.text = "Amount Used: \(dive.amountUsed) PSI"
             
             //other card
-            self.otherCard.buddyLabel.text = "Buddies: \(dive.diveBuddy)"
-            self.otherCard.centerLabel.text = "Dive Center: \(dive.diveCenter)"
-            self.otherCard.noteLabel.text = "Notes: \(dive.note)"
+            self.otherCard.buddyLabel.text = "Buddies: \(dive.diveBuddy ?? "")"
+            self.otherCard.centerLabel.text = "Dive Center: \(dive.diveCenter ?? "")"
+            self.otherCard.noteLabel.text = "Notes: \(dive.note ?? "")"
         }
+    }
+    
+    private func getDisplayStringForType(type: DiveLogInputType, dive: DiveModel) -> String {
+        var value: String = ""
+        switch type {
+        case .diveType:
+            for (index, type) in DiveType.allCases.enumerated() where index == dive.diveType {
+                value = type.rawValue
+            }
+        case .waterType:
+            for (index, type) in WaterType.allCases.enumerated() where index == dive.waterType {
+                value = type.rawValue
+            }
+        case .waterBody:
+            for (index, type) in WaterBody.allCases.enumerated() where index == dive.waterBody {
+                value = type.rawValue
+            }
+        case .diveWeather:
+            for (index, type) in DiveWeather.allCases.enumerated() where index == dive.diveWeather {
+                value = type.rawValue
+            }
+        case .diveVisibility:
+            for (index, type) in DiveVisibility.allCases.enumerated() where index == dive.visibility {
+                value = type.rawValue
+            }
+        case .waves:
+            for (index, type) in Waves.allCases.enumerated() where index == dive.waves {
+                value = type.rawValue
+            }
+        case .current:
+            for (index, type) in Current.allCases.enumerated() where index == dive.current {
+                value = type.rawValue
+            }
+        case .surge:
+            for (index, type) in Surge.allCases.enumerated() where index == dive.surge {
+                value = type.rawValue
+            }
+        case .suitType:
+            for (index, type) in SuitType.allCases.enumerated() where index == dive.suitType {
+                value = type.rawValue
+            }
+        case .tankType:
+            for (index, type) in TankType.allCases.enumerated() where index == dive.tankType {
+                value = type.rawValue
+            }
+        case .gasMixture:
+            for (index, type) in GasMixture.allCases.enumerated() where index == dive.gasMixture {
+                value = type.rawValue
+            }
+        }
+        return value
     }
     
 }

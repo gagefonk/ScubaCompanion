@@ -78,7 +78,8 @@ extension MapSearchView: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.searchTextField.text else { return }
         searchCompleter.resultTypes = .pointOfInterest
-        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter.init(including: [.beach])
+        searchCompleter.pointOfInterestFilter = MKPointOfInterestFilter.init(including: [.beach, .marina])
+        
         searchCompleter.queryFragment = searchText
     }
     

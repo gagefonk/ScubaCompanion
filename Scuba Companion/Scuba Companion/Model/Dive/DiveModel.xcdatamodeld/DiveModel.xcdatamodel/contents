@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DiveModel" representedClassName="DiveModel" syncable="YES" codeGenerationType="class">
+        <attribute name="airTemp" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="amountUsed" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="bottomTemp" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="current" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="Current"/>
+        <attribute name="date" attributeType="Date" defaultDateTimeInterval="660859140" usesScalarValueType="NO"/>
+        <attribute name="diveBuddy" attributeType="String"/>
+        <attribute name="diveCenter" attributeType="String"/>
+        <attribute name="diveLength" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="diveType" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="DiveType"/>
+        <attribute name="diveWeather" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="DiveWeather"/>
+        <attribute name="endPressure" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="gasMixture" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="GasMixture"/>
+        <attribute name="helium" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="maxDepth" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="nitrogen" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="note" attributeType="String" defaultValueString=""/>
+        <attribute name="oxygen" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="site" attributeType="String"/>
+        <attribute name="startPressure" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="suitType" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="SuitType"/>
+        <attribute name="surfaceTemp" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="surge" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="Surge"/>
+        <attribute name="tankSize" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="tankType" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="TankType"/>
+        <attribute name="title" attributeType="String" defaultValueString="Test"/>
+        <attribute name="visibility" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="DiveVisibility"/>
+        <attribute name="visibilityInMeters" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="waterBody" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="WaterBody"/>
+        <attribute name="waterType" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="WaterType"/>
+        <attribute name="waves" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" customClassName="Waves"/>
+        <attribute name="weight" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <elements>
+        <element name="DiveModel" positionX="-54" positionY="-9" width="128" height="494"/>
+    </elements>
+</model>

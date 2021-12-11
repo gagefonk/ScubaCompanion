@@ -82,80 +82,31 @@ class DiveLogSegment: UISegmentedControl {
         index = self.selectedSegmentIndex
     }
     
-    func getSelectedSegment() -> Any? {
+    func setSegmentIndex(dive: DiveModel) {
         switch type {
         case .diveType:
-            return DiveType.allCases[self.selectedSegmentIndex]
+            self.index = Int(dive.diveType)
         case .waterType:
-            return WaterType.allCases[self.selectedSegmentIndex]
+            self.index = Int(dive.waterType)
         case .waterBody:
-            return WaterBody.allCases[self.selectedSegmentIndex]
+            self.index = Int(dive.waterBody)
         case .diveWeather:
-            return DiveWeather.allCases[self.selectedSegmentIndex]
+            self.index = Int(dive.diveWeather)
         case .diveVisibility:
-            return DiveVisibility.allCases[self.selectedSegmentIndex]
+            self.index = Int(dive.visibility)
         case .waves:
-            return Waves.allCases[self.selectedSegmentIndex]
+            self.index = Int(dive.waves)
         case .current:
-            return Current.allCases[self.selectedSegmentIndex]
+            self.index = Int(dive.current)
         case .surge:
-            return Surge.allCases[self.selectedSegmentIndex]
+            self.index = Int(dive.surge)
         case .suitType:
-            return SuitType.allCases[self.selectedSegmentIndex]
+            self.index = Int(dive.suitType)
         case .tankType:
-            return TankType.allCases[self.selectedSegmentIndex]
+            self.index = Int(dive.tankType)
         case .gasMixture:
-            return GasMixture.allCases[self.selectedSegmentIndex]
+            self.index = Int(dive.gasMixture)
         }
-    }
-    
-    func getIndexFromInputType(dive: Dive) {
-        switch type {
-        case .diveType:
-            for (index, type) in DiveType.allCases.enumerated() where type == dive.diveType {
-                self.index = index
-            }
-        case .waterType:
-            for (index, type) in WaterType.allCases.enumerated() where type == dive.waterType {
-                self.index = index
-            }
-        case .waterBody:
-            for (index, type) in WaterBody.allCases.enumerated() where type == dive.waterBody {
-                self.index = index
-            }
-        case .diveWeather:
-            for (index, type) in DiveWeather.allCases.enumerated() where type == dive.diveWeather {
-                self.index = index
-            }
-        case .diveVisibility:
-            for (index, type) in DiveVisibility.allCases.enumerated() where type == dive.visibility {
-                self.index = index
-            }
-        case .waves:
-            for (index, type) in Waves.allCases.enumerated() where type == dive.waves {
-                self.index = index
-            }
-        case .current:
-            for (index, type) in Current.allCases.enumerated() where type == dive.current {
-                self.index = index
-            }
-        case .surge:
-            for (index, type) in Surge.allCases.enumerated() where type == dive.surge {
-                self.index = index
-            }
-        case .suitType:
-            for (index, type) in SuitType.allCases.enumerated() where type == dive.suitType {
-                self.index = index
-            }
-        case .tankType:
-            for (index, type) in TankType.allCases.enumerated() where type == dive.tankType {
-                self.index = index
-            }
-        case .gasMixture:
-            for (index, type) in GasMixture.allCases.enumerated() where type == dive.gasMixture {
-                self.index = index
-            }
-        }
-        setSelection()
+        selectedSegmentIndex = index
     }
 }

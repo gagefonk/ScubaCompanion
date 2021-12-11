@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DiveLogPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -51,26 +52,17 @@ class DiveLogPicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate 
         index = row
     }
     
-    func setPickerValue(dive: Dive) {
+    func setPickerValue(dive: DiveModel) {
         switch type {
         case .suit:
-            for (index, type) in SuitType.allCases.enumerated() where type == dive.suitType {
-                self.index = index
-            }
+            self.index = Int(dive.suitType)
         case .gas:
-            for (index, type) in GasMixture.allCases.enumerated() where type == dive.gasMixture {
-                self.index = index
-            }
+            self.index = Int(dive.gasMixture)
         }
         self.selectRow(self.index, inComponent: 0, animated: false)
     }
     
-    func getValue() -> Any {
-        switch type {
-        case .suit:
-            return SuitType.allCases[index]
-        case .gas:
-            return GasMixture.allCases[index]
-        }
+    func getValue() -> Int {
+        return self.selectedRow(inComponent: 0)
     }
 }

@@ -163,11 +163,6 @@ class DiveLogFormCard: UIView {
             segmentControl.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
         case .picker:
             guard let optionPicker = optionPicker else { return }
-//            unitLabel.translatesAutoresizingMaskIntoConstraints = false
-//            unitLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: topPadding).isActive = true
-//            unitLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: rightPadding).isActive = true
-//            unitLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottomPadding).isActive = true
-//            unitLabel.widthAnchor.constraint(equalToConstant: 30).isActive = true
             
             optionPicker.translatesAutoresizingMaskIntoConstraints = false
             optionPicker.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: topPadding).isActive = true

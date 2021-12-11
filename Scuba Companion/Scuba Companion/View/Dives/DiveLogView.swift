@@ -47,7 +47,7 @@ class DiveLogView: UITableViewController {
         let dive = diveLogVM.dives[indexPath.row]
         cell.tintColor = .systemSecondary
         cell.textLabel?.text = dive.title
-        cell.detailTextLabel?.text = diveLogVM.getFormattedDate(date: dive.date)
+        cell.detailTextLabel?.text = diveLogVM.getFormattedDate(date: dive.date!)
         cell.textLabel?.textColor = .white
         cell.detailTextLabel?.textColor = .white
         cell.backgroundColor = .surfaceBackground
@@ -71,6 +71,7 @@ class DiveLogView: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            diveLogVM.removePersistentData(at: indexPath.row)
             diveLogVM.dives.remove(at: indexPath.row)
             tableView.reloadData()
         }
