@@ -2,26 +2,26 @@ Scuba Companion
 ============
 ![Current Version](https://img.shields.io/badge/version-1.0.0-green.svg)
 
-An app to record dives and get relevenat surf forecast information to plan dives in the future.
+An app to record dives and get relevenat surf forecast information to plan dives.
 
 ---
 ## Dive Log View
 
-You can see all of your dives here.
+View all your recorded dives in a simple table.
 
 ![Dive Log Preview](/ReadMeFiles/DiveLogView.png)
 
 ---
 ## Dive View
 
-You can view the dive information on this screen.
+View detailed information about your dive.
 
 ![Dive Preview](/ReadMeFiles/DiveView.png)
 
 ---
 ## Dive Add/Edit
 
-You can add and edit dives.
+Simple UI for adding/editing dives.
 
 <img src="/ReadMeFiles/newDive.gif" width="348"/>
 
@@ -30,6 +30,6 @@ You can add and edit dives.
 ---
 ## Search Locations
 
-Search for locations to grab nearest buoy and surf information.
+Search locations to get relevant buoy and surf forecasts.
 
 <img src="/ReadMeFiles/LocationSearch.gif" width="348"/>
